@@ -16,7 +16,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 //TODO the favicon is not working , make it work.
-// app.use(favicon(path.join(__dirname, 'public', 'IIIT-_Kota_Logo.png')));
+//  app.use(favicon(path.join(__dirname, '/images/', 'IIIT-_Kota_Logo.png')));
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
