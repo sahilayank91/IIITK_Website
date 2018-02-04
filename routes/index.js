@@ -85,4 +85,7 @@ router.get('/courses', function(req, res, next) {
 router.get('/fee', function(req, res, next) {
     res.render('partials/fee', { title: 'Fees & Registration ' });
 });
+
+
+
 module.exports = router;

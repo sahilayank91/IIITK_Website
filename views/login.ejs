@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" >
 
-<head>
+<head ng-controller="LoginController">
   <meta charset="UTF-8">
   <title><%= title%></title>
   
@@ -38,7 +38,7 @@
       <div class='icon'>
         <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/user_icon_copy.png'>
       </div>
-      <input placeholder='Username' type='text'>
+      <input placeholder='Email' ng-pattern="EMAIL_REGEX" ng-model="useremail" type='text'>
         <div class='validation'>
           <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>
         </div>
@@ -48,7 +48,7 @@
       <div class='icon'>
         <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>
       </div>
-      <input placeholder='Password' type='password'>
+      <input placeholder='Password' ng-model="password" type='password'>
       <div class='validation'>
         <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>
       </div>
