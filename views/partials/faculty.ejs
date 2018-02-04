@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ../layout.ejs %>
+    <header>
+        <% include header.ejs %>
+    </header>
+    <title><%= title %></title>
+
+</head>
+
+<body id="top">
+<div class="wrapper bgded overlay" style="background-image:url('/images/background.jpg');">
+    <div id="breadcrumb" class="hoc clear">
+        <!-- ################################################################################################ -->
+        <ul>
+            <li><a href="/faculty">People</a></li>
+            <li><a href="/faculty">Faculty</a></li>
+
+        </ul>
+        <!-- ################################################################################################ -->
+    </div>
+</div>
+
+<h1 class="page-title">Faculty</h1>                              <div class="region region-help">
+    <div id="block-system-main" class="block block-system">
+
+
+        <div class="content">
+            <span property="dc:title" content="Faculty" class="rdf-meta element-hidden"></span><span property="sioc:num_replies" content="0" datatype="xsd:integer" class="rdf-meta element-hidden"></span>
+
+
+            <div class="content">
+                <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+                            <script type="text/javascript">
+                                $(document).ready(function(){
+                                    Array.prototype.diff = function(a) {
+                                        return this.filter(function(i) {return a.indexOf(i) < 0;});
+                                    };
+                                    $.showAllFaculty = function(){
+                                        $("div.facultycard").css("display","");
+                                        $("div.facultycard").filter("[type='visiting']").css("display","none");
+                                        $("div.select-item").filter("[dept='all']").addClass("select-item-active");
+                                        $("div.select-item").not("[dept='all']").removeClass("select-item-active");
+                                    }
+                                    /*
+                                    1 - CSE
+                                    2 - ECE
+                                    3 - OFFICE STAFF
+                                    */
+                                    all_list= ['0','1','2','3'];
+                                    $.filterFaculty = function(course){
+                                        $("div.select-item").filter("[dept=course]").addClass("select-item-active");
+                                        $("div.select-item").not("[dept=course]").removeClass("select-item-active");
+                                        if(course=='CSE'){
+                                            filter_course = ['1'];
+                                        }
+                                        else if(course=='ECE'){
+                                            filter_course = ['2'];
+                                        }
+                                        else if(course == 'OFFICE STAFF'){
+                                            filter_course = ['3']
+                                        }
+                                        for (var i = filter_course.length - 1; i >= 0; i--) {
+                                            $("div.facultycard").filter("[dept='" + filter_course[i] + "']").css("display","");
+                                            $("div.select-item").filter("[dept='" + filter_course[i] + "']").addClass("select-item-active");
+
+                                        };
+                                        var sub_list = all_list.diff(filter_course);
+                                        for(var i = sub_list.length - 1; i>=0; i--){
+                                            $("div.facultycard").filter("[dept='" + sub_list[i] + "']").css("display","none");
+                                            $("div.select-item").filter("[dept='" + sub_list[i] + "']").removeClass("select-item-active");
+                                        }
+                                    };
+                                    $.showAllFaculty();
+
+                                });
+                            </script>
+                            <p>The Institute is organized as research groups and education programs, and has not maintained strong department boundaries. However, faculty can be broadly grouped according to their disciplines which are given below. Apart from those listed below, the institute also has a number of Guest, Adjunct and Visiting faculty members in various disciplines.</p>
+
+                            <p>Click below to display faculty members from a specific discipline.</p>
+
+                            <div class="select">
+                                <div class="select-item select-item-active" onclick="$.showAllFaculty()" dept="all">All</div>
+                                <div class="select-item" onclick="$.filterFaculty(this.getAttribute('dept'))" dept="CSE">CSE</div>
+                                <div class="select-item" onclick="$.filterFaculty(this.getAttribute('dept'))" dept="ECE">ECE</div>
+                                <div class="select-item" onclick="$.filterFaculty(this.getAttribute('dept'))" dept="OFFICE STAFF">Office Staff</div>
+                            </div>
+
+                            <div id="cards-container">
+                                <div class="card rteleft facultycard" style="width:245px" dept="1" type="regular">
+                                    <strong><img alt="" src="/images/user1.jpg" style="float:left;height:100px;" /><a href="/subramanyam">Pooja Jain</a></strong>
+                                    <p><strong>Assistant Professor (CSE)</strong></p>
+
+                                    <p>PhD(2012), Computer Engineering, Nanyang Technological University, Singapore</p>
+                                    <p>Contact No:	9549650438</p>
+                                </div>
+
+                                <div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+                                    <strong><img alt="" src="/images/user.jpg" style="float:left;height:100px;" /><a href="/aasim">Tapan Kumar Jain</a></strong>
+                                    <p><strong>Assistant Professor (ECE)</strong></p>
+
+                                    <p>PhD, King's College London is on the sociology and politics of communications rights in India and the impact of the Internet</p>
+                                    <p>Contact No:	9549650206</p>
+                                </div>
+
+                                <div class="card rteleft facultycard" style="width:245px" dept="1" type="regular">
+                                    <strong><img alt="" src="/images/user1.jpg" style="float:left;height:100px;" /><a href="/alex">Smita Naval<br/>(Presently on Leave)</a></strong>
+                                    <p><strong>Assistant Professor (CSE)</strong></p>
+
+                                    <p>PhD (2012), Indian Institute of Science, Bangalore, India</p>
+                                    <p>Contact No:	9549651074</p>
+                                </div>
+
+
+
+                                <div class="card rteleft facultycard" style="width:245px" dept="1" type="regular">
+                                    <strong><img alt="" src="/images/user.jpg" style="float:left;height:100px;" /><a href="/aman">Amit Kumar</a></strong>
+                                    <p><strong>Assistant Professor (CSE)</strong></p>
+
+                                    <p>PhD (2017) Human-Computer Interaction with a minor in Industrial Design, Georgia Institute of Technology.</p>
+                                    <p>Contact No:  9549655278</p>
+                                </div>
+
+
+
+                                <div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+                                    <strong><img alt="" src="/images/user.jpg" style="float:left;height:100px;" /><a href="/amarjeet">Parikshit Singh<br/>(Presently on Leave)</a></strong>
+                                    <p><strong>Assistant Professor (ECE)</strong></p>
+
+                                    <p>PhD (2009), Electrical Engineering, University of California, Los Angeles, USA</p>
+                                    <p>Contact No:	9549659156</p>
+                                </div>
+
+
+
+                                <div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+                                    <strong><img alt="" src="/images/user.jpg" style="float:left;height:100px;" /><a href="/anand">Neeraj Rao</a></strong>
+                                    <p><strong>Professor (ECE)</strong></p>
+
+                                    <p>PhD (2003), Indian Institute of Technology Delhi</p>
+                                    <p>Contact No:	9549651197</p>
+                                </div>
+
+                                <div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+                                    <strong><img alt="" src="/images/user1.jpg" style="float:left;height:100px;" /><a href="/angshul">Kalpana Naidu</a></strong>
+                                    <p><strong>Assistant Professor (ECE)</strong></p>
+
+                                    <p>PhD (2012), Electrical & Computer Engg., University of British Columbia</p>
+                                    <p>Contact No:	9549650388</p>
+                                </div>
+
+                                <div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+                                    <strong><img alt="" src="/images/user1.jpg" style="float:left;height:100px;" /><a href="/anubha">Sangeeta Singh</a></strong>
+                                    <p><strong>Associate Professor (ECE)</strong></p>
+
+                                    <p>PhD (2006), Indian Institute of Technology-Delhi</p>
+                                    <p>Contact No:	9549651479</p>
+                                </div>
+
+                                <div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+                                    <strong><img alt="" src="/images/user.jpg" style="float:left;height:100px;" /><a href="/anuradha"> Hemant Sharma</a></strong>
+                                    <p><strong>Associate Professor (ECE)</strong></p>
+
+                                    <p>PhD (2006), Mathematics, Panjab University, Chandigarh, India</p>
+                                    <p>Contact No:	9549654704</p>
+                                </div>
+
+                                <div class="card rteleft facultycard" style="width:245px" dept="2" type="regular">
+                                    <strong><img alt="" src="/images/user1.jpg" style="float:left;height:100px;" /><a href="/arunb">Vinita Tiwari</a></strong>
+                                    <p><strong>Assistant Professor (ECE)</strong></p>
+
+                                    <p>PhD (2016), Computer Science, Arizona State University, USA</p>
+                                    <p>Contact No:	9549654678</p>
+                                </div>
+
+                                <div class="card rteleft facultycard" style="width:245px" dept="1" type="regular">
+                                    <strong><img alt="" src="/images/user.jpg" style="float:left;height:100px;" /><a href="/chetan">Rajendra Solanki</a></strong>
+                                    <p><strong>Assistant Professor (CSE)</strong></p>
+
+                                    <p>PhD (2012), Indian Institute of Technology, Delhi</p>
+                                    <p>Contact No:	01412715071</p>
+                                </div>
+
+                                <div class="card rteleft facultycard" style="width:245px" dept="3" type="regular">
+                                    <strong><img alt="" src="/images/user.jpg" style="float:left;height:100px;" /><a href="/arunb">Mr. Rajendra Saxena</a></strong>
+                                    <p><strong>Assistant Professor (ECE)</strong></p>
+
+                                    <p>PhD (2016), Computer Science, Arizona State University, USA</p>
+                                    <p>Contact No:	9549654678</p>
+                                </div>
+
+                                <div class="card rteleft facultycard" style="width:245px" dept="3" type="regular">
+                                    <strong><img alt="" src="/images/user.jpg" style="float:left;height:100px;" /><a href="/chetan">Mr. Parag Somani</a></strong>
+                                    <p><strong>Assistant Professor (CSE)</strong></p>
+
+                                    <p>PhD (2012), Indian Institute of Technology, Delhi</p>
+                                    <p>Contact No:	01412715071</p>
+                                </div>
+                                <div class="card rteleft facultycard" style="width:245px" dept="3" type="regular">
+                                    <strong><img alt="" src="/images/user.jpg" style="float:left;height:100px;" /><a href="/arunb">Mr. Tej Singh Jatav</a></strong>
+                                    <p><strong>Assistant Professor (ECE)</strong></p>
+
+                                    <p>PhD (2016), Computer Science, Arizona State University, USA</p>
+                                    <p>Contact No:	9549654678</p>
+                                </div>
+
+                                <div class="card rteleft facultycard" style="width:245px" dept="3" type="regular">
+                                    <strong><img alt="" src="/images/user1.jpg" style="float:left;height:100px;" /><a href="/chetan">Ms. Yagnasenee Suryavanshi</a></strong>
+                                    <p><strong>Assistant Professor (CSE)</strong></p>
+
+                                    <p>PhD (2012), Indian Institute of Technology, Delhi</p>
+                                    <p>Contact No:	01412715071</p>
+                                </div>
+                                <div class="card rteleft facultycard" style="width:245px" dept="3" type="regular">
+                                    <strong><img alt="" src="/images/user.jpg" style="float:left;height:100px;" /><a href="/arunb">Mr. Pratap Singh</a></strong>
+                                    <p><strong>Assistant Professor (ECE)</strong></p>
+
+                                    <p>PhD (2016), Computer Science, Arizona State University, USA</p>
+                                    <p>Contact No:	9549654678</p>
+                                </div>
+
+                                <div class="card rteleft facultycard" style="width:245px" dept="3" type="regular">
+                                    <strong><img alt="" src="/images/user.jpg" style="float:left;height:100px;" /><a href="/chetan">Mr. Banne Singh Bhati</a></strong>
+                                    <p><strong>Assistant Professor (CSE)</strong></p>
+
+                                    <p>PhD (2012), Indian Institute of Technology, Delhi</p>
+                                    <p>Contact No:	01412715071</p>
+                                </div>
+                                <div class="card rteleft facultycard" style="width:245px" dept="3" type="regular">
+                                    <strong><img alt="" src="/images/user.jpg" style="float:left;height:100px;" /><a href="/arunb">Mr. Mahesh Kumar Sharma</a></strong>
+                                    <p><strong>Assistant Professor (ECE)</strong></p>
+
+                                    <p>PhD (2016), Computer Science, Arizona State University, USA</p>
+                                    <p>Contact No:	9549654678</p>
+                                </div>
+
+                                <div class="card rteleft facultycard" style="width:245px" dept="3" type="regular">
+                                    <strong><img alt="" src="/images/user.jpg" style="float:left;height:100px;" /><a href="/chetan">Mr. Satya Narain Gupta</a></strong>
+                                    <p><strong>Assistant Professor (CSE)</strong></p>
+
+                                    <p>PhD (2012), Indian Institute of Technology, Delhi</p>
+                                    <p>Contact No:	01412715071</p>
+                                </div>
+                                <div class="card rteleft facultycard" style="width:245px" dept="3" type="regular">
+                                    <strong><img alt="" src="/images/user.jpg" style="float:left;height:100px;" /><a href="/arunb">Mr. Satya Narayan Sharma</a></strong>
+                                    <p><strong>Assistant Professor (ECE)</strong></p>
+
+                                    <p>PhD (2016), Computer Science, Arizona State University, USA</p>
+                                    <p>Contact No:	9549654678</p>
+                                </div>
+
+                                <hr width="100%" align="left" style="margin-bottom:0; border:none;"/>
+                                <h3>IIIT KOTA Faculties And Staff</h3>
+                                <hr width="100%" align="left" style="margin-bottom:0; border:none;"/>
+
+                                <footer>
+                                    <% include footer.ejs %>
+                                </footer>
+
+</body>
+
+</html>
