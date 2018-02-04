@@ -10,22 +10,12 @@ IIITKWebsite.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', fu
         .state('index', {
 
             url: "/index",
-            templateUrl: "partials/index",
-            controller: "DashboardController"
+            templateUrl: "index",
+            controller: "IndexController"
         })
-        .state('profile', {
-            url: "/profile",
-            templateUrl: "partials/profile",
-            controller: "ProfileController"
+        .state('login', {
+            url: "/login",
+            templateUrl: "profile",
+            controller: "LoginController"
         })
-        .state('user', {
-            url: "/user/:id",
-            templateUrl: "partials/others-profile",
-            params: {
-                id: null
-            },
-            controller: "OthersProfileController"
-        })
-
-    
 }]);
