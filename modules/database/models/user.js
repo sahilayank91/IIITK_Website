@@ -18,7 +18,7 @@ var UserSchema = new mongoose.Schema({
         medium: {type: String, required: true},
         small: {type: String, required: true},
     },
-    title: {type: String, enum: ENUMS.titles},
+
     firstname: {type: String, required: true}, //change the keys whenever firstname changes
     lastname: {type: String}, //change the keys whenever lastname changes
     // for name prefix matching

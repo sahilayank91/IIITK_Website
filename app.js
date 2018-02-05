@@ -27,8 +27,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
+
 app.use('/users', users);
+
 app.use('/bower', express.static(path.join(__dirname, 'bower_components')));
 
 
@@ -42,12 +43,20 @@ mongoose.connect('mongodb://' + dbUrl, function(err) {
     if (err) {
         console.log("Database connection failed");
       } else {
+        console.log(dbUrl);
         console.log("Database connection successful");
     }
 });
 
 
 
+/****************************************************/
+/******************* Routes Setup *******************/
+/****************************************************/
+var UI_INDEX = require(__BASE__ + "routes/index");
+var USERS = require(__BASE__ + "routes/users");
+var ACHIEVEMENTS = require(__BASE__ + "routes/achievements");
+var POSTS = require (__BASE__ + "routes/posts");
 
 
 
@@ -58,6 +67,13 @@ mongoose.connect('mongodb://' + dbUrl, function(err) {
 
 
 
+/****************************************************/
+/****************** Routes Mapping ******************/
+/****************************************************/
+app.use('/', UI_INDEX);
+app.use('/users',USERS);
+app.use('/achievement',ACHIEVEMENTS);
+app.use('/posts',POSTS);
 
 
 

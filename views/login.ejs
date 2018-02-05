@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" >
 
-<head ng-controller="LoginController">
+<head >
   <meta charset="UTF-8">
   <title><%= title%></title>
   
@@ -33,12 +33,14 @@
   <div class='login_title'>
     <span>Login to your account</span>
   </div>
+  <form name="login" method="post" action="/users/login">
   <div class='login_fields'>
     <div class='login_fields__user'>
       <div class='icon'>
         <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/user_icon_copy.png'>
       </div>
-      <input placeholder='Email' ng-pattern="EMAIL_REGEX" ng-model="useremail" type='text'>
+
+      <input placeholder='Email' name="useremail" type='text'>
         <div class='validation'>
           <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>
         </div>
@@ -48,7 +50,7 @@
       <div class='icon'>
         <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>
       </div>
-      <input placeholder='Password' ng-model="password" type='password'>
+      <input placeholder='Password' name="userpass" type='password'>
       <div class='validation'>
         <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>
       </div>
@@ -60,6 +62,7 @@
       </div>
     </div>
   </div>
+  </form>
   <div class='success'>
     <h2>Authentication Success</h2>
     <p>Welcome back</p>
