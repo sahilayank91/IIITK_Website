@@ -15,14 +15,23 @@ module.exports = {
     branch: {
         CSE :'cse',
         ECE: 'ece',
-        ME :"me"
+        ME :'me'
 
     },
 
+    news_type: {
+      SPORTS: 'sports',
+      CULTURAL: 'cultural',
+      SCHOLARSHIP :'scholarship',
+      ACADEMICS: 'academics',
+      ADMISSION: 'admission',
+      RECRUITMENT: 'recruitment',
+      RESEARCH: 'research'
+    },
 
     image_resolution_types:{
         IMAGE_MEDIUM: 'medium',
-        IMAGE_HIGH: 'high',
+        IMAGE_HIGH: 'high'
 
     }
 };

@@ -9,7 +9,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var index = require('./routes/index');
-var users = require('./routes/users');
+var users = require('./routes/services/users');
 
 var app = express();
 
@@ -54,10 +54,11 @@ mongoose.connect('mongodb://' + dbUrl, function(err) {
 /******************* Routes Setup *******************/
 /****************************************************/
 var UI_INDEX = require(__BASE__ + "routes/index");
-var USERS = require(__BASE__ + "routes/users");
-var ACHIEVEMENTS = require(__BASE__ + "routes/achievements");
-var POSTS = require (__BASE__ + "routes/posts");
-
+var USERS = require(__BASE__ + "routes/services/users");
+var ACHIEVEMENTS = require(__BASE__ + "routes/services/achievements");
+var POSTS = require (__BASE__ + "routes/services/posts");
+var NEWS = require(__BASE__  + "routes/services/news");
+var STUDENTS = require(__BASE__ + "routes/services/students");
 
 
 
@@ -74,8 +75,8 @@ app.use('/', UI_INDEX);
 app.use('/users',USERS);
 app.use('/achievement',ACHIEVEMENTS);
 app.use('/posts',POSTS);
-
-
+app.use('/news',NEWS);
+app.use('/students',STUDENTS);
 
 
 

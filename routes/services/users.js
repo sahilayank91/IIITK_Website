@@ -18,7 +18,7 @@ router.post('/login', function(req, res) {
 
         if(data){
             console.log("Data for the login:" , data);
-             res.render('partials/admin', { title: 'Admin Portal' });
+             res.render('partials/admin', { title: 'Admin Portal'});
 
         }else{
             console.log("Some error occured while getting data from the database");
