@@ -45,7 +45,22 @@ var getNews = function(rule,fields,options){
   });
 };
 
+
+var updateNews = function(rule,fields,options){
+    return new Promise(function(resolve,reject){
+        News.findOneAndUpdate(rule, fields, options).exec(function (err, data) {
+            if (!err) {
+                resolve(data);
+            } else {
+                reject(new Error('Failed to update News'));
+            }
+        });
+    });
+};
+
+
 module.exports = {
     createNews:createNews,
-    getNews:getNews
+    getNews:getNews,
+    updateNews:updateNews
 };

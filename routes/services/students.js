@@ -22,12 +22,12 @@ router.get('/getStudentList',function(req,res,next){
        .then(function(data){
           if(data.length > 0){
               console.log("The student list by database: ",data);
-
               //TODO set the name of the template you want to load
               //Todo Also there is a need to change the /btech calls from index.js
+
+
               res.render("partials/", {data: data});
           }
-
        });
 });
 

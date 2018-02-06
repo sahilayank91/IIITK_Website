@@ -8,7 +8,6 @@ IIITKWebsite.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', fu
     // Now set up the states
     $stateProvider
         .state('index', {
-
             url: "/index",
             templateUrl: "index",
             controller: "IndexController"
@@ -17,5 +16,11 @@ IIITKWebsite.config(['$httpProvider', '$stateProvider', '$urlRouterProvider', fu
             url: "/login",
             templateUrl: "profile",
             controller: "LoginController"
+        })
+        .state('aboutus',{
+            url:"/aboutus",
+            templateUrl:"partials/aboutus",
+            controller: "IndexController"
+
         })
 }]);

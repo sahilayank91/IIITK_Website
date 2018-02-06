@@ -1,9 +1,6 @@
-IIITKWebsite.controller('IndexController', ['$scope', '$state', '$window', '$rootScope', '$timeout', 'UIUtilityService', 'GroupService', 'ChildService', 'NotificationService', 'InstituteService', 'FollowClassService', 'PostsService', 'FeatureService','ProfileService', '$q', function ($scope, $state, $window, $rootScope, $timeout, UIUtilityService, GroupService, ChildService, NotificationService, InstituteService, FollowClassService, PostsService, FeatureService,ProfileService, $q) {
+IIITKWebsite.controller('IndexController', ['$scope', '$state', '$window', '$rootScope', function ($scope, $state, $window, $rootScope) {
 
+    console.log("Index controller");
+    $scope.name ="sahil";
 
-    $scope.$on('$stateChangeSuccess', function () {
-
-       console.log("Inside index controlle");
-
-    });
 }]);

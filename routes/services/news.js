@@ -11,7 +11,7 @@ router.get('/getNews',function(req,res,next){
 
 
     promise.then(function(data){
-        res.render('/index',{data:data});
+        // res.render('/index',{data:data});
     });
 });
 

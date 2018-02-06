@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
-var ENUMS = require(__BASE__ + "config/enums");
-var IMAGE_TYPES = require(__BASE__+"config/enums").image_resolution_types;
-var PostSchema = new mongoose.Schema(
+var EVENT_TYPE = require(__BASE__ + "config/enums").event_type;
+var EventSchema = new mongoose.Schema(
     {
         //_id: Object,
         type: {
             type: String,
+            enum:[EVENT_TYPE.SPORTS,EVENT_TYPE.SCHOLARSHIP,EVENT_TYPE.RESEARCH,EVENT_TYPE.RECRUITMENT,EVENT_TYPE.CULTURAL,EVENT_TYPE.ADMISSION,EVENT_TYPE.ACADEMICS],
             required: true
         },
         
@@ -24,15 +24,13 @@ var PostSchema = new mongoose.Schema(
                 mime_type: {type: String, required: true},
                 image_resolution: {type: String, enum: [IMAGE_TYPES.IMAGE_MEDIUM, IMAGE_TYPES.IMAGE_HIGH]},
                 url: {type: String, required: true},
-                size: {type: Number},
-            }],
-        },
-
-        
+                size: {type: Number}
+            }]
+        }
     },
     {
         minimize: false
     }
 );
 
-module.exports = mongoose.model('Post', PostSchema);
+module.exports = mongoose.model('Event', EventSchema);

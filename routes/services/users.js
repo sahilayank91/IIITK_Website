@@ -2,15 +2,21 @@ var express = require('express');
 var router = express.Router();
 var userOperations = require(__BASE__+"modules/database/accessors/user_operations");
 var path = require('path');
+var cookieParser = require('cookie-parser');
+var RESPONSE = require(__BASE__ + "modules/controller/handler/ResponseHandler");
+
 
 /* GET users listing. */
 router.post('/login', function(req, res) {
     // Set our internal DB variable
     console.log("Inside login");
     var promise = Promise.resolve(true);
+
     // Get our form values. These rely on the "name" attributes
+
     var userPass = req.body.userpass;
     var userEmail = req.body.useremail;
+
     // Set our collection
 
     promise = userOperations.getUsers({email: userEmail, password: userPass}, {_id:1,firstname:1, lastname:1, email: 1,phone:1 ,profile_pic:1});
@@ -18,7 +24,16 @@ router.post('/login', function(req, res) {
 
         if(data){
             console.log("Data for the login:" , data);
-             res.render('partials/admin', { title: 'Admin Portal'});
+
+            //Setting cookies for the login user
+
+
+            //Redirecting to the admin portal
+            res.render('partials/admin', { title: 'Admin Portal'});
+            // res.cookie("username" , data[0].firstname +" "+ data[0].lastname);
+            // res.cookie("email" , data[0].email);
+            // res.cookie("id",data[0]._id);
+
 
         }else{
             console.log("Some error occured while getting data from the database");

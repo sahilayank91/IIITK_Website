@@ -70,9 +70,47 @@ var getUsers = function (rule, fields, options) {
             }
         });
     });
-}
+};
+
+var deleteUsers = function(rule,fields,options){
+    return new Promise(function (resolve,reject){
+            User.remove(rule,fields, options).exec(function(err,data){
+                if(!err){
+                    resolve(data);
+                }else{
+                    reject(new Error("Failed to delete Users"));
+                }
+            });
+    });
+};
+
+var updateUser = function(rule,fields,options){
+  return new Promise(function(resolve,reject){
+    User.findOneAndUpdate(rule,fields,options).exec(function(err,data){
+        if(!err){
+            resolve(data);
+        }else{
+            reject(new Error("Failed to update Users"));
+        }
+    });
+  });
+};
+
+var getUserById = function(rule,fields,options){
+    return new Promise(function(resolve,reject){
+        User.find(rule,fields,options).exec(function(err,data){
+            if(!err){
+                resolve(data);
+            }else{
+                reject(new Error("Failed to get User"));
+            }
+        });
+    });
+};
 
 module.exports = {
     createUser: createUser,
     getUsers: getUsers,
+    updateUser:updateUser,
+    getUserById:getUserById
 };
