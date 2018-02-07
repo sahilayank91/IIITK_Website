@@ -1,6 +1,7 @@
 var User = require(__BASE__ + 'modules/database/models/user');
 var customUUID = require(__BASE__ + "modules/utils/CustomUUID");
 var Promise = require('bluebird');
+
 //A template to input the data required at the registration of the user
 var getCreateTemplate = function (parameters) {
     if ((!parameters.email && !parameters.phone)) {
@@ -13,6 +14,7 @@ var getCreateTemplate = function (parameters) {
             case 'username':
             case 'email':
             case 'phone':
+            case 'password':
             case 'role':
             case 'secondary_email':
             case 'secondary_phone':
@@ -29,9 +31,9 @@ var getCreateTemplate = function (parameters) {
 
     template.created_at = new Date();
 
-    if (parameters.password) {
-        template.password = cryptographer.hashIt(parameters.password);
-    }
+    // if (parameters.password) {
+    //     template.password = cryptographer.hashIt(parameters.password);
+    // }
 
     if (!template._id) {
         template._id = customUUID.getRandomAplhaNumeric();
@@ -52,6 +54,7 @@ var createUser = function (parameters) {
             if (!err) {
                 resolve(data);
             } else {
+                console.log("Error: ",err);
                 reject(new Error('createUser failed'));
             }
         });

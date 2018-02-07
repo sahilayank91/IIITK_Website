@@ -25,15 +25,11 @@ router.post('/login', function(req, res) {
         if(data){
             console.log("Data for the login:" , data);
 
-            //Setting cookies for the login user
 
 
             //Redirecting to the admin portal
             res.render('partials/admin', { title: 'Admin Portal'});
-            // res.cookie("username" , data[0].firstname +" "+ data[0].lastname);
-            // res.cookie("email" , data[0].email);
-            // res.cookie("id",data[0]._id);
-
+            //TODO Set session variables after login
 
         }else{
             console.log("Some error occured while getting data from the database");
@@ -44,34 +40,52 @@ router.post('/login', function(req, res) {
 
 router.post('/register',function(req,res){
     var promise = Promise.resolve(true);
-    console.log("request: ",req);
     var parameters = {
-        userEmail: req.body.email,
-        userPass: req.body.password,
-        userName: req.body.username,
+        email: req.body.email,
+        password: req.body.password,
+        username: req.body.username,
         firstname : req.body.firstname,
         lastname : req.body.lastname,
-        userPhone: req.body.phone,
+        phone: req.body.phone,
         gender: req.body.gender,
         role: req.body.role
     };
-
-    console.log("Parameters:",parameters);
-
     promise = userOperations.createUser(parameters);
 
     promise.then(function(data) {
         if (data) {
-            console.log("Data generated after creating the user: ", data);
-            res.render('index', {userdata: data});
+            res.render('index', { title: 'Indian Institute of Information Technology, Kota' });
         } else {
             console.log("Some error occured during registration, Please Try Again");
         }
     })
 });
 
+router.post('/updateUser',function(req,res){
+   var promise = Promise.resolve(true);
+   var parameters = {
+       email: req.body.email,
+       password: req.body.password,
+       username: req.body.username,
+       firstname : req.body.firstname,
+       lastname : req.body.lastname,
+       phone: req.body.phone,
+       gender: req.body.gender,
+       role: req.body.role
+   }
+
+   promise = userOperations.updateUser(parameters);
+   promise.then(function(data){
+       if(data){
+           res.render('index', { title: 'Indian Institute of Information Technology, Kota' });
+       }else{
+           console.log("Some error occured while updating the users");
+       }
+   })
 
 
+
+});
 
 
 module.exports = router;

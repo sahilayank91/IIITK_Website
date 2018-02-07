@@ -7,16 +7,15 @@ var UserSchema = new mongoose.Schema({
     phone: String,
     password: {type: String, required: true},
     role: {
-        type: String,
-        required: true,
+        type: String
         // enum: [ROLES.ORGANISATION, ROLES.ADMINISTRATOR, ROLES.TEACHER, ROLES.STUDENT, ROLES.PARENT]
     },
     secondary_email: String, // institite's email address for password resets
     secondary_phone: String, // parent's mobile number in case of students
     // TODO: make different default profile pics for different roles
     profile_pic: {
-        medium: {type: String, required: true},
-        small: {type: String, required: true},
+        medium: {type: String},
+        small: {type: String},
     },
 
     firstname: {type: String, required: true}, //change the keys whenever firstname changes
