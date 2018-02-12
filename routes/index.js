@@ -86,6 +86,8 @@ router.get('/fee', function(req, res, next) {
     res.render('partials/fee', { title: 'Fees & Registration ' });
 });
 
-
+router.get('/paymentprocess', function(req, res, next) {
+    res.render('partials/paymentprocess', { title: 'Fees | Payment Process' });
+});
 
 module.exports = router;
