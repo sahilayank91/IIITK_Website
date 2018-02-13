@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var UserSchema = new mongoose.Schema({
     _id: String,
     // use username as profile url. followclass/profile/harsha.
-    username: {type: String, index: true, unique: true, required: true},
+    username: {type: String, index: true, unique: true},
     email: String,
     phone: String,
     password: {type: String, required: true},

@@ -95,6 +95,7 @@ router.get('/createPost',function(req,res,next){
 
 
 
+
 router.post('/register',function(req,res){
     var promise = Promise.resolve(true);
     console.log("request: ",req);

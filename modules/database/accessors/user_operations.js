@@ -39,9 +39,6 @@ var getCreateTemplate = function (parameters) {
         template._id = customUUID.getRandomAplhaNumeric();
     }
 
-    if (!template.username) {
-        template.username = template._id;
-    }
     return template;
 };
 
@@ -54,7 +51,6 @@ var createUser = function (parameters) {
             if (!err) {
                 resolve(data);
             } else {
-                console.log("Error: ",err);
                 reject(new Error('createUser failed'));
             }
         });

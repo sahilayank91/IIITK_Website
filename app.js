@@ -9,9 +9,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var index = require('./routes/index');
-var users = require('./routes/services/users');
+var users = require('./routes/services/authenticate');
+var TokenHandler = require(__BASE__ + "modules/controller/handler/TokenHandler");
+var LOGGER = require(__BASE__ + "modules/utils/Logger");
+
 
 var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,7 +32,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use('/users', users);
 
 app.use('/bower', express.static(path.join(__dirname, 'bower_components')));
 
@@ -41,10 +44,9 @@ app.use('/bower', express.static(path.join(__dirname, 'bower_components')));
 var dbUrl = CONFIG.DATABASE_URL;
 mongoose.connect('mongodb://' + dbUrl, function(err) {
     if (err) {
-        console.log("Database connection failed");
-      } else {
-        console.log(dbUrl);
-        console.log("Database connection successful");
+        LOGGER.log.error(LOGGER.PREFIX.DATABASE + 'Database connection failed', err);
+    } else {
+        LOGGER.log.debug(LOGGER.PREFIX.DATABASE + 'Database connection successful');
     }
 });
 
@@ -54,29 +56,28 @@ mongoose.connect('mongodb://' + dbUrl, function(err) {
 /******************* Routes Setup *******************/
 /****************************************************/
 var UI_INDEX = require(__BASE__ + "routes/index");
-var USERS = require(__BASE__ + "routes/services/users");
+var AUTHENTICATE = require(__BASE__ + "routes/services/authenticate");
 var ACHIEVEMENTS = require(__BASE__ + "routes/services/achievements");
 var POSTS = require (__BASE__ + "routes/services/posts");
 var NEWS = require(__BASE__  + "routes/services/news");
 var STUDENTS = require(__BASE__ + "routes/services/students");
 
 
-
-
-
-
-
-
-
 /****************************************************/
 /****************** Routes Mapping ******************/
 /****************************************************/
 app.use('/', UI_INDEX);
-app.use('/users',USERS);
+app.use('/authenticate',AUTHENTICATE);
 app.use('/achievement',ACHIEVEMENTS);
 app.use('/posts',POSTS);
 app.use('/news',NEWS);
 app.use('/students',STUDENTS);
+
+
+/****************************************************/
+/***************** Redis Connection *****************/
+/****************************************************/
+var client = TokenHandler.client;
 
 
 

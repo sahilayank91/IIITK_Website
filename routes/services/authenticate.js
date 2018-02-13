@@ -4,38 +4,49 @@ var userOperations = require(__BASE__+"modules/database/accessors/user_operation
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var RESPONSE = require(__BASE__ + "modules/controller/handler/ResponseHandler");
+var DataValidator = require(__BASE__ + "modules/utils/DataValidator");
+var client = require(__BASE__ + "modules/controller/handler/TokenHandler").client;
 
 
 /* GET users listing. */
 router.post('/login', function(req, res) {
     // Set our internal DB variable
-    console.log("Inside login");
-    var promise = Promise.resolve(true);
+
+    var promise;
 
     // Get our form values. These rely on the "name" attributes
 
     var userPass = req.body.userpass;
     var userEmail = req.body.useremail;
 
-    // Set our collection
 
-    promise = userOperations.getUsers({email: userEmail, password: userPass}, {_id:1,firstname:1, lastname:1, email: 1,phone:1 ,profile_pic:1});
-    promise.then(function(data){
-
-        if(data){
-            console.log("Data for the login:" , data);
+    if ((!DataValidator.isValidEmail(userEmail)) && !DataValidator.isValidPhone(phone) && !DataValidator.isValidUsername(username) && !DataValidator.isValidPassword(password)){
 
 
 
-            //Redirecting to the admin portal
-            res.render('partials/admin', { title: 'Admin Portal'});
-            //TODO Set session variables after login
+    }else{
+        // Set our collection
+        promise = userOperations.getUsers({email: userEmail, password: userPass}, {_id:1,firstname:1, lastname:1, email: 1,phone:1 ,profile_pic:1});
+        promise.then(function(data){
 
-        }else{
-            console.log("Some error occured while getting data from the database");
-        }
+            if(data){
+                client.set('framework', 'AngularJS', function(err, reply) {
+                    console.log(reply);
+                });
+                //Redirecting to the admin portal
+                res.render('partials/admin', { title: 'Admin Portal'});
+                //TODO Set session variables after login
 
-    })
+            }else{
+                console.log("Some error occured while getting data from the database");
+            }
+
+        })
+
+    }
+
+
+
 });
 
 router.post('/register',function(req,res){
@@ -50,6 +61,8 @@ router.post('/register',function(req,res){
         gender: req.body.gender,
         role: req.body.role
     };
+
+    console.log("parmaeters",parameters);
     promise = userOperations.createUser(parameters);
 
     promise.then(function(data) {
