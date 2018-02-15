@@ -6,14 +6,14 @@ body {
   margin: 0;
   overflow: hidden;
   font-family: 'Gudea', sans-serif;
-  background: #EA5C54;
+  background: #004BB7;
   /* Old browsers */
   /* FF3.6+ */
   /* Chrome,Safari4+ */
   /* Chrome10+,Safari5.1+ */
   /* Opera 11.10+ */
   /* IE10+ */
-  background: linear-gradient(135deg, #EA5C54 0%, #bb6dec 100%);
+  background: linear-gradient(135deg, #013C8E 0%, #011932 100%);  /* #EA5C54   #bb6dec */
   /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EA5C54 ', endColorstr='#bb6dec',GradientType=1 );
   /* IE6-9 fallback on horizontal gradient */
@@ -95,7 +95,7 @@ body .login {
           transform: rotateX(0deg);
   position: relative;
   width: 240px;
-  border-top: 2px solid #D8312A;
+  border-top: 3px solid #E05E3E;
   height: 300px;
   position: absolute;
   left: 0;
@@ -103,15 +103,15 @@ body .login {
   margin: auto;
   top: 0;
   bottom: 0;
-  padding: 100px 40px 40px 40px;
-  background: #35394a;
+  padding: 90px 40px 40px 40px;
+  background:linear-gradient(45deg, #dddddd, #333333) ;      /*  #35394a */
   /* Old browsers */
   /* FF3.6+ */
   /* Chrome,Safari4+ */
   /* Chrome10+,Safari5.1+ */
   /* Opera 11.10+ */
   /* IE10+ */
-  background: linear-gradient(45deg, #35394a 0%, #1f222e 100%);
+  /*background: linear-gradient(45deg, #35394a 0%, #1f222e 100%);*/
   /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#35394a', endColorstr='#1f222e',GradientType=1 );
   /* IE6-9 fallback on horizontal gradient */
@@ -130,10 +130,14 @@ body .login .disclaimer {
   width: 250px;
 }
 body .login_title {
-  color: #afb1be;
+  color: #111111;
   height: 60px;
-  text-align: left;
-  font-size: 16px;
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  font-style:italic;
+  font-family:"Comic Sans MS";
+  padding-bottom: 30px;
 }
 body .login_fields {
   height: 208px;
@@ -148,7 +152,7 @@ body .login_fields .icon {
   opacity: .5;
 }
 body .login_fields input[type='password'] {
-  color: #DC6180 !important;
+  color: #E05E3E !important;
 }
 body .login_fields input[type='text'], body .login_fields input[type='password'] {
   color: #afb1be;
@@ -190,8 +194,8 @@ body .login_fields__submit input {
   border-radius: 50px;
   background: transparent;
   padding: 10px 50px;
-  border: 2px solid #DC6180;
-  color: #DC6180;
+  border: 2px solid #E05E3E;
+  color: #E05E3E;
   text-transform: uppercase;
   font-size: 11px;
   -webkit-transition-property: background,color;
@@ -206,7 +210,7 @@ body .login_fields__submit input:focus {
 }
 body .login_fields__submit input:hover {
   color: white;
-  background: #DC6180;
+  background: #E05E3E;
   cursor: pointer;
   -webkit-transition-property: background,color;
   transition-property: background,color;

@@ -93,6 +93,9 @@ router.get('/createPost',function(req,res,next){
     res.render('partials/createpost',{title: "Create Post"});
 });
 
+router.get('/signup', function(req, res, next) {
+    res.render('partials/admin', { title: 'Admin Login' });
+});
 
 
 
