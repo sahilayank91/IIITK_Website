@@ -76,6 +76,10 @@ router.get('/computerlab', function(req, res, next) {
     res.render('partials/computerlab', { title: 'Computer Labs' });
 });
 
+router.get('/admin',function(req,res,next){
+    res.render('partials/admin',{title: "Admin"});
+});
+
 router.get('/department', function(req, res, next) {
     res.render('partials/department', { title: 'Departments' });
 });
