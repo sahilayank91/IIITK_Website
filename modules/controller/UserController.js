@@ -14,7 +14,20 @@ var getUsers = function(parameters){
 
 };
 
-
+var registerUser = function(parameters){
+    console.log(parameters);
+    return userOperations.createUser(parameters)
+        .then(function(data){
+            if(data){
+                return data;
+            }else{
+                throw new Error('Cant create user with the given credentials');
+            }
+        }).catch(function(err){
+            console.log("Error in createUser",error);
+        })
+}
 module.exports = {
   getUsers:getUsers,
+  registerUser:registerUser,
 };

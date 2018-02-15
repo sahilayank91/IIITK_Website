@@ -52,37 +52,39 @@ router.post('/login', function(req, res) {
 
 });
 
-router.post('/register',function(req,res){
+router.post('/register',function(req,res) {
     var promise;
     var parameters = {
         email: req.body.email,
         password: req.body.password,
         username: req.body.username,
-        firstname : req.body.firstname,
-        lastname : req.body.lastname,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
         phone: req.body.phone,
         gender: req.body.gender,
         role: req.body.role
     };
+
+    console.log(parameters);
 
     // if ((!DataValidator.isValidEmail(parameters.email) && !DataValidator.isValidPhone(parameters.phone))
     //     || !DataValidator.isValidName(parameters.firstname, parameters.lastname, role) || !DataValidator.isValidTextWithNumbers(password)
     // ){
     //
     // }else{
-        console.log("parmaeters",parameters);
-        promise = userOperations.createUser(parameters);
-
-        promise.then(function(data) {
+    UserController.registerUser(parameters)
+        .then(function (data) {
             if (data) {
-                res.render('index', { title: 'Indian Institute of Information Technology, Kota' });
+                console.log("Data:", data);
+                RESPONSE.sendOkay(res, {success: true, redirect: path.join("/" + 'login')});
+                // RESPONSE.sendOkay(res, parameters);
+                return true;
             } else {
-                console.log("Some error occured during registration, Please Try Again");
+                console.log("Some error occured while getting data from the database");
             }
-        })
 
 
-
+        });
 });
 
 router.post('/updateUser',function(req,res){

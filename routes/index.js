@@ -97,56 +97,6 @@ router.get('/createPost',function(req,res,next){
     res.render('partials/createpost',{title: "Create Post"});
 });
 
-
-
-
-router.post('/register',function(req,res){
-    var promise = Promise.resolve(true);
-    console.log("request: ",req);
-    var parameters = {
-        userEmail: req.body.email,
-        userPass: req.body.password,
-        userName: req.body.username,
-        firstname : req.body.firstname,
-        lastname : req.body.lastname,
-        userPhone: req.body.phone,
-        gender: req.body.gender,
-        role: req.body.role
-    };
-
-    console.log("Parameters:",parameters);
-
-    promise = userOperations.createUser(parameters);
-
-    promise.then(function(data) {
-        if (data) {
-            console.log("Data generated after creating the user: ", data);
-            res.render('index', {userdata: data});
-        } else {
-            console.log("Some error occured during registration, Please Try Again");
-        }
-    })
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 router.get('/paymentprocess', function(req, res, next) {
     res.render('partials/paymentprocess', { title: 'Fees | Payment Process' });
 });

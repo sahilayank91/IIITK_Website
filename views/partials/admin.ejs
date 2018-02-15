@@ -32,6 +32,52 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="/stylesheets/adminPortal/css/material.cyan-light_blue.min.css">
     <link rel="stylesheet" href="/stylesheets/adminPortal/css/admin.css">
+
+    <!--Functional JS Files-->
+    <script type="text/javascript" src="/bower/jquery/dist/jquery.js"></script>
+    <script src="/javascripts/scripts/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/bower/jquery-ui/jquery-ui.js"></script>
+    <script type="text/javascript" src="/javascripts/scripts/login.js"></script>
+
+    <!--jquery-->
+    <script type="text/javascript" src="/bower/jquery/dist/jquery.js"></script>
+    <script src="/javascripts/scripts/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/bower/jquery-ui/jquery-ui.js"></script>
+    <script type="text/javascript" src="/javascripts/scripts/jquery.backtotop.js"></script>
+    <script type="text/javascript" src="/javascripts/scripts/jquery.mobilemenu.js"></script>
+    <script type="text/javascript" src="/javascripts/scripts/jquery.flexslider-min.js"></script>
+    <script type="text/javascript" src="/bower/angular/angular.js"></script>
+    <script type="text/javascript" src="/bower/angular-bootstrap/ui-bootstrap.js"></script>
+    <script type="text/javascript" src="/bower/angular-ui/build/angular-ui.js"></script>
+    <script type="text/javascript" src="/bower/angular-ui-router/release/angular-ui-router.js"></script>
+    <script type="text/javascript" src="/bower/ng-tags-input/ng-tags-input.js"></script>
+    <script type="text/javascript" src="/bower/ng-file-upload/ng-file-upload.js"></script>
+    <script type="text/javascript" src="/bower/angular-loading-bar/build/loading-bar.js"></script>
+    <script type="text/javascript" src="/bower/angular-loading-bar/src/loading-bar.js"></script>
+    <script type="text/javascript" src="/bower/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.js"></script>
+    <script type="text/javascript" src="/bower/angular-sanitize/angular-sanitize.js"></script>
+    <script type="text/javascript" src="/bower/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
+
+
+
+    <!--Main Configuration Files-->
+    <script type="text/javascript" src="/javascripts/ui-config.js"></script>
+    <script type="text/javascript" src="/javascripts/angular/iiitk-app.js"></script>
+    <script type="text/javascript" src="/javascripts/angular/iiitk-app-config.js"></script>
+    <script type="text/javascript" src="/javascripts/angular/iiitk-interceptor.js"></script>
+
+
+    <script type="text/javascript" src="/javascripts/angular/services/ui-utility-service.js"></script>
+
+    <!--service -->
+
+
+    <script type="text/javascript" src="/javascripts/angular/services/user-service.js"></script>
+
+
+    <!-- Controller -->
+    <script type="text/javascript" src="/javascripts/angular/controllers/dashboard-controller.js"></script>
+
     <style>
         #view-source {
             position: fixed;
@@ -155,36 +201,37 @@
     </style>
 </head>
 <body>
+<div ng-app="IIITKWebsite" ng-controller="DashboardController">
 <% include ../include/sidebar.ejs %>
     <main class="mdl-layout__content mdl-color--grey-100">
         <div class="mdl-grid demo-content">
             <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                    <form method="POST" action="/users/register">
+                    <form method="POST">
                         <div class="container">
                             <h1>Sign Up</h1>
                             <p>Please fill in this form to create an account.</p>
                             <hr>
                             <label><b>Email</b></label>
-                            <input type="text" placeholder="Enter Email" name="email" required>
+                            <input type="text" placeholder="Enter Email" ng-model = "email" name="email" required>
 
                             <label><b>Password</b></label>
-                            <input type="password" placeholder="Enter Password" name="password" required>
+                            <input type="password" placeholder="Enter Password" ng-model="password" name="password" required>
 
                             <label><b>Repeat Password</b></label>
-                            <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+                            <input type="password" placeholder="Repeat Password" ng-mode="password_repeat" name="psw-repeat" required>
 
                             <label><b>First Name</b></label>
-                            <input type="text" placeholder="Enter First Name" name="firstname" required>
+                            <input type="text" placeholder="Enter First Name" ng-model="firstname" name="firstname" required>
 
                             <label><b>Last Name</b></label>
-                            <input type="text" placeholder="Enter Last Name" name="lastname" required>
+                            <input type="text" placeholder="Enter Last Name" ng-model="lastname" name="lastname" required>
 
                             <label><b>User Name</b></label>
-                            <input type="text" placeholder="Enter Last Name" name="username" required>
+                            <input type="text" placeholder="Enter Last Name" ng-model="username" name="username" required>
 
 
                             <label><b>Phone No</b></label>
-                            <input type="text" placeholder="Enter Email" name="phone" required>
+                            <input type="text" placeholder="Enter Phone No" ng-model="phone" name="phone" required>
 
                             <label><b>Upload Profile Picture</b></label>
                             <input type="file" style="margin-bottom:15px">
@@ -195,7 +242,7 @@
 
                             <div class="clearfix">
                                 <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                                <button type="submit" class="signupbtn">Sign Up</button>
+                                <button type="submit" ng-click="registerUser()" class="signupbtn">Sign Up</button>
                             </div>
                         </div>
                     </form>
@@ -251,9 +298,9 @@
                     </div>
                 </div>
             </div>
-        </div>
     </main>
-</div>
+
+
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" style="position: fixed; left: -1000px; height: -1000px;">
     <defs>
         <mask id="piemask" maskContentUnits="objectBoundingBox">
@@ -302,5 +349,6 @@
     </defs>
 </svg>
 <script src="/stylesheets/adminPortal/js/material.min.js"></script>
+</div>
 </body>
 </html>

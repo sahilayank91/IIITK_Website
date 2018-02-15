@@ -1,4 +1,4 @@
-IIITKWebsite.controller('LoginController', ['$scope','LoginService', function ($scope,LoginService) {
+IIITKWebsite.controller('LoginController', ['$scope','UserService', function ($scope,LoginService) {
 
     console.log("Inside Login Controller");
     $scope.validated = true;

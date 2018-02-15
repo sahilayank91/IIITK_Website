@@ -5,6 +5,7 @@ window.CONFIG = {
     authenticateURL: {
         login: "service/authenticate/login",
         logout: "service/authenticate/logout",
+        register: "service/authenticate/register",
         forgotPassword: "service/authenticate/forgotPassword",
         resetPassword: "service/authenticate/resetPassword",
         authenticate: "service/authenticate/auth"
