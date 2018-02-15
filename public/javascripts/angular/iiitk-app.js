@@ -47,4 +47,4 @@ var IIITKWebsite = angular.module('IIITKWebsite',
         ngModelOptions: { },
         saveAs: false,
         readAs: false,
-    })
+    });

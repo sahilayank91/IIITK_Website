@@ -9,7 +9,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var index = require('./routes/index');
-var users = require('./routes/services/authenticate');
+var users = require('./routes/service/authenticate');
 var TokenHandler = require(__BASE__ + "modules/controller/handler/TokenHandler");
 var LOGGER = require(__BASE__ + "modules/utils/Logger");
 
@@ -56,22 +56,22 @@ mongoose.connect('mongodb://' + dbUrl, function(err) {
 /******************* Routes Setup *******************/
 /****************************************************/
 var UI_INDEX = require(__BASE__ + "routes/index");
-var AUTHENTICATE = require(__BASE__ + "routes/services/authenticate");
-var ACHIEVEMENTS = require(__BASE__ + "routes/services/achievements");
-var POSTS = require (__BASE__ + "routes/services/posts");
-var NEWS = require(__BASE__  + "routes/services/news");
-var STUDENTS = require(__BASE__ + "routes/services/students");
+var SERVICE_authenticate = require(__BASE__ + "routes/service/authenticate");
+var SERVICE_achievements = require(__BASE__ + "routes/service/achievements");
+var SERVICE_posts = require (__BASE__ + "routes/service/posts");
+var SERVICE_news = require(__BASE__  + "routes/service/news");
+var SERVICE_batch = require(__BASE__ + "routes/service/batch");
 
 
 /****************************************************/
 /****************** Routes Mapping ******************/
 /****************************************************/
 app.use('/', UI_INDEX);
-app.use('/authenticate',AUTHENTICATE);
-app.use('/achievement',ACHIEVEMENTS);
-app.use('/posts',POSTS);
-app.use('/news',NEWS);
-app.use('/students',STUDENTS);
+app.use('/service/authenticate', SERVICE_authenticate);
+app.use('/achievement',SERVICE_achievements);
+app.use('/service/posts',SERVICE_posts);
+app.use('/service/news',SERVICE_news);
+app.use('/service/batch',SERVICE_batch);
 
 
 /****************************************************/

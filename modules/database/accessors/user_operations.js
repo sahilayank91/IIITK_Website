@@ -51,6 +51,7 @@ var createUser = function (parameters) {
             if (!err) {
                 resolve(data);
             } else {
+                console.log(err);
                 reject(new Error('createUser failed'));
             }
         });

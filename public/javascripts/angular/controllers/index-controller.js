@@ -1,4 +1,4 @@
-IIITKWebsite.controller('IndexController', ['$scope', '$state', '$window', '$rootScope', function ($scope, $state, $window, $rootScope) {
+IIITKWebsite.controller('IndexController', ['$scope', function ($scope) {
 
     console.log("Index controller");
     $scope.name ="sahil";
