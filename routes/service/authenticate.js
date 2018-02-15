@@ -31,11 +31,12 @@ router.post('/login', function(req, res) {
             useremail: userEmail
         };
 
-
         UserController.getUsers(parameters)
             .then(function (data) {
                 if (data) {
-                    RESPONSE.sendOkay(res, parameters);
+                    console.log("Data:" ,data);
+                    RESPONSE.sendOkay(res, {success: true, redirect: path.join("/" + 'admin')});
+                    // RESPONSE.sendOkay(res, parameters);
                     return true;
                 } else {
                     console.log("Some error occured while getting data from the database");
