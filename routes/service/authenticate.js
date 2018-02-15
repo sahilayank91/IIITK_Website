@@ -76,7 +76,7 @@ router.post('/register',function(req,res) {
         .then(function (data) {
             if (data) {
                 console.log("Data:", data);
-                RESPONSE.sendOkay(res, {success: true, redirect: path.join("/" + 'login')});
+                RESPONSE.sendOkay(res, {success: true, redirect: path.join("/" + 'admin')});
                 // RESPONSE.sendOkay(res, parameters);
                 return true;
             } else {

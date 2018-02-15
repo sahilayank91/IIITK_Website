@@ -9,5 +9,10 @@ window.CONFIG = {
         forgotPassword: "service/authenticate/forgotPassword",
         resetPassword: "service/authenticate/resetPassword",
         authenticate: "service/authenticate/auth"
+    },
+    batchURL:{
+        addBatch: "service/batch/addBatch",
+        updateBatch: "service/batch/updateBatch",
+        deleteBatch: "service/batch/deleteBatch"
     }
 };

@@ -26,7 +26,7 @@ var registerUser = function(parameters){
         }).catch(function(err){
             console.log("Error in createUser",error);
         })
-}
+};
 module.exports = {
   getUsers:getUsers,
   registerUser:registerUser,
