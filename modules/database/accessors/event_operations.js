@@ -57,8 +57,20 @@ var updateEvent = function(rule, fields ,options){
     });
 };
 
+var deleteEvent = function(rule, fields ,options){
+    return new Promise(function(resolve, reject){
+        Event.remove(rule,fields, options).exec(function(err, data){
+            if(!err){
+                resolve(data);
+            }else{
+                reject(new Error("Failed to update Events"));
+            }
+        });
+    });
+};
 module.exports = {
     createEvent:createEvent,
     getEvent:getEvents,
-    updateEvent:updateEvent
+    updateEvent:updateEvent,
+    deleteEvent:deleteEvent
 }

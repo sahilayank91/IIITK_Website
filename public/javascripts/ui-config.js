@@ -9,5 +9,17 @@ window.CONFIG = {
         forgotPassword: "service/authenticate/forgotPassword",
         resetPassword: "service/authenticate/resetPassword",
         authenticate: "service/authenticate/auth"
+    },
+    newsURL:{
+        getNews:"service/news/getNews",
+        addNews:"service/news/addNews",
+        updateNews:"service/news/updateNews",
+        deleteNews:"service/news/updateNews",
+    },
+    eventURL:{
+         getEvent:"service/event/getEvent",
+         addEvent:"service/event/addEvent",
+         updateEvent:"service/event/updateEvent",
+         deleteEvent:"service/event/deleteEvent"
     }
 };

@@ -1,4 +1,4 @@
-IIITKWebsite.controller('DashboardController', ['$scope','UserService', function ($scope,UserService) {
+IIITKWebsite.controller('DashboardController', ['$scope','UserService','UIUtilityService', function ($scope,UserService,UIUtilityService) {
 
     $scope.email = "";
     $scope.password ="";
@@ -9,14 +9,16 @@ IIITKWebsite.controller('DashboardController', ['$scope','UserService', function
     $scope.gender= "";
     $scope.role ="";
     $scope.phone = "";
-
+    UIUtilityService.NOTIFICATION.show({
+        title: "Success",
+        content: "User Registered Successfully",
+        type: "success"
+    });
 
 
 
     $scope.validateDetails = function(){
-
-
-
+        
     };
 
 
@@ -36,7 +38,11 @@ IIITKWebsite.controller('DashboardController', ['$scope','UserService', function
         };
         UserService.registerAdmin(parameters)
             .then(function(data){
-                console.log("Data for RegisterAdmin:" ,data);
+                UIUtilityService.NOTIFICATION.show({
+                    title: "Success",
+                    content: "User Registered Successfully",
+                    type: "success"
+                });
             }).catch(function(error){
                 console.log("Error: ",error);
         })

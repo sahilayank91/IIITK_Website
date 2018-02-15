@@ -58,9 +58,24 @@ var updateNews = function(rule,fields,options){
     });
 };
 
+var deleteNews = function(rule,fields,options){
+    return new Promise(function(resolve,reject){
+        News.remove(rule, fields, options).exec(function (err, data) {
+            if (!err) {
+                resolve(data);
+            } else {
+                reject(new Error('Failed to Remove News'));
+            }
+        });
+    });
+};
+
+
+
 
 module.exports = {
     createNews:createNews,
     getNews:getNews,
-    updateNews:updateNews
+    updateNews:updateNews,
+    deleteNews:deleteNews
 };

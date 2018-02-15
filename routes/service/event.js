@@ -5,7 +5,7 @@ var path = require('path');
 var NewsController = require(__BASE__+"modules/controller/NewsController");
 
 
-router.get('/getNews',function(req,res,next){
+router.get('/getEvent',function(req,res,next){
     var promise;
     promise  = NewsController.getNews();
 
@@ -15,7 +15,6 @@ router.get('/getNews',function(req,res,next){
     });
 });
 
-
 router.post('/addEvent',function(req,res,next){
     var promise;
     promise  = NewsController.getNews();
@@ -24,9 +23,7 @@ router.post('/addEvent',function(req,res,next){
     promise.then(function(data){
         // res.render('/index',{data:data});
     });
-
-
-
+});
 router.post('/updateEvent',function(req,res,next){
     var promise;
     promise  = NewsController.getNews();
@@ -46,8 +43,6 @@ router.post('/deleteEvent',function(req,res,next){
     promise.then(function(data){
         // res.render('/index',{data:data});
     });
-});
-
 });
 
 

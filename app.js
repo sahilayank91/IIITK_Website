@@ -58,7 +58,7 @@ mongoose.connect('mongodb://' + dbUrl, function(err) {
 var UI_INDEX = require(__BASE__ + "routes/index");
 var SERVICE_authenticate = require(__BASE__ + "routes/service/authenticate");
 var SERVICE_achievements = require(__BASE__ + "routes/service/achievements");
-var SERVICE_posts = require (__BASE__ + "routes/service/posts");
+var SERVICE_event = require (__BASE__ + "routes/service/event");
 var SERVICE_news = require(__BASE__  + "routes/service/news");
 var SERVICE_batch = require(__BASE__ + "routes/service/batch");
 
@@ -69,9 +69,10 @@ var SERVICE_batch = require(__BASE__ + "routes/service/batch");
 app.use('/', UI_INDEX);
 app.use('/service/authenticate', SERVICE_authenticate);
 app.use('/achievement',SERVICE_achievements);
-app.use('/service/posts',SERVICE_posts);
+app.use('/service/posts',SERVICE_event);
 app.use('/service/news',SERVICE_news);
 app.use('/service/batch',SERVICE_batch);
+
 
 
 /****************************************************/

@@ -75,9 +75,8 @@ router.post('/register',function(req,res) {
     UserController.registerUser(parameters)
         .then(function (data) {
             if (data) {
-                console.log("Data:", data);
-                RESPONSE.sendOkay(res, {success: true, redirect: path.join("/" + 'login')});
-                // RESPONSE.sendOkay(res, parameters);
+                //TODO COOKIE ESTABLISHMENT
+                RESPONSE.sendOkay(res, {success: true, redirect: path.join("/" + 'admin')});
                 return true;
             } else {
                 console.log("Some error occured while getting data from the database");

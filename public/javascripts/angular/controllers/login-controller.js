@@ -1,8 +1,6 @@
-IIITKWebsite.controller('LoginController', ['$scope','UserService', function ($scope,LoginService) {
+IIITKWebsite.controller('LoginController', ['$scope','UserService','UIUtilityService', function ($scope,UserService,UIUtilityService) {
 
-    console.log("Inside Login Controller");
     $scope.validated = true;
-
     $scope.email = "";
     $scope.password = "";
 
@@ -10,12 +8,7 @@ IIITKWebsite.controller('LoginController', ['$scope','UserService', function ($s
     $scope.validateParameters =function(){
         //TODO create validation here
 
-
-
     };
-
-
-
 
     $scope.loginAdmin = function(){
         console.log("Inside login Admin");
@@ -26,9 +19,13 @@ IIITKWebsite.controller('LoginController', ['$scope','UserService', function ($s
                 useremail:$scope.email
             };
 
-            LoginService.adminLogin(parameters)
+            UserService.adminLogin(parameters)
                 .then(function(data){
-                   console.log("Data:" ,data);
+                    UIUtilityService.NOTIFICATION.show({
+                        title: "Success",
+                        content: "User added to fee Successfully.",
+                        type: "success"
+                    });
                 });
         }
 
