@@ -30,9 +30,9 @@ router.post('/login', function(req, res) {
         promise.then(function(data){
 
             if(data){
-                client.set('framework', 'AngularJS', function(err, reply) {
-                    console.log(reply);
-                });
+                // client.set('framework', 'AngularJS', function(err, reply) {
+                //     console.log(reply);
+                // });
                 //Redirecting to the admin portal
                 res.render('partials/admin', { title: 'Admin Portal'});
                 //TODO Set session variables after login
