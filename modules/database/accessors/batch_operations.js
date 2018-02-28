@@ -18,13 +18,14 @@ var getCreateTemplate = function(parameters){
         }
     }
     template.create_time = new Date();
+    template.current = 'Current';
 
     if (!template._id) {
         template._id = customUUID.getRandomAplhaNumeric();
     }
 
     return template;
-}
+};
 
 
 
@@ -35,7 +36,20 @@ var getStudentList = function(rule,fields,options){
                 resolve(data);
             } else {
                 console.log("/getStudentList, some error occured", err);
-                reject(new Error('Failed to get FeeTypes'));
+                reject(new Error('Failed to get student and batch details'));
+            }
+        });
+    });
+};
+
+var getBatchList = function(rule,fields,options){
+    return new Promise(function (resolve, reject) {
+        Batch.find(rule, fields, options).lean().exec(function (err, data) {
+            if (!err) {
+                resolve(data);
+            } else {
+                console.log("/getBatchList, some error occured", err);
+                reject(new Error('Failed to get batch details'));
             }
         });
     });
@@ -52,17 +66,30 @@ var addStudentList = function(parameters){
               resolve(data);
           } else {
               console.log("Create Batch List, Some error occured", err);
-              reject(new Error('Failed to create FeeType'));
+              reject(new Error('Failed to create NewBatch'));
           }
       });
   });
 };
 
-
-
-
+var updateBatch = function(rule, newData , options){
+    return new Promise(function(resolve, reject){
+        Batch.findOneAndUpdate(rule,{$set:{students:newData}},options?options:{multi:true},function(err,data){
+            if(!err){
+                resolve(data);
+            }else{
+                console.log("Error in updating the Batch ",err);
+                reject(err);
+            }
+        })
+    }).catch(function(error){
+        console.log(error);
+    })
+};
 
 module.exports = {
     getStudentList: getStudentList,
-    addStudentList: addStudentList
+    addStudentList: addStudentList,
+    updateBatch: updateBatch,
+    getBatchList: getBatchList
 };

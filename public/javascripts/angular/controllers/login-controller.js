@@ -15,7 +15,7 @@ IIITKWebsite.controller('LoginController', ['$scope','UserService', function ($s
     $scope.loginAdmin = function(){
         console.log("Inside login Admin");
         $scope.validateParameters();
-        if($scope.validated==true){
+        if($scope.validated === true){
             var parameters = {
                 userpass:$scope.password,
                 useremail:$scope.email

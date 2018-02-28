@@ -1,0 +1,21 @@
+<!--<div ng-app="IIITKWebsite" ng-controller="BatchController">-->
+<form method="POST" name="batch">
+    <div class="container">
+        <h1>Add Student </h1>
+        <pre><b>Year: </b>Fourth    <b>Type: </b>Btech    <b>Branch: </b>cse</pre>
+        <hr>
+
+        <label><b>Student Name</b></label>
+        <input type="text" placeholder="Student Name" name="name" ng-model="name">
+
+        <label><b>Student ID</b></label>
+        <input type="text" placeholder="Student Id" name="id" ng-model="id">
+
+
+        <!--<div class="clearfix">-->
+            <button type="submit" class="cancelbtn" ng-click="goToAllBatches()">CANCEL</button>
+            <button type="submit" class="signupbtn" ng-click="addStudentToBatch()">ADD</button>
+        <!--</div>-->
+    </div>
+</form>
+<!--</div>-->
