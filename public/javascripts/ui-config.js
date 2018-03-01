@@ -13,7 +13,8 @@ window.CONFIG = {
     batchURL:{
         addBatch: "service/batch/addBatch",
         updateBatch: "service/batch/updateBatch",
-        deleteBatch: "service/batch/deleteBatch"
+        deleteBatch: "service/batch/deleteBatch",
+        getBatchList: "service/batch/getBatchList"
     },
     newsURL:{
         getNews:"service/news/getNews",

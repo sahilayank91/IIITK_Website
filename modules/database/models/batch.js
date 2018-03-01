@@ -5,11 +5,13 @@ var BatchSchema = new mongoose.Schema(
     {
         _id: String,
 
-        year: {type: String},
+        year: {type: String, enum:['First','Second','Third','Fourth']},
 
         type: {type:String, enum:['BTech','MTech']},
 
         branch :{type:String,enum: [BRANCH.CSE,BRANCH.ECE,BRANCH.ME]},
+
+        current : {type:String, enum:['Current','Graduated']},
 
         create_time: {type: Date, required:true},
 

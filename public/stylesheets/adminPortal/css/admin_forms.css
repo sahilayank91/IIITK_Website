@@ -43,7 +43,7 @@ button:hover {
 }
 
 /* Extra styles for the cancel button */
-.cancelbtn {
+.cancelbtn, .cancelbtnfull {
     padding: 14px 20px;
     background-color: #f44336;
 }
@@ -52,6 +52,10 @@ button:hover {
 .cancelbtn, .signupbtn {
     float: left;
     width: 50%;
+}
+.cancelbtnfull, .signupbtnfull{
+    float:left;
+    width:100;
 }
 
 /* Add padding to container elements */
@@ -115,4 +119,20 @@ hr {
     .cancelbtn, .signupbtn {
         width: 100%;
     }
+}
+
+.batch-table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.batch-td, .batch-th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+.batch-tr:nth-child(even) {
+    background-color: #dddddd;
 }

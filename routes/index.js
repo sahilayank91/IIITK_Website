@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var userOperations = require(__BASE__+"modules/database/accessors/user_operations");
 var path = require('path');
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -97,9 +97,13 @@ router.get('/createPost',function(req,res,next){
     res.render('partials/createpost',{title: "Create Post"});
 });
 
-router.get('/createBatch',function(req,res,next){
-    res.render('admin_dashboard/createBatch',{title: "AddStudentOrBatch"});
+router.get('/allBatches', function (req,res,next) {
+    res.render('admin_dashboard/allBatches',{title: "All Batches"});
 });
+
+// router.get('/createBatch',function(req,res,next){
+//     res.render('admin_dashboard/createBatch',{title: "Add Batch"});
+// });
 
 
 router.get('/paymentprocess', function(req, res, next) {

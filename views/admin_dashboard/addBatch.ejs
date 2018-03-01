@@ -1,0 +1,32 @@
+<div ng-app="IIITKWebsite" ng-controller="BatchController">
+<form method="POST" name="batch">
+    <!--<div class="container">-->
+        <h1>Add new Batch</h1>
+        <hr>
+        <label><b>Year</b></label>
+        <input type="text" placeholder="Year" name="year" ng-model="year">
+        <!--<select type="text" ng-model="year" ng-options="item for item in year_options"></select>-->
+        <!--<br>-->
+
+        <label><b>Type</b></label>
+        <input type="text" placeholder="Type" name="type" ng-model="type">
+        <!--<select type="text" ng-model="type" ng-options="item for item in type_options"></select>-->
+        <!--<br>-->
+
+        <label><b>Branch</b></label>
+        <input type="text" placeholder="Branch" name="branch" ng-model="branch">
+
+        <label><b>Student Name</b></label>
+        <input type="text" placeholder="Student Name" name="name1" ng-model="name1">
+
+        <label><b>Student ID</b></label>
+        <input type="text" placeholder="Student Id" name="id1" ng-model="id1">
+
+
+        <!--<div class="clearfix">-->
+            <button type="submit" class="cancelbtn" ng-click="goToAllBatches()">CANCEL</button>
+            <button type="submit" class="signupbtn" ng-click="addNewBatch()">ADD</button>
+        <!--</div>-->
+    <!--</div>-->
+</form>
+</div>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en" ng-app="IIITKWebsite">
+<head>
+    <% include admin_layout.ejs%>
+</head>
+
+<body>
+<div ng-controller="BatchController">
+
+    <% include sidebar.ejs%>
+        <main class="mdl-layout__content mdl-color--grey-100">
+            <div class="mdl-grid demo-content">
+                <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+                    <div ng-if="allbatches" style="width: inherit;">
+                        <h1>All Batches </h1>
+                        <h4><b>Current</b></h4>
+                        <hr>
+                        <table class="batch-table">
+
+                            <tr class="batch-tr">
+                                <th class="batch-th">Batch Type</th>
+                                <th class="batch-th">Year</th>
+                                <th class="batch-th">Branch</th>
+                                <th class="batch-th">Action</th>
+                            </tr>
+                            <tr class="batch-tr" ng-repeat="batch in curr_batches.data">
+                                <td class="batch-td">{{batch.type}}</td>
+                                <td class="batch-td">{{batch.year}}</td>
+                                <td class="batch-td">{{batch.branch}}</td>
+                                <td class="batch-td">
+                                    <button type="button" class="cancelbtn">REMOVE BATCH</button>
+                                    <button type="submit" class="signupbtn">ADD STUDENTS</button>
+                                </td>
+                            </tr>
+                            <!--<tr class="batch-tr" >-->
+                                  <!--&lt;!&ndash;forEach(details in curr_batches){ &ndash;&gt;-->
+                                <!--<th class="batch-th"> details.type </th>-->
+                                <!--<th class="batch-th"> sd</th>-->
+                                <!--<th class="batch-th">df </th>-->
+                                <!--<th class="batch-th">-->
+                                    <!--<button type="button" class="cancelbtn">REMOVE BATCH</button>-->
+                                    <!--<button type="submit" class="signupbtn" ng-click="addStudentClicked()">ADD STUDENTS</button>-->
+                                <!--</th>  &lt;!&ndash;ng-repeat="details in curr_batches"   details in function parameter &ndash;&gt;-->
+
+                            <!--</tr>-->
+                            <tr class="batch-tr">
+                                <td class="batch-td">BTech</td>
+                                <td class="batch-td">First</td>
+                                <td class="batch-td">CSE</td>
+                                <td class="batch-td"><button type="button" class="cancelbtn">REMOVE BATCH</button> <button type="submit" class="signupbtn">ADD STUDENTS</button></td>
+                            </tr>
+                            <tr class="batch-tr">
+                                <td class="batch-td">BTech</td>
+                                <td class="batch-td">First</td>
+                                <td class="batch-td">ECE</td>
+                                <td class="batch-td"><button type="button" class="cancelbtn">REMOVE BATCH</button><button type="submit" class="signupbtn">ADD STUDENTS</button></td>
+                            </tr>
+                            <tr class="batch-tr">
+                                <td class="batch-td">BTech</td>
+                                <td class="batch-td">Second</td>
+                                <td class="batch-td">CSE</td>
+                                <td class="batch-td"><button type="button" class="cancelbtn">REMOVE BATCH</button><button type="submit" class="signupbtn">ADD STUDENTS</button></td>
+                            </tr>
+                            <tr class="batch-tr">
+                                <td class="batch-td">Btech</td>
+                                <td class="batch-td">Second</td>
+                                <td class="batch-td">ECE</td>
+                                <td class="batch-td"><button type="button" class="cancelbtn">REMOVE BATCH</button><button type="submit" class="signupbtn">ADD STUDENTS</button></td>
+                            </tr>
+                            <tr class="batch-tr">
+                                <td class="batch-td">BTech</td>
+                                <td class="batch-td">Third</td>
+                                <td class="batch-td">CSE</td>
+                                <td class="batch-td"><button type="button" class="cancelbtn">REMOVE BATCH</button><button type="submit" class="signupbtn">ADD STUDENTS</button></td>
+                            </tr>
+                            <tr class="batch-tr">
+                                <td class="batch-td">BTech</td>
+                                <td class="batch-td">Third</td>
+                                <td class="batch-td">ECE</td>
+                                <td class="batch-td"><button type="button" class="cancelbtn">REMOVE BATCH</button><button type="submit" class="signupbtn">ADD STUDENTS</button></td>
+                            </tr>
+                            <tr class="batch-tr">
+                                <td class="batch-td">BTech</td>
+                                <td class="batch-td">Fourth</td>
+                                <td class="batch-td">CSE</td>
+                                <td class="batch-td"><button type="button" class="cancelbtn">REMOVE BATCH</button><button type="submit" class="signupbtn" ng-click="addStudentClicked()">ADD STUDENTS</button></td>
+                            </tr>
+                            <tr class="batch-tr">
+                                <td class="batch-td">MTech</td>
+                                <td class="batch-td">First</td>
+                                <td class="batch-td">CSE</td>
+                                <td class="batch-td"><button type="button" class="cancelbtn">REMOVE BATCH</button><button type="submit" class="signupbtn">ADD STUDENTS</button></td>
+                            </tr>
+                        </table>
+
+                        <button type="button" ng-click="addBatchClicked()" class="signupbtnfull">ADD BATCH</button>
+                    </div>
+
+                    <!-- ########################################################################################################################################## -->
+                    <div ng-if="addbatch">
+                        <% include addBatch.ejs%>
+                    </div>
+                    <!-- ##############################################################################  -->
+                    <div ng-if="addstudent">
+                        <% include addStudent.ejs%>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>

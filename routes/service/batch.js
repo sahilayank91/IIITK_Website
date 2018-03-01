@@ -35,8 +35,21 @@ router.get('/getStudentList',function(req,res,next){
        });
 });
 
+router.post('/getBatchList',function (req,res) {
+    var query = {
+        current: req.body.current
+    };
+    BatchController.getBatch(query)
+        .then(function (data) {
+            if(data){
+                RESPONSE.sendOkay(res, {success: true, data: data});
+            }
+        }).catch(function (error) {
+            console.log("Error : ", error);
+    });
+});
+
 router.post('/addBatch',function(req,res) {
-    var promise;
 
 
     var parameters = {
@@ -52,7 +65,7 @@ router.post('/addBatch',function(req,res) {
         .then(function (data) {
             if (data) {
                 console.log("Data:", data);
-                RESPONSE.sendOkay(res, {success: true, redirect: path.join("/" + 'admin')});
+                RESPONSE.sendOkay(res, {success: true});   //, redirect: path.join("/" + 'allBatches')
                 // RESPONSE.sendOkay(res, parameters);
                 return true;
             } else {
@@ -63,7 +76,26 @@ router.post('/addBatch',function(req,res) {
         });
 });
 
+router.post('/updateBatch',function (req,res) {
 
+    var parameters = {
+        year: req.body.year,
+        type: req.body.type,
+        branch: req.body.branch,
+        students:req.body.students
+    };
+
+    BatchController.addStudent(parameters)
+        .then(function (data) {
+            if(data){
+                console.log("Data :",data);
+                RESPONSE.sendOkay(res,{success:true});
+                return true;
+            }else {
+                console.log("Some Error occured while getting data from the database");
+            }
+        })
+});
 
 
 
