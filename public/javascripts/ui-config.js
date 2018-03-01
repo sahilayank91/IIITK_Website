@@ -10,6 +10,11 @@ window.CONFIG = {
         resetPassword: "service/authenticate/resetPassword",
         authenticate: "service/authenticate/auth"
     },
+    batchURL:{
+        addBatch: "service/batch/addBatch",
+        updateBatch: "service/batch/updateBatch",
+        deleteBatch: "service/batch/deleteBatch"
+    },
     newsURL:{
         getNews:"service/news/getNews",
         addNews:"service/news/addNews",

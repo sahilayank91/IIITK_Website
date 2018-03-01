@@ -18,6 +18,11 @@ var getCreateTemplate = function(parameters){
         }
     }
     template.create_time = new Date();
+
+    if (!template._id) {
+        template._id = customUUID.getRandomAplhaNumeric();
+    }
+
     return template;
 }
 
@@ -40,6 +45,7 @@ var getStudentList = function(rule,fields,options){
 var addStudentList = function(parameters){
   return new Promise(function(resolve,reject){
       var template = getCreateTemplate(parameters);
+      console.log("Template : ", template);
       var batch = new Batch(template);
       batch.save(function (err, data) {
           if (!err) {

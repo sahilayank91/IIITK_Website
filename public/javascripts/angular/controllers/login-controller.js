@@ -1,6 +1,8 @@
 IIITKWebsite.controller('LoginController', ['$scope','UserService','UIUtilityService', function ($scope,UserService,UIUtilityService) {
 
+    console.log("Inside Login Controller");
     $scope.validated = true;
+
     $scope.email = "";
     $scope.password = "";
 
@@ -30,23 +32,7 @@ IIITKWebsite.controller('LoginController', ['$scope','UserService','UIUtilitySer
         }
 
 
-
-
-
-
     };
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }]);

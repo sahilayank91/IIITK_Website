@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title><%= title %></title>
+
+   <% include layout.ejs %>
+
+</head>
+<body>
+<% include sidebar.ejs %>
+<main class="mdl-layout__content mdl-color--grey-100">
+    <div ng-app="IIITKWebsite" ng-controller="BatchController">
+        <div class="mdl-grid demo-content">
+            <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+                <form method="POST" name="batch">
+                    <div class="container">
+                        <h1>Batch Details</h1>
+                        <p>Add new batch from here.</p>
+                        <hr>
+                        <label><b>Year</b></label>
+                        <input type="text" placeholder="Year" name="year" ng-model="year">
+                        <!--<select type="text" ng-model="year" ng-options="item for item in year_options"></select>-->
+                        <!--<br>-->
+
+                        <label><b>Type</b></label>
+                        <input type="text" placeholder="Type" name="type" ng-model="type">
+                        <!--<select type="text" ng-model="type" ng-options="item for item in type_options"></select>-->
+                        <!--<br>-->
+
+                        <label><b>Branch</b></label>
+                        <input type="text" placeholder="Branch" name="branch" ng-model="branch">
+
+                        <label><b>Student Name</b></label>
+                        <input type="text" placeholder="Student Name" name="name1" ng-model="name1">
+
+                        <label><b>Student ID</b></label>
+                        <input type="text" placeholder="Student Id" name="id1" ng-model="id1">
+
+
+                        <div class="clearfix">
+                            <button type="submit" class="signupbtn" ng-click="addBatch()">ADD</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="/stylesheets/adminPortal/js/material.min.js"></script>
+</body>
+</html>

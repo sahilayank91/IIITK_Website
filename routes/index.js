@@ -97,6 +97,11 @@ router.get('/createPost',function(req,res,next){
     res.render('partials/createpost',{title: "Create Post"});
 });
 
+router.get('/createBatch',function(req,res,next){
+    res.render('admin_dashboard/createBatch',{title: "AddStudentOrBatch"});
+});
+
+
 router.get('/paymentprocess', function(req, res, next) {
     res.render('partials/paymentprocess', { title: 'Fees | Payment Process' });
 });

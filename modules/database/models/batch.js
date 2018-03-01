@@ -9,12 +9,12 @@ var BatchSchema = new mongoose.Schema(
 
         type: {type:String, enum:['BTech','MTech']},
 
-        branch :{type:String,enum: [BRANCH.CSE,BRANCH.ECE,BRANCH.ME], required:true},
+        branch :{type:String,enum: [BRANCH.CSE,BRANCH.ECE,BRANCH.ME]},
 
         create_time: {type: Date, required:true},
 
         students: [{
-            _id: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
+            //_id: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
             name: {type: String},
             college_id: {type: String}
         }]

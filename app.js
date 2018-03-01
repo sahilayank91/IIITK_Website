@@ -50,7 +50,7 @@ mongoose.connect('mongodb://' + dbUrl, function(err) {
     }
 });
 
-
+mongoose.set('debug', true);
 
 /****************************************************/
 /******************* Routes Setup *******************/
