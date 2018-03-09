@@ -90,9 +90,9 @@ var deleteFaculty = function(rule,fields,options){
     });
 };
 
-var updateFaculty = function(rule,fields,options){
+var updateFaculty = function(rule,fields){
     return new Promise(function(resolve,reject){
-        Faculty.findOneAndUpdate(rule,fields,options).exec(function(err,data){
+        Faculty.findOneAndUpdate(rule,fields, {upsert: true}).exec(function(err,data){
             if(!err){
                 resolve(data);
             }else{

@@ -54,12 +54,20 @@ console.log("INSIDE FACULTY");
                 for(var i=0;i<result.data.length;i++){
                      console.log(result.data[i]);
                     var param = {};
+                    param.index  = i;
                     param.id = result.data[i]._id;
+                    param.firstname = result.data[i].firstname;
+                    param.lastname = result.data[i].lastname;
                     param.name = result.data[i].firstname +" " + result.data[i].lastname;
                     param.contact = result.data[i].phone
                     param.about = result.data[i].about;
                     param.branch = result.data[i].branch;
                     param.education = result.data[i].education;
+                    param.email = result.data[i].email;
+                    param.about  = result.data[i].about;
+                    param.education = result.data[i].education;
+                    param.phone = result.data[i].phone;
+                    param.role = result.data[i].role;
                     $scope.faculty.push(param);
                 }
 
@@ -98,7 +106,52 @@ $scope.deleteFaculty = function(faculty_id){
 
 }
 
+$scope.showUpdateFacultyDialog = function(index){
+    $scope.index  = index;
+    $scope.firstname = $scope.faculty[index].firstname;
+    $scope.lastname = $scope.faculty[index].lastname;
+    $scope.email= $scope.faculty[index].email;
+    $scope.name = $scope.firstname + " " + $scope.lastname;
+    $scope.education = $scope.faculty[index].education;
+    $scope.phone = $scope.faculty[index].phone;
+    $scope.role = $scope.faculty[index].role;
+    $scope.branch = $scope.faculty[index].branch;
+    $scope.gender = $scope.faculty[index].gender;
+    $scope.about = $scope.faculty[index].about;
+    $scope.id = $scope.faculty[index].id;
+}
 
+$scope.updateFaculty = function(){
+    var parameters = {
+        id:$scope.id,
+        email:$scope.email,
+        firstname:$scope.firstname,
+        lastname:$scope.lastname,
+        education:$scope.education,
+        branch:$scope.branch,
+        gender:$scope.gender,
+        phone:$scope.phone,
+        role:$scope.role,
+        type:"Faculty",
+        about:$scope.about,
+    };
+    FacultyService.updateFaculty(parameters)
+        .then(function(data){
+            if(data){
+                console.log(data);
+
+            }else{
+
+            }
+        }).catch(function(err){
+        UIUtilityService.NOTIFICATION.show({
+            title: "Failed",
+            content: "Error in Updating Faculty. Please Try Again",
+            type: "error"
+        });
+
+        })
+};
 
 
 

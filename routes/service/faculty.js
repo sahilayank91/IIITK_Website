@@ -53,13 +53,31 @@ router.post('/addFaculty',function(req,res,next){
 
 
     router.post('/updateFaculty',function(req,res,next){
-        var promise;
-        promise  = NewsController.getNews();
+        var parameters = {
+            id:req.body.id,
+            email: req.body.email,
+            branch:req.body.branch,
+            education:req.body.education,
+            firstname: req.body.firstname,
+            lastname: req.body.lastname,
+            phone: req.body.phone,
+            // gender: req.body.gender,
+            about:req.body.about,
+        };
+
+        console.log("Parameter passed : ",parameters);
+
+        FacultyController.updateFaculty(parameters)
+            .then(function(Data){
+                if(Data){
+                    console.log("Data from update Faculty:", Data);
+                    RESPONSE.sendOkay(res, {success: true});
+                }else{
+                    console.log("Some error occured while updating data in the database");
+                }
+            });
 
 
-        promise.then(function(data){
-            // res.render('/index',{data:data});
-        });
     });
 
 

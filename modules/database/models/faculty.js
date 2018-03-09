@@ -1,4 +1,6 @@
 var mongoose = require('mongoose');
+var BRANCH = require(__BASE__ + "config/enums").branch;
+
 var FacultySchema = new mongoose.Schema({
     _id: String,
     // use username as profile url. followclass/profile/harsha.
@@ -25,6 +27,8 @@ var FacultySchema = new mongoose.Schema({
     address: String,
     gender: String,
     about: String,
+    education:String,
+    branch :{type:String,enum: [BRANCH.CSE,BRANCH.ECE,BRANCH.ME]},
     job_title: String, // can write hindi Teacher or something like that -- too many to put in enum
 }, {
     minimize: false
