@@ -1,36 +1,22 @@
-var userOperations = require(__BASE__+"modules/database/accessors/user_operations");
+var facultyOperations = require(__BASE__+"modules/database/accessors/faculty_operations");
 
-var getUsers = function(parameters){
-    return userOperations.getUsers({email: parameters.useremail, password: parameters.userpass}, {_id:1,firstname:1, lastname:1, email: 1,phone:1 ,profile_pic:1})
+var getFacultyList = function(){
+    return facultyOperations.getFacultyList()
         .then(function(data){
             if(data){
                 return data;
             }else{
-                throw new Error('No User exists with given useremail');
+                throw new Error('No Faculty exists with given useremail');
             }
         }).catch(function(error){
-           console.log("Error in get Users: ",error);
+            console.log("Error in get Faculty: ",error);
         });
-
 };
 
-var registerUser = function(parameters){
-    console.log(parameters);
-    return userOperations.createUser(parameters)
-        .then(function(data){
-            if(data){
-                return data;
-            }else{
-                throw new Error('Cant create user with the given credentials');
-            }
-        }).catch(function(err){
-            console.log("Error in createUser",error);
-        })
-};
 
 var registerFaculty = function(parameters){
     console.log(parameters);
-    return userOperations.createFaculty(parameters)
+    return facultyOperations.createFaculty(parameters)
         .then(function(data){
             if(data){
                 return data;
@@ -41,8 +27,22 @@ var registerFaculty = function(parameters){
             console.log("Error in createUser",error);
         })
 };
+var deleteFaculty = function(parameters){
+    console.log("Inside delete Faculty: ",parameters);
+    return facultyOperations.deleteFaculty({_id:parameters})
+        .then(function(data){
+            if(data){
+                return data;
+            }else{
+                throw new Error('Cant create user with the given credentials');
+            }
+        }).catch(function(err){
+            console.log("Error in createUser",error);
+        })
+};
+
 module.exports = {
-  getUsers:getUsers,
     registerFaculty:registerFaculty,
-  registerUser:registerUser,
+    getFacultyList:getFacultyList,
+    deleteFaculty:deleteFaculty
 };

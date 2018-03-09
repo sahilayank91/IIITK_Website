@@ -27,8 +27,7 @@ var getCreateTemplate = function (parameters) {
                 template[key] = parameters[key];
                 break;
         }
-    }
-    ;
+    };
 
 
     template.created_at = new Date();
@@ -42,24 +41,6 @@ var getCreateTemplate = function (parameters) {
     }
 
     return template;
-};
-
-var createUser = function (parameters) {
-    return new Promise(function (resolve, reject) {
-        var template = getCreateTemplate(parameters);
-        console.log(template);
-        var user = new User(template);
-        user.save(function (err, data) {
-            if (!err) {
-                resolve(data);
-            } else {
-                console.log(err);
-                reject(new Error('createUser failed'));
-            }
-        });
-
-    });
-
 };
 
 
@@ -82,9 +63,10 @@ var createFaculty = function (parameters) {
 };
 
 
-var getUsers = function (rule, fields, options) {
+
+var getFacultyList = function (rule, fields, options) {
     return new Promise(function (resolve, reject) {
-        User.find(rule, fields, options).exec(function (err, data) {
+        Faculty.find(rule, fields, options).exec(function (err, data) {
             if (!err) {
                 resolve(data);
             } else {
@@ -94,31 +76,33 @@ var getUsers = function (rule, fields, options) {
     });
 };
 
-var deleteUsers = function(rule,fields,options){
+
+
+var deleteFaculty = function(rule,fields,options){
     return new Promise(function (resolve,reject){
-            User.remove(rule,fields, options).exec(function(err,data){
-                if(!err){
-                    resolve(data);
-                }else{
-                    reject(new Error("Failed to delete Users"));
-                }
-            });
+        Faculty.remove(rule,fields, options).exec(function(err,data){
+            if(!err){
+                resolve(data);
+            }else{
+                reject(new Error("Failed to delete Faculty"));
+            }
+        });
     });
 };
 
-var updateUser = function(rule,fields,options){
-  return new Promise(function(resolve,reject){
-    User.findOneAndUpdate(rule,fields,options).exec(function(err,data){
-        if(!err){
-            resolve(data);
-        }else{
-            reject(new Error("Failed to update Users"));
-        }
+var updateFaculty = function(rule,fields,options){
+    return new Promise(function(resolve,reject){
+        Faculty.findOneAndUpdate(rule,fields,options).exec(function(err,data){
+            if(!err){
+                resolve(data);
+            }else{
+                reject(new Error("Failed to update Users"));
+            }
+        });
     });
-  });
 };
 
-var getUserById = function(rule,fields,options){
+var getFacultyById = function(rule,fields,options){
     return new Promise(function(resolve,reject){
         User.find(rule,fields,options).exec(function(err,data){
             if(!err){
@@ -131,9 +115,10 @@ var getUserById = function(rule,fields,options){
 };
 
 module.exports = {
-    createUser: createUser,
-    getUsers: getUsers,
-    updateUser:updateUser,
-    getUserById:getUserById,
-    createFaculty:createFaculty
+    getFacultyList: getFacultyList,
+    createFaculty:createFaculty,
+    getFacultyById:getFacultyById,
+    updateFaculty:updateFaculty,
+    deleteFaculty:deleteFaculty
+
 };

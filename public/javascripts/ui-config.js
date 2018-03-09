@@ -27,5 +27,11 @@ window.CONFIG = {
          addEvent:"service/event/addEvent",
          updateEvent:"service/event/updateEvent",
          deleteEvent:"service/event/deleteEvent"
+    },
+    facultyURL:{
+        addFaculty:"service/faculty/addFaculty",
+        getFacultyList:"service/faculty/getFacultyList",
+        deleteFaculty:"service/faculty/deleteFaculty",
+        updateFaculty:"service/faculty/updateFaculty",
     }
 };

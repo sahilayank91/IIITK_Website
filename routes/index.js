@@ -101,6 +101,10 @@ router.get('/allBatches', function (req,res,next) {
     res.render('admin_dashboard/allBatches',{title: "All Batches"});
 });
 
+router.get('/faculty_dashboard', function (req,res,next) {
+    res.render('admin_dashboard/faculty_management_dashboard',{title: "All Batches"});
+});
+
 // router.get('/createBatch',function(req,res,next){
 //     res.render('admin_dashboard/createBatch',{title: "Add Batch"});
 // });

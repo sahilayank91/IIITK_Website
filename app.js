@@ -25,7 +25,7 @@ app.set('view engine', 'ejs');
 //TODO the favicon is not working , make it work.
 //  app.use(favicon(path.join(__dirname, '/images/', 'IIIT-_Kota_Logo.png')));
 
-app.use(logger('dev'));
+// app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -61,6 +61,7 @@ var SERVICE_achievements = require(__BASE__ + "routes/service/achievements");
 var SERVICE_event = require (__BASE__ + "routes/service/event");
 var SERVICE_news = require(__BASE__  + "routes/service/news");
 var SERVICE_batch = require(__BASE__ + "routes/service/batch");
+var SERVICE_faculty = require(__BASE__ + "routes/service/faculty");
 
 
 /****************************************************/
@@ -72,6 +73,7 @@ app.use('/achievement',SERVICE_achievements);
 app.use('/service/posts',SERVICE_event);
 app.use('/service/news',SERVICE_news);
 app.use('/service/batch',SERVICE_batch);
+app.use('/service/faculty',SERVICE_faculty);
 
 
 

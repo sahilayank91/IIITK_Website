@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en" ng-app="IIITKWebsite">
+<head>
+    <% include admin_layout.ejs%>
+</head>
+
+<body>
+<div ng-app="IIITKWebsite" ng-controller="FacultyController">
+    <% include sidebar.ejs %>
+    <main class="mdl-layout__content mdl-color--grey-100">
+        <div class="mdl-grid demo-content">
+            <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+                <form method="POST">
+        <div class="container">
+            <h1>Add New Faculty</h1>
+            <hr>
+            <label><b>First Name</b></label>
+            <input type="text" placeholder="Enter First Name" ng-model="firstname" name="firstname" required>
+
+            <label><b>Last Name</b></label>
+            <input type="text" placeholder="Enter Last Name" ng-model="lastname" name="lastname" required>
+
+            <label><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" ng-model = "email" name="email" required>
+
+            <label><b>Phone No</b></label>
+            <input type="text" placeholder="Enter Phone No" ng-model="phone" name="phone" required>
+
+            <label><b>Branch</b></label>
+            <input type="text" placeholder="Enter Branch" ng-model="branch" name="branch" required>
+
+            <label><b>Place of Education</b></label>
+            <input type="text" placeholder="Enter Place of Education" ng-model="education" name="education" required>
+
+            <label><b>About</b></label>
+            <input type="text" placeholder="Enter Details about the Person" ng-model="about" name="about" required>
+
+
+            <label><b>Upload Profile Picture</b></label>
+            <input type="file" style="margin-bottom:15px">
+
+            <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+            <div class="clearfix">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                <button type="submit" ng-click="addFaculty()" class="signupbtn">Sign Up</button>
+            </div>
+        </div>
+    </form>
+            </div>
+        </div>
+
+
+
+
+
+
+    <!--########################################################################-->
+    <!-- FACULTY LIST -->
+    <!-- ######################################################################-->
+
+
+
+        <div class="mdl-grid demo-content">
+            <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+                <div style="width: inherit;">
+                    <h1>All Faculties</h1>
+                    <h4><b>Current</b></h4>
+                    <hr>
+                    <table class="batch-table">
+
+                        <tr class="batch-tr">
+                            <th class="batch-th">Name</th>
+                            <th class="batch-th">Branch</th>
+                            <th class="batch-th">Education</th>
+                            <th class="batch-th">Contact</th>
+                            <th class="batch-th">About</th>
+                        </tr>
+                        <tr class="batch-tr" ng-repeat="data in faculty">
+                            <td class="batch-td">{{data.name}}</td>
+                            <td class="batch-td">{{data.contact}}</td>
+                            <td class="batch-td">{{data.education}}</td>
+                            <td class="batch-td">{{data.branch}}</td>
+                            <td class="batch-td">
+                                <button type="button" class="cancelbtn" ng-click="deleteFaculty(data.id)">Delete</button>
+                                <button type="button" class="successbtn">Update</button>
+
+                            </td>
+                        </tr>
+                        <!--<tr class="batch-tr" >-->
+                        <!--&lt;!&ndash;forEach(details in curr_batches){ &ndash;&gt;-->
+                        <!--<th class="batch-th"> details.type </th>-->
+                        <!--<th class="batch-th"> sd</th>-->
+                        <!--<th class="batch-th">df </th>-->
+                        <!--<th class="batch-th">-->
+                        <!--<button type="button" class="cancelbtn">REMOVE BATCH</button>-->
+                        <!--<button type="submit" class="signupbtn" ng-click="addStudentClicked()">ADD STUDENTS</button>-->
+                        <!--</th>  &lt;!&ndash;ng-repeat="details in curr_batches"   details in function parameter &ndash;&gt;-->
+
+                        <!--</tr>-->
+
+
+                    </table>
+
+                    <button type="button" ng-click="addBatchClicked()" class="signupbtnfull">ADD BATCH</button>
+                </div>
+
+                <!-- ########################################################################################################################################## -->
+                <div ng-if="addbatch">
+                    <% include addBatch.ejs%>
+                </div>
+                <!-- ##############################################################################  -->
+                <div ng-if="addstudent">
+                    <% include addStudent.ejs%>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</body>
+</html>
