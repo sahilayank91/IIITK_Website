@@ -22,6 +22,118 @@
     </div>
 </div>
 
+<div class="wrapper row3">
+    <main class="hoc container clear">
+        <h1 class="page-title">Faculty</h1>
+        <div class="content">
+            <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+                        <script type="text/javascript">
+                            $(document).ready(function(){
+                                Array.prototype.diff = function(a) {
+                                    return this.filter(function(i) {return a.indexOf(i) < 0;});
+                                };
+                                $.showAllFaculty = function(){
+                                    $("div.facultycard").css("display","");
+                                    $("div.facultycard").filter("[type='visiting']").css("display","none");
+                                    $("div.select-item").filter("[dept='all']").addClass("select-item-active");
+                                    $("div.select-item").not("[dept='all']").removeClass("select-item-active");
+                                }
+                                /*
+                                0 - ALL
+                                1 - 1-YEAR
+                                2 - 2-CSE
+                                3 - 2-ECE
+                                4 - 3-CSE
+                                5 - 3-ECE
+                                6 - 4-CSE
+                                7 - 4-ECE
+                                */
+                                all_list= ['0','1','2','3','4','5','6','7'];
+                                $.filterFaculty = function(course){
+                                    $("div.select-item").filter("[dept=course]").addClass("select-item-active");
+                                    $("div.select-item").not("[dept=course]").removeClass("select-item-active");
+                                    if(course=='ALL'){
+                                        filter_course = ['0'];
+                                    }
+                                    else if(course=='1YEAR'){
+                                        filter_course = ['1'];
+                                    }
+                                    else if(course=='2CSE'){
+                                        filter_course = ['2'];
+                                    }
+                                    else if(course=='2ECE'){
+                                        filter_course = ['3'];
+                                    }
+                                    else if(course=='3CSE'){
+                                        filter_course = ['4'];
+                                    }
+                                    else if(course=='3ECE'){
+                                        filter_course = ['5'];
+                                    }
+                                    else if(course=='4CSE'){
+                                        filter_course = ['6'];
+                                    }
+                                    else if(course=='4ECE'){
+                                        filter_course = ['7'];
+                                    }
+                                    for (var i = filter_course.length - 1; i >= 0; i--) {
+                                        $("div").filter("[dept='" + filter_course[i] + "']").css("display","");
+                                        $("div.select-item").filter("[dept='" + filter_course[i] + "']").addClass("select-item-active");
+
+                                    };
+                                    var sub_list = all_list.diff(filter_course);
+                                    for(var i = sub_list.length - 1; i>=0; i--){
+                                        $("div").filter("[dept='" + sub_list[i] + "']").css("display","none");
+                                        $("div.select-item").filter("[dept='" + sub_list[i] + "']").removeClass("select-item-active");
+                                    }
+                                };
+                            });
+                        </script>
+                        <p>The list of all courses offered by IIIT-Delhi is given below. New courses might be added to these list as and when they are approved.</p>
+                        <p>Click below to display cources from a specific discipline.</p>
+                        <div class="select">
+                            <div class="select-item" onclick="$.filterFaculty(this.getAttribute('dept'))" dept="ALL">ALL</div>
+                            <div class="select-item" onclick="$.filterFaculty(this.getAttribute('dept'))" dept="1YEAR">1-YEAR</div>
+                            <div class="select-item" onclick="$.filterFaculty(this.getAttribute('dept'))" dept="2CSE">2-CSE</div>
+                            <div class="select-item" onclick="$.filterFaculty(this.getAttribute('dept'))" dept="2ECE">2-ECE</div>
+                            <div class="select-item" onclick="$.filterFaculty(this.getAttribute('dept'))" dept="3CSE">3-CSE</div>
+                            <div class="select-item" onclick="$.filterFaculty(this.getAttribute('dept'))" dept="3ECE">3-CSE</div>
+                            <div class="select-item" onclick="$.filterFaculty(this.getAttribute('dept'))" dept="4CSE">4-CSE</div>
+                            <div class="select-item" onclick="$.filterFaculty(this.getAttribute('dept'))" dept="4ECE">4-ECE</div>
+                        </div>
+                        <br><br>
+                        <div style = "width:100%;height:700px;overflow:auto;">
+                            <div dept="0">
+                                <iframe id="pdfiframe"  style='width:100%;border:#999 thin solid;height:600px;border-bottom:20px solid #3C3C3C; ' src="/PDF/1-YEAR.pdf">loading...</iframe>
+                            </div>
+                            <div dept="1">
+                                <iframe id="pdfiframe"  style='width:100%;border:#999 thin solid;height:600px;border-bottom:20px solid #3C3C3C;' src="PDF/1-YEAR.pdf">loading...</iframe>
+                            </div>
+                            <div dept="2">
+                                <iframe id="pdfiframe"  style='width:100%;border:#999 thin solid;height:600px;border-bottom:20px solid #3C3C3C;' src="PDF/2-CSE.pdf">loading...</iframe>
+                            </div>
+                            <div dept="3">
+                                <iframe id="pdfiframe"  style='width:100%;border:#999 thin solid;height:600px;border-bottom:20px solid #3C3C3C;' src="PDF/2-ECE.pdf">loading...</iframe>
+                            </div>
+                            <div dept="4">
+                                <iframe id="pdfiframe"  style='width:100%;border:#999 thin solid;height:600px;border-bottom:20px solid #3C3C3C;' src="PDF/3-CSE.pdf">loading...</iframe>
+                            </div>
+                            <div dept="5">
+                                <iframe id="pdfiframe"  style='width:100%;border:#999 thin solid;height:600px;border-bottom:20px solid #3C3C3C;' src="PDF/3-ECE.pdf">loading...</iframe>
+                            </div>
+                            <div dept="6">
+                                <iframe id="pdfiframe"  style='width:100%;border:#999 thin solid;height:600px;border-bottom:20px solid #3C3C3C;' src="PDF/4-CSE.pdf">loading...</iframe>
+                            </div>
+                            <div dept="7">
+                                <!--<h2>7th</h2><iframe name="pdfiframe" id="pdfiframe"  style='width:100%;border:#999 thin solid;height:600px;' src="PDF/4-ECE">loading...</iframe>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
 
 <footer>
     <% include footer.ejs %>
