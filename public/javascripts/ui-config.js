@@ -14,7 +14,8 @@ window.CONFIG = {
         addBatch: "service/batch/addBatch",
         updateBatch: "service/batch/updateBatch",
         deleteBatch: "service/batch/deleteBatch",
-        getBatchList: "service/batch/getBatchList"
+        getBatchList: "service/batch/getBatchList",
+        updateBatchType: "service/batch/updateBatchType"
     },
     newsURL:{
         getNews:"service/news/getNews",

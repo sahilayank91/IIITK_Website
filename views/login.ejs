@@ -64,13 +64,15 @@
 
 <div ng-app="IIITKWebsite" ng-controller="LoginController">
   <div class='brand'>
-  <a href='https://www.jamiecoulter.co.uk' target='_blank'>
+  <a href='/' target='_blank'>
     <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/logo.png'>
   </a>
 </div>
+
 <div class='login'>
   <div class='login_title'>
-    <span>Login to your account</span>
+    <img src="/images/IIIT-_Kota_Logo_white.png" alt="IIIT-Kota" style="width:50px;margin-bottom: 10px;"><br>
+    <span>Admin Login</span>
   </div>
   <form name="login" method="post">
   <div class='login_fields'>
@@ -78,22 +80,25 @@
       <div class='icon'>
         <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/user_icon_copy.png'>
       </div>
-
       <input name="useremail" placeholder="Email" ng-model ="email" type='text'>
-        <div class='validation'>
+
+      <div class='validation'>
           <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>
         </div>
       </input>
     </div>
+
     <div class='login_fields__password'>
       <div class='icon'>
         <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png'>
       </div>
       <input placeholder='Password' name="userpass" ng-model = "password" type='password'>
+
       <div class='validation'>
         <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png'>
       </div>
     </div>
+
     <div class='login_fields__submit'>
       <input type='submit' ng-click="loginAdmin()" value='Log In'>
       <div class='forgot'>
@@ -102,6 +107,7 @@
     </div>
   </div>
   </form>
+
   <div class='success'>
     <h2>Authentication Success</h2>
     <p>Welcome back</p>
@@ -110,12 +116,14 @@
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper laoreet placerat. Nullam semper auctor justo, rutrum posuere odio vulputate nec.</p>
   </div>
 </div>
-<div class='authent'>
+
+  <div class='authent'>
   <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/puff.svg'>
   <p>Authenticating...</p>
 </div>
+
 <div class='love'>
-  <p>Created By Sahil Ayank</p>
+  <p>Access to authorized users only</p>
 </div>
 </div>
 </body>

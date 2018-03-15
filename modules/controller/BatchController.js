@@ -33,7 +33,10 @@ var addStudent = function (parameters) {
            .then(function(data){
                if(data.length>0){
                    var student = data[0].students;
-                   student.push(parameters.students);
+                   for(var i=0,len=parameters.students.length; i<len; i++){
+                       student.push(parameters.students[i]);
+                   }
+                   // student.push(parameters.students);
 
                    return batchOperations.updateBatch({year:parameters.year,type:parameters.type,batch:parameters.batch},student,false)
                        .then(function(data){
@@ -53,8 +56,46 @@ var addStudent = function (parameters) {
     });
 };
 
+var makeGraduated = function(parameters){
+    return new Promise(function(resolve,reject){
+       return batchOperations.getBatchList({year:parameters.year,type:parameters.type,batch:parameters.batch})
+           .then(function(data){
+               if(data.length>0){
+                   var current_val = 'Graduated';
+                   return batchOperations.updateBatchType({year:parameters.year,type:parameters.type,batch:parameters.batch},current_val,false)
+                       .then(function (data) {
+                           if(data){
+                               resolve(data);
+                           }else{
+                               throw new Error("Cannot make batch as Graduated.");
+                           }
+                       }).catch(function(error){
+                           console.log(error);
+                       })
+               }
+           }).catch(function(error){
+               console.log(error);
+               reject(error);
+           })
+    });
+};
+
+var deleteBatch = function(parameters){
+    return batchOperations.removeBatchDetails({year:parameters.year,type:parameters.type,batch:parameters.batch})
+        .then(function (data) {
+            if(data.length>0) {
+                return data;
+            }
+        }).catch(function(error){
+            console.log("Error : ",error);
+            reject(error);
+        })
+};
+
 module.exports = {
     addBatch:addBatch,
     addStudent:addStudent,
-    getBatch:getBatch
+    getBatch:getBatch,
+    makeGraduated:makeGraduated,
+    deleteBatch:deleteBatch
 };

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en" ng-app="IIITKWebsite">
+<head>
+    <% include admin_layout.ejs%>
+</head>
+
+<body>
+<div ng-controller="CurriculumController">
+
+    <% include sidebar.ejs%>
+    <main class="mdl-layout__content mdl-color--grey-100">
+        <div ng-if="allbatches" style="width: inherit;">
+            <div class="mdl-grid demo-content">
+                <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+                    <h1>Current Batches </h1>
+                    <hr>
+                    <table class="batch-table">
+
+                        <tr class="batch-tr">
+                            <th class="batch-th">Batch Type</th>
+                            <th class="batch-th">Year</th>
+                            <th class="batch-th">Branch</th>
+                            <th class="batch-th">Action</th>
+                            <th class="batch-th">Update as Graduated</th>
+                        </tr>
+                        <tr class="batch-tr" ng-repeat="batch in curr_batches.data">
+                            <td class="batch-td">{{batch.type}}</td>
+                            <td class="batch-td">{{batch.year}}</td>
+                            <td class="batch-td">{{batch.branch}}</td>
+                            <td class="batch-td">
+                                <button type="button" class="cancelbtn" ng-click="removeBatchClicked(batch)" data-toggle="modal" data-target="#RemoveModal">REMOVE BATCH</button>
+                                <button type="submit" class="signupbtn" ng-click="addStudentClicked(batch)">ADD STUDENTS</button>
+                            </td>
+                            <td class="batch-td">
+                                <button type="button" class="signupbtnfull" style="background-color:#3366FF" ng-click="updateBatchClicked(batch)" data-toggle="modal" data-target="#UpdateModal">UPDATE</button>
+
+                            </td>
+                        </tr>
+                    </table>
+
+                    <button type="button" ng-click="addBatchClicked()" class="signupbtnfull">ADD BATCH</button>
+
+                </div>
+            </div>
+
+            <div class="mdl-grid demo-content">
+                <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+                    <h1>Graduated Batches </h1>
+                    <hr>
+                    <table class="batch-table">
+
+                        <tr class="batch-tr">
+                            <th class="batch-th">Batch Type</th>
+                            <th class="batch-th">Year</th>
+                            <th class="batch-th">Branch</th>
+                            <th class="batch-th">Action</th>
+
+                        </tr>
+                        <tr class="batch-tr" ng-repeat="batch in grad_batches.data">
+                            <td class="batch-td">{{batch.type}}</td>
+                            <td class="batch-td">{{batch.year}}</td>
+                            <td class="batch-td">{{batch.branch}}</td>
+                            <td class="batch-td">
+                                <button type="button" class="cancelbtnfull" ng-click="removeBatchClicked(batch)" data-toggle="modal" data-target="#RemoveModal">REMOVE BATCH</button>
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ########################################################################################################################################## -->
+        <div ng-if="addbatch" style="width: inherit;">
+            <% include addBatch.ejs%>
+        </div>
+        <!-- ##############################################################################  -->
+        <div ng-if="addstudent" style="width: inherit;">
+            <% include addStudent.ejs%>
+        </div>
+    </main>
+    <!-- Modal -->
+    <div class="modal fade" id="UpdateModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" style="float:right">&times;</button>
+                    <h4 class="modal-title">Update Batch Details</h4>
+                    <pre><b>Year: </b>{{batch_details.year}}    <b>Type: </b>{{batch_details.type}}    <b>Branch: </b>{{batch_details.branch}}</pre>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to make this CURRENT batch as GRADUATED batch...?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="updateBatchToGraduated(batch_details)">Confirm</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="RemoveModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" style="float:right">&times;</button>
+                    <h4 class="modal-title">Remove Batch Details</h4>
+                    <pre><b>Year: </b>{{batch_details.year}}    <b>Type: </b>{{batch_details.type}}    <b>Branch: </b>{{batch_details.branch}}</pre>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to make DELETE this current batch...?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="removeBatch(batch_details)">Confirm</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+</body>

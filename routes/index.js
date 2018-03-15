@@ -101,9 +101,9 @@ router.get('/allBatches', function (req,res,next) {
     res.render('admin_dashboard/allBatches',{title: "All Batches"});
 });
 
-// router.get('/createBatch',function(req,res,next){
-//     res.render('admin_dashboard/createBatch',{title: "Add Batch"});
-// });
+router.get('/curriculum',function(req,res,next){
+    res.render('admin_dashboard/curriculum',{title: "Curriculum"});
+});
 
 
 router.get('/paymentprocess', function(req, res, next) {

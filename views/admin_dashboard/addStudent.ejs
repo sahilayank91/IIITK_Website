@@ -1,21 +1,58 @@
 <div ng-app="IIITKWebsite" ng-controller="BatchController">
-<form method="POST" name="batch">
-    <!--<div class="container">-->
-        <h1>Add Student </h1>
-        <pre><b>Year: </b>Fourth    <b>Type: </b>Btech    <b>Branch: </b>cse</pre>
-        <hr>
+    <div class="mdl-grid demo-content">
+        <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+            <form method="POST" name="batch" style="width:inherit">
+                <!--<div class="container" >-->
+                    <h1>Add Student </h1>
+                    <pre><b>Year: </b>{{batch_details.year}}    <b>Type: </b>{{batch_details.type}}    <b>Branch: </b>{{batch_details.branch}}</pre>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label><b>Student Name</b></label>
+                        </div>
+                        <div class="col-md-1">
+                        </div>
 
-        <label><b>Student Name</b></label>
-        <input type="text" placeholder="Student Name" name="name" ng-model="name">
+                        <div class="col-md-5">
+                            <label><b>Student ID</b></label>
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+                    </div>
+                    <div class="row" ng-repeat="student in students">
+                        <div class="col-md-5">
+                            <input type="text" placeholder="Student Name" name="name" ng-model="student.name">
+                        </div>
+                        <div class="col-md-1">
+                        </div>
 
-        <label><b>Student ID</b></label>
-        <input type="text" placeholder="Student Id" name="id" ng-model="id">
+                        <div class="col-md-5">
+                            <input type="text" placeholder="Student Id" name="id" ng-model="student.college_id">
+                        </div>
+                        <div class="col-md-1">
+                            <img src="/images/trashbtn.png" class="trashbtn" ng-click="removeStudentRow($index)">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <input type="text" placeholder="Student Name" name="name" ng-model="s_name">
+                        </div>
+                        <div class="col-md-1">
+                        </div>
+                        <div class="col-md-5">
+                            <input type="text" placeholder="Student Id" name="id" ng-model="s_id">
+                        </div>
+                        <div class="col-md-1">
+                            <img src="/images/plusbtn.png" class="addbtn" ng-click="addStudentRow()">
+                        </div>
+                    </div>
 
-
-        <!--<div class="clearfix">-->
-            <button type="submit" class="cancelbtn" ng-click="goToAllBatches()">CANCEL</button>
-            <button type="submit" class="signupbtn" ng-click="addStudentToBatch()">ADD</button>
-        <!--</div>-->
-    <!--</div>-->
-</form>
+                    <!--<div class="clearfix">-->
+                        <button type="submit" class="cancelbtn" ng-click="goToAllBatches()">CANCEL</button>
+                        <button type="submit" class="signupbtn" ng-click="addStudentToBatch(batch_details)">ADD</button>
+                    <!--</div>-->
+                <!--</div>-->
+            </form>
+        </div>
+    </div>
 </div>
