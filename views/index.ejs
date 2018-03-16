@@ -10,7 +10,7 @@
 
 </head>
 
-<body id="top" ng-app="IIITKWebsite">
+<body id="top" ng-app="IIITKWebsite" onload="setTimeout('nextQuote()',2000)">
 <div ng-controller="IndexController"></div>
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
@@ -40,8 +40,8 @@
 <div class="wrapper bgded coloured overlay" style="background-image:url('/images/background.jpg');">
     <article class="hoc container clear center">
         <!-- ################################################################################################ -->
-        <h6 class="heading">Posuere quis dictum congue praesent elit eget hendrerit</h6>
-        <p class="nospace"><a class="btn" href="#">Blandit donec</a></p>
+        <h6 class="heading" id="quote_st">Nothing is impossible, the word itself says “I’m possible”!</h6>
+        <p class="nospace"><a class="btn" href="#" id="quote_wtr">——Audrey Hepburn</a></p>
         <!-- ################################################################################################ -->
     </article>
 </div>

@@ -110,4 +110,8 @@ router.get('/paymentprocess', function(req, res, next) {
     res.render('partials/paymentprocess', { title: 'Fees | Payment Process' });
 });
 
+router.get('/news',function(req,res,next){
+    res.render('admin_dashboard/news',{title: "News"});
+});
+
 module.exports = router;
