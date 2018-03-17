@@ -39,6 +39,7 @@
   "resolutions": {
     "angular-bootstrap": "~1.1.2",
     "angular": "~1.4.6",
-    "webcomponentsjs": "^0.6.0"
+    "webcomponentsjs": "^0.6.0",
+    "moment": "^2.20.1"
   }
 }
