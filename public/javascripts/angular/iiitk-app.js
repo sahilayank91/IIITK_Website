@@ -1,5 +1,5 @@
 var IIITKWebsite = angular.module('IIITKWebsite',
-    ['ui.router', 'ngTagsInput', 'ngFileUpload', 'ui.bootstrap', 'angular-loading-bar', 'bootstrapLightbox', 'ngSanitize', 'ui.bootstrap.datetimepicker']
+    ['ui.router', 'ngTagsInput', 'ngFileUpload', 'ui.bootstrap', 'angular-loading-bar', 'bootstrapLightbox', 'ngSanitize', 'ui.bootstrap.datetimepicker','ngMaterial', 'ngMessages']
 )
     .constant('uiDatetimePickerConfig', {
         dateFormat: 'yyyy-MM-dd HH:mm',

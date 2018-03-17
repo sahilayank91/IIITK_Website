@@ -33,7 +33,7 @@ var updateNews = function(parameters){
                 console.log("Failed to update News");
             }
         }).catch(function(error){
-            console.log("Failed to udpate News:",error);
+            console.log("Failed to update News:",error);
         });
 };
 

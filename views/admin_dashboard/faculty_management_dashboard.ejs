@@ -5,12 +5,15 @@
 </head>
 
 <body>
-<div ng-app="IIITKWebsite" ng-controller="FacultyController">
+<div ng-app="IIITKWebsite" ng-controller="FacultyController" name="upload_form">
     <% include sidebar.ejs %>
     <main class="mdl-layout__content mdl-color--grey-100">
         <div class="mdl-grid demo-content">
             <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                <form method="POST">
+                <form method="POST"
+                      ref='uploadForm'
+                      encType="multipart/form-data"
+                >
         <div class="container">
             <h1>Add New Faculty</h1>
             <hr>
@@ -35,12 +38,6 @@
             <label><b>About</b></label>
             <input type="text" placeholder="Enter Details about the Person" ng-model="about" name="about" required>
 
-
-            <label><b>Upload Profile Picture</b></label>
-            <input type="file" style="margin-bottom:15px">
-
-            <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-
             <div class="clearfix">
                 <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
                 <button type="submit" ng-click="addFaculty()" class="signupbtn">Sign Up</button>
@@ -49,11 +46,6 @@
     </form>
             </div>
         </div>
-
-
-
-
-
 
     <!--########################################################################-->
     <!-- FACULTY LIST -->
@@ -144,7 +136,7 @@
                 </form>
             </div>
         </div>
-        
+
 
     </main>
 

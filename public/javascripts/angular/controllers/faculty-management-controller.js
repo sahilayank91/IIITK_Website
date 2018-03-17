@@ -1,5 +1,4 @@
-IIITKWebsite.controller('FacultyController', ['$scope','UserService','UIUtilityService','FacultyService', function ($scope,UserService,UIUtilityService,FacultyService) {
-console.log("INSIDE FACULTY");
+IIITKWebsite.controller('FacultyController', ['$scope','UserService','UIUtilityService','FacultyService', 'Upload', '$timeout','$window', function ($scope,UserService,UIUtilityService,FacultyService, Upload, $timeout,$window) {
     $scope.email = "";
     $scope.branch = "";
     $scope.education = "";
@@ -9,6 +8,7 @@ console.log("INSIDE FACULTY");
     $scope.role ="";
     $scope.phone = "";
     $scope.about = "";
+    $scope.profilePic ="";
        $scope.validateDetails = function(){
 
     };
@@ -28,10 +28,10 @@ console.log("INSIDE FACULTY");
             role:$scope.role,
             type:"Faculty",
             about:$scope.about,
+            profilePic:$scope.profilePic
         };
         FacultyService.registerFaculty(parameters)
             .then(function(data){
-                console.log("dlkjflaskjfsfla");
                 if(data.success){
                     UIUtilityService.NOTIFICATION.show({
                         title: "Success",
@@ -141,7 +141,6 @@ $scope.updateFaculty = function(){
                 console.log(data);
 
             }else{
-
             }
         }).catch(function(err){
         UIUtilityService.NOTIFICATION.show({
@@ -152,6 +151,28 @@ $scope.updateFaculty = function(){
 
         })
 };
+
+    $scope.selectFiles = function (files, $invalidFiles, type) {
+
+        if (!files || files.length === 0) return;
+
+
+        $scope.uploadProfilePic(files, type);
+    };
+
+
+
+    $scope.uploadProfilePic = function (file, type) {
+        console.log("Inside upload files");
+
+
+
+
+
+
+    };
+
+
 
 
 

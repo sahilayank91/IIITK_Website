@@ -1,4 +1,4 @@
-IIITKWebsite.service('FacultyService',['$http', '$q','UIUtilityService', function ($http, $q, UIUtilityService) {
+IIITKWebsite.service('FacultyService',['$http', '$q','UIUtilityService','Upload', function ($http, $q, UIUtilityService,Upload) {
 
     return {
 
@@ -86,6 +86,11 @@ IIITKWebsite.service('FacultyService',['$http', '$q','UIUtilityService', functio
                 });
             return deferred.promise;
         },
+        uploadProfilePic:function(file){
+
+        }
+
+
     }
 
 

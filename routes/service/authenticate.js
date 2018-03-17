@@ -12,14 +12,10 @@ var UserController = require(__BASE__ + "modules/controller/UserController");
 /* GET users listing. */
 router.post('/login', function(req, res) {
     // Set our internal DB variable
-
-    var promise;
-
     // Get our form values. These rely on the "name" attributes
 
     var userPass = req.body.userpass;
     var userEmail = req.body.useremail;
-    console.log(userPass);
 
     if ((!DataValidator.isValidEmail(userEmail)) && !DataValidator.isValidPhone(phone) && !DataValidator.isValidUsername(username) && !DataValidator.isValidPassword(password)){
 
@@ -34,16 +30,10 @@ router.post('/login', function(req, res) {
         UserController.getUsers(parameters)
             .then(function (data) {
                 if (data) {
-                    console.log("Data:" ,data);
                     RESPONSE.sendOkay(res, {success: true, redirect: path.join("/" + 'admin')});
-                    // RESPONSE.sendOkay(res, parameters);
-                    return true;
                 } else {
                     console.log("Some error occured while getting data from the database");
-
                 }
-
-
             }).catch(function (err) {
             console.log(err);
         });

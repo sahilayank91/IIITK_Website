@@ -33,5 +33,6 @@ window.CONFIG = {
         getFacultyList:"service/faculty/getFacultyList",
         deleteFaculty:"service/faculty/deleteFaculty",
         updateFaculty:"service/faculty/updateFaculty",
+        uploadProfilePic:"service/faculty/uploadProfilePic"
     }
 };

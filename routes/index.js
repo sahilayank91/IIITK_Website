@@ -77,7 +77,7 @@ router.get('/computerlab', function(req, res, next) {
 });
 
 router.get('/admin',function(req,res,next){
-    res.render('partials/admin',{title: "Admin"});
+    res.render('admin_dashboard/admin',{title: "Admin"});
 });
 
 router.get('/department', function(req, res, next) {
@@ -113,5 +113,13 @@ router.get('/faculty_dashboard', function (req,res,next) {
 router.get('/paymentprocess', function(req, res, next) {
     res.render('partials/paymentprocess', { title: 'Fees | Payment Process' });
 });
+
+
+router.get('/adminsidebar',function(req, res, next) {
+    res.render('admin_dashboard/admin_sidebar', { title: 'Fees | Payment Process' });
+});
+
+
+
 
 module.exports = router;

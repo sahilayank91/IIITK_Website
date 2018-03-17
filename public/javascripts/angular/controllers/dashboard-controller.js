@@ -1,5 +1,6 @@
-IIITKWebsite.controller('DashboardController', ['$scope','UserService','UIUtilityService', function ($scope,UserService,UIUtilityService) {
+IIITKWebsite.controller('DashboardController', ['$scope','UserService','UIUtilityService','$mdSidenav','$log', function ($scope,UserService,UIUtilityService,$mdSidenav,$log) {
 
+    console.log("Inside Dashboard Controller");
     $scope.email = "";
     $scope.password ="";
     $scope.password_repeat = "";
@@ -21,7 +22,14 @@ IIITKWebsite.controller('DashboardController', ['$scope','UserService','UIUtilit
         
     };
 
+    $scope.toggleLeft = buildToggler('left');
+    $scope.toggleRight = buildToggler('right');
 
+    function buildToggler(componentId) {
+        return function() {
+            $mdSidenav(componentId).toggle();
+        };
+    }
 
     $scope.registerUser = function(){
         $scope.validateDetails();
