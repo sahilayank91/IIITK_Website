@@ -14,13 +14,14 @@ window.CONFIG = {
         addBatch: "service/batch/addBatch",
         updateBatch: "service/batch/updateBatch",
         deleteBatch: "service/batch/deleteBatch",
-        getBatchList: "service/batch/getBatchList"
+        getBatchList: "service/batch/getBatchList",
+        updateBatchType: "service/batch/updateBatchType"
     },
     newsURL:{
         getNews:"service/news/getNews",
         addNews:"service/news/addNews",
         updateNews:"service/news/updateNews",
-        deleteNews:"service/news/updateNews",
+        deleteNews:"service/news/deleteNews"
     },
     eventURL:{
          getEvent:"service/event/getEvent",

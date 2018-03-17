@@ -108,18 +108,17 @@ router.get('/faculty_dashboard', function (req,res,next) {
 // router.get('/createBatch',function(req,res,next){
 //     res.render('admin_dashboard/createBatch',{title: "Add Batch"});
 // });
+router.get('/curriculum',function(req,res,next){
+    res.render('admin_dashboard/curriculum',{title: "Curriculum"});
+});
 
 
 router.get('/paymentprocess', function(req, res, next) {
     res.render('partials/paymentprocess', { title: 'Fees | Payment Process' });
 });
 
-
-router.get('/adminsidebar',function(req, res, next) {
-    res.render('admin_dashboard/admin_sidebar', { title: 'Fees | Payment Process' });
+router.get('/news',function(req,res,next){
+    res.render('admin_dashboard/news',{title: "News"});
 });
-
-
-
 
 module.exports = router;

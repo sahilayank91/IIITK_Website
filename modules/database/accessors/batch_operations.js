@@ -87,9 +87,39 @@ var updateBatch = function(rule, newData , options){
     })
 };
 
+var updateBatchType = function(rule, newData , options){
+    return new Promise(function(resolve, reject){
+        Batch.findOneAndUpdate(rule,{$set:{current:newData}},options?options:{multi:true},function(err,data){
+            if(!err){
+                resolve(data);
+            }else{
+                console.log("Error in uodating batch as graduated.",err);
+                reject(err);
+            }
+        })
+    }).catch(function (error) {
+        console.log(error);
+    })
+};
+
+var removeBatchDetails = function(rule,fields,options){
+    return new Promise(function (resolve, reject) {
+        Batch.remove(rule, fields, options).lean().exec(function (err, data) {
+            if (!err) {
+                resolve(data);
+            } else {
+                console.log("/removeBatchDetails, some error occured", err);
+                reject(new Error('Failed to get batch details'));
+            }
+        });
+    });
+};
+
 module.exports = {
     getStudentList: getStudentList,
     addStudentList: addStudentList,
     updateBatch: updateBatch,
-    getBatchList: getBatchList
+    getBatchList: getBatchList,
+    updateBatchType:updateBatchType,
+    removeBatchDetails:removeBatchDetails
 };

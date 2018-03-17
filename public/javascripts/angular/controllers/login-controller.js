@@ -21,6 +21,7 @@ IIITKWebsite.controller('LoginController', ['$scope','UserService','UIUtilitySer
                 useremail:$scope.email
             };
 
+            console.log(parameters);
             UserService.adminLogin(parameters)
                 .then(function(data){
                     UIUtilityService.NOTIFICATION.show({

@@ -26,7 +26,8 @@ module.exports = {
       ACADEMICS: 'academics',
       ADMISSION: 'admission',
       RECRUITMENT: 'recruitment',
-      RESEARCH: 'research'
+      RESEARCH: 'research',
+      OTHERS:'others'
     },
     event_type: {
         SPORTS: 'sports',

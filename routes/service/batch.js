@@ -97,6 +97,41 @@ router.post('/updateBatch',function (req,res) {
         })
 });
 
+router.post('/updateBatchType',function (req,res){
+   var parameters = {
+       year: req.body.year,
+       type:req.body.type,
+       branch:req.body.branch
+   };
+
+   BatchController.makeGraduated(parameters)
+       .then(function (data){
+           if(data){
+               RESPONSE.sendOkay(res,{success:true});
+               return true;
+           }else{
+               console.log("Some Error Occured while making batch as graduated.");
+           }
+       })
+});
+
+router.post('/deleteBatch',function (req,res) {
+    var parameters = {
+        year: req.body.year,
+        type: req.body.type,
+        branch: req.body.branch
+    };
+
+    console.log(parameters);
+
+    BatchController.deleteBatch(parameters)
+        .then(function () {
+                RESPONSE.sendOkay(res, {success: true});
+                return true;
+
+        });
+});
+
 
 
 

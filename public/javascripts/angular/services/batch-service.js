@@ -64,6 +64,50 @@ IIITKWebsite.service('BatchService',['$http', '$q','UIUtilityService', function 
                     deferred.resolve(deferredData);
                 });
             return deferred.promise;
+        },
+
+        updateBatchDetails: function (parameters) {
+            var deferred = $q.defer();
+            var deferredData = {};
+            console.log(parameters);
+            var url = UIUtilityService.getURL('batch').updateBatchType;
+            $http({method: 'POST', url: url, data: parameters}).success(function (data, status, headers, config) {
+                if (data.success == 'false' || !data.success) {
+                    deferredData.success = false;
+                } else {
+                    deferredData.success = true;
+                    deferredData.data = data.data;
+                }
+                deferredData.message = data.message;
+                deferred.resolve(deferredData);
+            })
+                .error(function (data, status, headers, config) {
+                    deferredData.success = false;
+                    deferred.resolve(deferredData);
+                });
+            return deferred.promise;
+        },
+
+        removeBatchDetails: function (parameters) {
+            var deferred = $q.defer();
+            var deferredData = {};
+            console.log(parameters);
+            var url = UIUtilityService.getURL('batch').deleteBatch;
+            $http({method: 'POST', url: url, data: parameters}).success(function (data, status, headers, config) {
+                if (data.success == 'false' || !data.success) {
+                    deferredData.success = false;
+                } else {
+                    deferredData.success = true;
+                    deferredData.data = data.data;
+                }
+                deferredData.message = data.message;
+                deferred.resolve(deferredData);
+            })
+                .error(function (data, status, headers, config) {
+                    deferredData.success = false;
+                    deferred.resolve(deferredData);
+                });
+            return deferred.promise;
         }
 
     }

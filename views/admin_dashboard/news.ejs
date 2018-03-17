@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" ng-app="IIITKWebsite">
+<head>
+    <% include admin_layout.ejs%>
+</head>
+
+<body>
+<div ng-controller="NewsController">
+
+    <% include sidebar.ejs%>
+    <main class="mdl-layout__content mdl-color--grey-100">
+        <div style="width: inherit" ng-if="news_section">
+            <div class="mdl-grid demo-content">
+                <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+                    <h1>News </h1>
+                    <hr>
+
+                    <div ng-repeat="news in allnews.data" style="width:inherit">
+                        <br>
+                        <div class="container news_block" style="width:inherit">
+                            <h3>{{news.content.title}}</h3>
+                            <span>  </span>
+                            <h6>{{news.type}}</h6>
+
+                            <div class="row">
+                                <div class="col-md-11">
+                                    {{news.content.text}}
+                                </div>
+                                <div class="col-md-1">
+                                    <img src="/images/trashbtn.png" class="remove_btn" alt="X" ng-click="removeNews(news)">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <button type="button" ng-click="addNewsClicked()" class="signupbtnfull" style="margin-top: 10px;">ADD NEWS</button>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div style="width: inherit;" ng-show="addNews_section">   <!--   ng-if="allbatches" -->
+            <div class="mdl-grid demo-content">
+                <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+                    <form method="POST" name="batch" style="width:inherit">
+                        <!--<div class="container">-->
+                        <h1>Add News</h1>
+                        <hr>
+                        <label><b>News Topic</b></label>
+                        <input type="text" placeholder="News Heading"  ng-model="title">
+
+                        <label><b>News Content</b></label>
+                        <input type="text" placeholder="News Content" ng-model="text">
+
+                        <label><b>Type of News</b></label>
+                        <select type="text" ng-model="type" ng-options="item for item in type_options" class="select_bar"></select>
+                        <br><br>
+
+                        <button type="submit" class="cancelbtn" ng-click="goToNewsSection()">CANCEL</button>
+                        <button type="submit" class="signupbtn" ng-click="addNews()">ADD</button>
+                        <!--</div>-->
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+    </div>
+
+</div>
+</body>
