@@ -11,7 +11,7 @@ var getNews = function(parameters){
         });
 };
 
-var addNews = function(parameters){
+var addNewsDetails = function(parameters){
     return newsOperations.createNews(parameters)
         .then(function(data){
             if(data){
@@ -39,20 +39,20 @@ var updateNews = function(parameters){
 
 var deleteNews = function(parameters){
     return newsOperations.deleteNews(parameters)
-        .then(function(data){
-            if(data){
+        .then(function (data) {
+            if(data.length>0) {
                 return data;
-            }else {
-                console.log("Failed to delete News");
             }
         }).catch(function(error){
-            console.log("Failed to delete News:",error);
+            console.log("Error : ",error);
+            reject(error);
         });
+
 };
 
 module.exports = {
     getNews:getNews,
-    addNews:addNews,
+    addNewsDetails:addNewsDetails,
     updateNews:updateNews,
     deleteNews:deleteNews
 

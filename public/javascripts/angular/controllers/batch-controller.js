@@ -1,7 +1,7 @@
 IIITKWebsite.controller('BatchController', ['$scope','BatchService','$location', function ($scope,BatchService,$location) {
 
     console.log("Inside Batch Controller");
-    $scope.year_options = ["First","Second","Third","Forth"];
+    $scope.year_options = ["First","Second","Third","Fourth"];
     $scope.type_options = ["BTech", "MTech"];
     $scope.branch_options = ['cse','ece'];
 
@@ -104,6 +104,7 @@ IIITKWebsite.controller('BatchController', ['$scope','BatchService','$location',
         };
         BatchService.addBatchDetails(parameters)
             .then(function(data){
+                $scope.displayBatches();
                 $scope.goToAllBatches();
                 console.log("Data for adding Batch Details:" ,data);
             }).catch(function(error){

@@ -21,7 +21,7 @@ window.CONFIG = {
         getNews:"service/news/getNews",
         addNews:"service/news/addNews",
         updateNews:"service/news/updateNews",
-        deleteNews:"service/news/updateNews",
+        deleteNews:"service/news/deleteNews"
     },
     eventURL:{
          getEvent:"service/event/getEvent",

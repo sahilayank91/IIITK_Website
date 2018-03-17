@@ -1,12 +1,11 @@
 IIITKWebsite.service('NewsService',['$http', '$q','UIUtilityService', function ($http, $q, UIUtilityService) {
 
     return {
-        getNews: function (parameters) {
+        getNews: function () {
             var deferred = $q.defer();
             var deferredData = {};
             var url = UIUtilityService.getURL('news').getNews;
-            url += "?n=5";
-            $http({method: 'GET', url: url}).success(function (data, status, headers, config) {
+            $http({method: 'POST', url: url}).success(function (data, status, headers, config) {
                 if (data.success == 'false' || !data.success) {
                     deferredData.success = false;
                 } else {

@@ -22,8 +22,9 @@
                                     <th class="batch-th">Branch</th>
                                     <th class="batch-th">Action</th>
                                     <th class="batch-th">Update as Graduated</th>
+                                    <th class="batch-th"></th>
                                 </tr>
-                                <tr class="batch-tr" ng-repeat="batch in curr_batches.data" data-toggle="modal" data-target="#StudentDetailsModal" ng-click="makeBatchArray(batch)">
+                                <tr class="batch-tr" ng-repeat="batch in curr_batches.data">
                                     <td class="batch-td">{{batch.type}}</td>
                                     <td class="batch-td">{{batch.year}}</td>
                                     <td class="batch-td">{{batch.branch}}</td>
@@ -35,6 +36,7 @@
                                         <button type="button" class="signupbtnfull" style="background-color:#3366FF" ng-click="updateBatchClicked(batch)" data-toggle="modal" data-target="#UpdateModal">UPDATE</button>
 
                                     </td>
+                                    <td class="batch-td" data-toggle="modal" data-target="#StudentDetailsModal" ng-click="makeBatchArray(batch)"><span class="glyphicon glyphicon-chevron-right"></span></td>
                                 </tr>
                             </table>
 
@@ -54,6 +56,7 @@
                                 <th class="batch-th">Year</th>
                                 <th class="batch-th">Branch</th>
                                 <th class="batch-th">Action</th>
+                                <th class="batch-th"></th>
 
                             </tr>
                             <tr class="batch-tr" ng-repeat="batch in grad_batches.data">
@@ -63,6 +66,7 @@
                                 <td class="batch-td">
                                     <button type="button" class="cancelbtnfull" ng-click="removeBatchClicked(batch)" data-toggle="modal" data-target="#RemoveModal">REMOVE BATCH</button>
                                 </td>
+                                <td class="batch-td" data-toggle="modal" data-target="#StudentDetailsModal" ng-click="makeBatchArray(batch)"><span class="glyphicon glyphicon-chevron-right"></span></td>
 
                             </tr>
                         </table>
@@ -71,11 +75,11 @@
             </div>
 
             <!-- ########################################################################################################################################## -->
-            <div ng-if="addbatch" style="width: inherit;">
+            <div ng-show="addbatch" style="width: inherit;">
                 <% include addBatch.ejs%>
             </div>
             <!-- ##############################################################################  -->
-            <div ng-if="addstudent" style="width: inherit;">
+            <div ng-show="addstudent" style="width: inherit;">
                 <% include addStudent.ejs%>
             </div>
         </main>

@@ -9,7 +9,39 @@
 
     <% include sidebar.ejs%>
     <main class="mdl-layout__content mdl-color--grey-100">
-        <!--<div ng-if="allbatches" style="width: inherit;">-->
+        <div style="width: inherit" ng-if="news_section">
+            <div class="mdl-grid demo-content">
+                <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+                    <h1>News </h1>
+                    <hr>
+
+                    <div ng-repeat="news in allnews.data" style="width:inherit">
+                        <br>
+                        <div class="container news_block" style="width:inherit">
+                            <h3>{{news.content.title}}</h3>
+                            <span>  </span>
+                            <h6>{{news.type}}</h6>
+
+                            <div class="row">
+                                <div class="col-md-11">
+                                    {{news.content.text}}
+                                </div>
+                                <div class="col-md-1">
+                                    <img src="/images/trashbtn.png" class="remove_btn" alt="X" ng-click="removeNews(news)">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <button type="button" ng-click="addNewsClicked()" class="signupbtnfull" style="margin-top: 10px;">ADD NEWS</button>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div style="width: inherit;" ng-show="addNews_section">   <!--   ng-if="allbatches" -->
             <div class="mdl-grid demo-content">
                 <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
                     <form method="POST" name="batch" style="width:inherit">
@@ -17,47 +49,24 @@
                         <h1>Add News</h1>
                         <hr>
                         <label><b>News Topic</b></label>
-                        <input type="text" placeholder="News Heading" name="heading" ng-model="heading">
+                        <input type="text" placeholder="News Heading"  ng-model="title">
 
-                        <label><b>Type</b></label>
-                        <!--<input type="text" placeholder="Type" name="type" ng-model="type">-->
+                        <label><b>News Content</b></label>
+                        <input type="text" placeholder="News Content" ng-model="text">
+
+                        <label><b>Type of News</b></label>
                         <select type="text" ng-model="type" ng-options="item for item in type_options" class="select_bar"></select>
                         <br><br>
 
-                        <label><b>Branch</b></label>
-                        <!--<input type="text" placeholder="Branch" name="branch" ng-model="branch">-->
-                        <select type="text" ng-model="branch" ng-options="item for item in branch_options" class="select_bar"></select>
-                        <br><br>
+                        <button type="submit" class="cancelbtn" ng-click="goToNewsSection()">CANCEL</button>
+                        <button type="submit" class="signupbtn" ng-click="addNews()">ADD</button>
+                        <!--</div>-->
+                    </form>
 
                 </div>
             </div>
+        </div>
 
-            <div class="mdl-grid demo-content">
-                <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                    <h1>Graduated Batches </h1>
-                    <hr>
-                    <table class="batch-table">
-
-                        <tr class="batch-tr">
-                            <th class="batch-th">Batch Type</th>
-                            <th class="batch-th">Year</th>
-                            <th class="batch-th">Branch</th>
-                            <th class="batch-th">Action</th>
-
-                        </tr>
-                        <tr class="batch-tr" ng-repeat="batch in grad_batches.data">
-                            <td class="batch-td">{{batch.type}}</td>
-                            <td class="batch-td">{{batch.year}}</td>
-                            <td class="batch-td">{{batch.branch}}</td>
-                            <td class="batch-td">
-                                <button type="button" class="cancelbtnfull" ng-click="removeBatchClicked(batch)" data-toggle="modal" data-target="#RemoveModal">REMOVE BATCH</button>
-                            </td>
-
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        <!--</div>-->
 
     </main>
 
