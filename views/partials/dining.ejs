@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <% include ../layout.ejs %>
+    <title><%= title %></title>
+
+    <header>
+        <% include header.ejs %>
+    </header>
+</head>
+
+<body id="top">
+<div class="wrapper bgded overlay" style="background-image:url('/images/background.jpg');">
+    <div id="breadcrumb" class="hoc clear">
+        <!-- ################################################################################################ -->
+        <ul>
+            <li><a href="/">Facilities & Services</a></li>
+            <li><a href="/dining">Dining Services</a></li>
+
+        </ul>
+        <!-- ################################################################################################ -->
+    </div>
+</div>
+
+<div class="wrapper row3">
+    <main class="hoc container clear">
+        <h1 style = "color:#06F;font-size:30px;margin-top:-50px;">Dining Services</h1>
+        <div class="content">
+            <h1 style="color:black;">Mess Timings</h1>
+            <p>The timings between Monday to Friday are as follows:</p>
+            <ul>
+                <li>Breakfast - 7:30 AM - 9:30 AM</li>
+                <li>Lunch - 12:00 PM - 2:00 PM</li>
+                <li>Dinner - 7:30 PM - 9:30 PM</li>
+            </ul>
+            <p>For Saturday & Sunday:</p>
+            <ul>
+                <li>Breakfast - 8:00 AM - 10:00 AM</li>
+                <li>Lunch - 12:30 PM - 2:30 PM</li>
+                <li>Dinner - 7:30 PM - 9:30 PM</li>
+            </ul>
+            <p>Evening Snacks Timings between Monday to Sunday:</p>
+            <ul>
+                <li>Snacks - 5:30 PM - 6:30 PM</li>
+            </ul>
+        </div>
+    </main>
+</div>
+
+<footer>
+    <% include footer.ejs %>
+</footer>
+
+</body>
+</html>

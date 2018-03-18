@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ../layout.ejs %>
+    <header>
+        <% include header.ejs %>
+    </header>
+    <title><%= title %></title>
+
+</head>
+
+<body id="top">
+<div class="wrapper bgded overlay" style="background-image:url('/images/background.jpg');">
+    <div id="breadcrumb" class="hoc clear">
+        <!-- ################################################################################################ -->
+        <ul>
+            <li><a href="/">Facilities & Services</a></li>
+            <li><a href="/infrastructure">IT Infrastructure</a></li>
+
+        </ul>
+        <!-- ################################################################################################ -->
+    </div>
+</div>
+
+<div class="wrapper row3">
+    <main class="hoc container clear">
+        <h1 style = "color:#06F;font-size:30px;margin-top:-30px;">IT Infrastructure</h1>
+        <div style="text-align: center; margin-bottom: 20px;">
+            <img style="width:80%;height:300px;" class="img borderedbox inspace-5" src="/images/infrastructure.jpg" alt="">
+        </div>
+        <p style="text-align:justify">IIIT-Kota has the art information technology tools that are designed to meet the computing and communication needs of the institute, which has a fast, reliable and rugged computer network of more than 200 Nodes. The institute has more than 100 laptops issued to its faculty, staff and students. All the hostels, faculty blocks, administrative block, library and classrooms, are connected through very wide network. Every hostel room has a dedicated LAN connection to provide round the clock access to resources on the net. Wireless network is also enabled in the faculty block, library, classrooms and hostel blocks.</p>
+        <p style="text-align:justify"><strong>Internet Access</strong>: Through a 1 Gbps Internet leasedline from NKN with a backup connection of 100 Mbps running in failover mode. Internet connection range is provided through both Lan and Wi-Fi  in all blocks inclusive of residences, academic, dinning, library and hostels.</p>
+        <p style="float:right; border-radius:7px; -moz-border-radius:7px; -webkit-border-radius:7px; padding-left:.5em;"> </p>
+        <p style="text-align:justify"><strong>Data Centre</strong>: IIIT-Kota has a full-fledged data centre of its own. It hosts 40 Servers and network unified storage of 45.3TB. The data centre is powered by redundant UPS backup to ensure maximum uptime.  All servers are connected to Internet by public IPs</p>
+        <div style="float:none; width:62%; padding-right:10px;">
+            <p style="text-align:justify"><strong>IP Telephony</strong>: Our entire Campus is equipped with IP telephony. It has 115 IP phones and more than 100 analog phones.</p>
+            <p style="text-align:justify"><strong>IP Address and IPv6</strong>: The institute has its own /24 public IPV4 and /48 IPv6 address block. It has taken an initiative to transform itself into an IPV6-enabled Campus.</p>
+        </div>
+        <p style="text-align:justify"><strong>VPN</strong>: It can be used to access all IIIT-D IT resources from outside campus using any Internet connection.</p>
+        <p style="text-align:justify"><strong>Tape Library Backup Solution</strong>: <span style="font-family: arial, sans-serif; font-size: 13px;">The institute Data Centre has an LTO 6 Tape Backup solution deployed for taking onsite and offsite backup of critical data. It consists of a DELL Power Vault TL 2000 Tape Library and a Backup Server. Presently we have one Read-Write Tape Drive with 24 slots in our TL2000 Tape Library. The Tape Library is directly connected to SAN and provides direct backup from SAN storage, besides allowing us to make any server disk to tape backup through the backup server.</span></p>
+
+    </main>
+</div>
+
+<footer>
+    <% include footer.ejs %>
+</footer>
+
+</body>
+
+</html>

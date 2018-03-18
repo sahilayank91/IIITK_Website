@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <% include ../layout.ejs %>
+    <title><%= title %></title>
+
+    <header>
+        <% include header.ejs %>
+    </header>
+</head>
+
+<body id="top">
+<div class="wrapper bgded overlay" style="background-image:url('/images/background.jpg');">
+    <div id="breadcrumb" class="hoc clear">
+        <ul>
+            <li><a href="/">Facilities & Services</a></li>
+            <li><a href="/library">Library</a></li>
+
+        </ul>
+    </div>
+</div>
+
+<div class="wrapper row3">
+    <main class="hoc container clear">
+        <h1 style = "color:#06F;font-size:30px;margin-top:-30px;">Institute Library</h1>
+        <div style="text-align: center; margin-bottom: 20px;">
+            <img style="width:80%;height:75%;" class="img borderedbox inspace-5" src="/images/library.jpg" alt="">
+        </div>
+        <h1 style ="color:black">Library</h1>
+        <p>Institute has a reference section of the best titles relevant to various disciplines – CSE, ECE, Mathematics, Humanity and Social Sciences, etc. </p>
+        <h1 style ="color:black">Digital Library</h1>
+        <p>For anytime anywhere access of IP-based subscribed online resources (databases, publications in journals and conferences), we are using <a href="http://mnitj.remotexs.in" style=color:#06F >RemoteXs</a>solution.
+            Note: Use your LDAP ID and password to login. Do not share your credentials. Access is being monitored. </p>
+        <hr>
+        <h1 style ="color:black">NPTEL</h1>
+        <p>You are encouraged to leverage following NPTEL resources:</p>
+        <p><a href="http://www.iiitkota.ac.in/wp-content/uploads/2017/02/NPTEL_CSE_IIITK_Library.pdf" style=color:#06F >CSE courses at NPTEL</a><br />
+            <a href="http://www.iiitkota.ac.in/wp-content/uploads/2017/02/NPTEL_ECE_IIITK_Library.pdf" style=color:#06F >ECE courses at NPTEL</a></p>
+        <p>Alternatively, you may browse NPTEL website: </p>
+        <p><a href="http://nptel.ac.in/course.php?disciplineId=106" style=color:#06F >Computer Science and Engineering</a><br />
+            <a href="http://nptel.ac.in/courses/117102059/" style=color:#06F >Electronics and Communication Engineering</a> </p>
+        <p>
+        <hr /></p>
+        <h1 style ="color:black">SWAYAM</h1>
+        <p><a href="https://swayam.gov.in/About" style=color:#06F >SWAYAM</a> is an initiative by GoI to make some of the best learning resources accessible to all. </p>
+        <p><a href="https://swayam.gov.in/Undergraduate" style=color:#06F >SWAYAM portal for undergraduates</a> </p>
+        <p>
+        <hr /></p>
+        <h1 style ="color:black">National Digital Library</h1>
+        <p><a href="https://ndl.iitkgp.ac.in/" style=color:#06F >National Digital Library</a></p>
+        <p>
+        <hr /></p>
+        <p>If you have any query, you may send an email to library@iiitkota.ac.in</p>
+    </main>
+</div>
+
+<footer>
+    <% include footer.ejs %>
+</footer>
+
+</body>
+</html>

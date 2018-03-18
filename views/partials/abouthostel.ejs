@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <% include ../layout.ejs %>
+    <title><%= title %></title>
+
+    <header>
+        <% include header.ejs %>
+    </header>
+</head>
+
+<body id="top">
+<div class="wrapper bgded overlay" style="background-image:url('/images/background.jpg');">
+    <div id="breadcrumb" class="hoc clear">
+        <!-- ################################################################################################ -->
+        <ul>
+            <li><a href="/">Student Affairs</a></li>
+            <li><a href="/">Hostel</a></li>
+            <li><a href="/abouthostel">About Hostels</a></li>
+
+        </ul>
+        <!-- ################################################################################################ -->
+    </div>
+</div>
+
+<div class="wrapper row3">
+    <main class="hoc container clear">
+        <h1 style = "color:#06F;font-size:30px;margin-top:-50px;">About Hostels</h1>
+        <div style="float:right; width:40%; padding-left:10px;">
+            <img style="float:right;height:250px;" class="img borderedbox inspace-5" src="/images/hostel.jpg" alt="">
+        </div>
+        <div class="content">
+        <p>The Insitute has excellent hostel facilities for all the students. As the Institue is under the mentorship of MNIT Jaipur, so students here are enjoying MNIT's campus which is extending into an area over 312 acres of lush greenery. All the students of IIIT Kota are accomodated along with MNIT's students and no discrmination between facilities.</p>
+        <p>Hostels are provided with 24x7 internet facility. It is compulsory for all hostel residents to avail the mess facilities. Day-scholars can eat in the mess bypaying the meal cost as notified.In addition to the mess, there are canteen also, located in the hostels which caters to the needs of the students and faculty. All hostel students are completely free to move around the campus at all times, and CC are open 24x7 for the benefit of students.
+        </p>
+        </div>
+    </main>
+</div>
+
+<footer>
+    <% include footer.ejs %>
+</footer>
+
+</body>
+</html>
