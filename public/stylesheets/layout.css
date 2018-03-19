@@ -66,9 +66,9 @@ File: Layout CSS
 .container .content{}
 
 .services{}
-.services li{}
-.services li:nth-child(-n+3){margin-bottom:50px;}
-.services li:last-child{margin-bottom:0;}/* Used for mobile devices when elements stack */
+.services div{}
+.services div:nth-child(-n+3){margin-bottom:50px;}
+.services div:last-child{margin-bottom:0;}/* Used for mobile devices when elements stack */
 .services article{display:block; position:relative; min-height:80px; padding:0 0 0 40px;}
 .services article *{margin:0;}
 .services article i{display:block; position:absolute; top:0; left:0; font-size:24px;}
@@ -266,7 +266,7 @@ td{border-width:0 1px;}
 /* Colours
 --------------------------------------------------------------------------------------------------------------- */
 body{color:#888888; background-color:#EEEEEE;}
-a{color:#E9365A;}
+a{color:#0273AD;}
 a:active, a:focus{background:transparent;}/* IE10 + 11 Bugfix - prevents grey background */
 hr, .borderedbox{border-color:#D7D7D7;}
 label span{color:#FF0000; background-color:inherit;}
@@ -366,14 +366,14 @@ table a, #comments a{background-color:inherit;}
 /* Max Wrapper Width - Laptop, Desktop etc.
 --------------------------------------------------------------------------------------------------------------- */
 @media screen and (min-width:978px){
-	.hoc{max-width:980px;}
+	.hoc{max-width:985px;}
 }
 
 
 /* Mobile Devices
 --------------------------------------------------------------------------------------------------------------- */
-@media screen and (max-width:900px){
-	.hoc{max-width:90%;}
+@media screen and (max-width:910px){
+	.hoc{max-width:91%;}
 
 	#topbar{}
 
@@ -441,7 +441,7 @@ table a, #comments a{background-color:inherit;}
 	display: inline-block;
 }
 #sidelinks a.activee {
-	color:#d12e57;
+	color:#0273AD;
 	background:#fff;
 	text-decoration:none;
 }
@@ -456,8 +456,8 @@ table a, #comments a{background-color:inherit;}
 	Width:100%;
 	text-align:center;
 	border-radius:6px;
-	background:#d12e57;
-	border:2px solid #d12e57;
+	background:linear-gradient(to bottom, #29A8CB,#0273AD);
+	border:2px solid #0273AD;
 }
 #sidelinks a,#sidelinks a:link,#sidelinks a:visited,#sidelinks a:hover,#sidelinks a:active
 {
@@ -469,7 +469,7 @@ table a, #comments a{background-color:inherit;}
 {
 	display:inline-block;
 	color:#fff;
-	background:#d12e57;
+	background:linear-gradient(to bottom, #29A8CB,#0273AD);
 	padding:10px 10px;
 	margin:0;
 	border-radius:4px;
@@ -477,7 +477,7 @@ table a, #comments a{background-color:inherit;}
 }
 #sidelinks a:hover
 {
-	color:#d12e57;
+	color:#0273AD;
 	background:#fff;
 	text-decoration:none;
 }
@@ -539,9 +539,9 @@ table a, #comments a{background-color:inherit;}
 {
 	display:inline-block;
 	color:#fff;
-	background-color:#d12e57;
+	background:linear-gradient(to bottom, #29A8CB,#0273AD);
 	border-radius:2px;
-	border:1px solid #d12e57;
+	border:1px solid #0273AD;
 	cursor:pointer;
 	padding:4px 10px;
 	margin:5px;
@@ -549,8 +549,8 @@ table a, #comments a{background-color:inherit;}
 }
 .select-item:hover,.select-item.select-item-active
 {
-	background-color:#fff;
-	color:#d12e57;
+	background:#fff;
+	color:#0273AD;
 }
 #cards-container
 {
@@ -612,4 +612,10 @@ a:hover{
 	width:100%;
 	height: 300px;
 	height: 300px;
+}
+
+.block-with-text {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
