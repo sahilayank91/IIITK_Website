@@ -169,4 +169,9 @@ router.get('/news',function(req,res,next){
 router.get('/latestNews',function(req,res,next){
     res.render('partials/latestnews',{title: "Latest News"});
 });
+
+router.get('/gallery',function (req,res,next) {
+   res.render('partials/gallery',{title: "IIITK Photo Gallery"});
+});
+
 module.exports = router;
