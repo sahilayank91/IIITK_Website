@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <% include ../layout.ejs %>
+    <title><%= title %></title>
+
+    <header>
+        <% include header.ejs %>
+    </header>
+</head>
+
+<body id="top">
+<div class="wrapper bgded overlay" style="background-image:url('/images/background.jpg');">
+    <div id="breadcrumb" class="hoc clear">
+        <!-- ################################################################################################ -->
+        <ul>
+            <li><a href="/">Student Affairs</a></li>
+            <li><a href="/">Hostel</a></li>
+            <li><a href="/hostelsite">Hostel's Site</a></li>
+
+        </ul>
+        <!-- ################################################################################################ -->
+    </div>
+</div>
+
+<div class="wrapper row3">
+    <main class="hoc container clear">
+        <h1 style = "color:#06F;font-size:30px;margin-top:-50px;">Hostel's Site</h1>
+        <div class="content">
+            <ul>
+                <li style="display:inline;"><img style="border:1px solid black;" src="/images/1.jpg" width="100px" height="100px"></li>
+                <li style="display:inline;"><img style="border:1px solid black;" src="/images/1.jpg" width="100px" height="100px"></li>
+                <li style="display:inline;"><img style="border:1px solid black;" src="/images/3.jpg" width="100px" height="100px"></li>
+            </ul>
+            <ul>
+                <li style="display:inline;"><img style="border:1px solid black;" src="/images/1.jpg" width="100px" height="100px"></li>
+                <li style="display:inline;"><img style="border:1px solid black;" src="/images/1.jpg" width="100px" height="100px"></li>
+                <li style="display:inline;"><img style="border:1px solid black;" src="/images/3.jpg" width="100px" height="100px"></li>
+            </ul>
+        </div>
+    </main>
+</div>
+
+<footer>
+    <% include footer.ejs %>
+</footer>
+
+</body>
+</html>

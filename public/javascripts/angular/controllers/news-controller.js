@@ -65,6 +65,18 @@ IIITKWebsite.controller('NewsController', ['$scope','NewsService','$location', f
             };
             $scope.printNews.push(temp);
         }
+        $scope.ord_news = [];
+        for(var i=0,len=news.length; i<len ; i++){
+            $scope.getIcon(news[i].type);
+            temp = {
+                content:{
+                    title:news[i].content.title,
+                    text:news[i].content.text
+                },
+                type:$scope.icon
+            };
+            $scope.ord_news.push(temp);
+        }
         console.log("Index News : ",$scope.printNews);
     };
 
