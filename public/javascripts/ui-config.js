@@ -35,5 +35,11 @@ window.CONFIG = {
         deleteFaculty:"service/faculty/deleteFaculty",
         updateFaculty:"service/faculty/updateFaculty",
         uploadProfilePic:"service/faculty/uploadProfilePic"
+    },
+    curriculumURL:{
+        addSubject:"service/curriculum/addSubject",
+        getSubjectList:"service/curriculum/getSubjectList",
+        deleteSubject:"service/curriculum/deleteSubject",
+        updateSubject:"service/curriculum/updateSubject",
     }
 };

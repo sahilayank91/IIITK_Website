@@ -7,7 +7,8 @@ IIITKWebsite.service('UserService',['$http', '$q','UIUtilityService', function (
             var deferredData = {};
 
             var url = UIUtilityService.getURL('authenticate').login;
-            $http({method: 'POST', url: url, data: parameters}).success(function (data, status, headers, config) {
+            $http({method: 'POST', url: url, data: parameters}).then(function (data) {
+                data = data.data;
                 if (data.success == 'false' || !data.success) {
                     deferredData.success = false;
                 } else {
@@ -16,11 +17,12 @@ IIITKWebsite.service('UserService',['$http', '$q','UIUtilityService', function (
                 }
                 deferredData.message = data.message;
                 deferred.resolve(deferredData);
-            })
-                .error(function (data, status, headers, config) {
-                    deferredData.success = false;
-                    deferred.resolve(deferredData);
-                });
+
+            }, function(result) {
+                //some error
+                deferredData.success = false;
+                deferred.resolve(deferredData);
+            });
             return deferred.promise;
         },
 
@@ -30,7 +32,8 @@ IIITKWebsite.service('UserService',['$http', '$q','UIUtilityService', function (
             var deferredData = {};
 
             var url = UIUtilityService.getURL('authenticate').register;
-            $http({method: 'POST', url: url, data: parameters}).success(function (data, status, headers, config) {
+            $http({method: 'POST', url: url, data: parameters}).then(function (data) {
+                data = data.data;
                 if (data.success == 'false' || !data.success) {
                     deferredData.success = false;
                 } else {
@@ -39,11 +42,12 @@ IIITKWebsite.service('UserService',['$http', '$q','UIUtilityService', function (
                 }
                 deferredData.message = data.message;
                 deferred.resolve(deferredData);
-            })
-                .error(function (data, status, headers, config) {
-                    deferredData.success = false;
-                    deferred.resolve(deferredData);
-                });
+
+            }, function(result) {
+                //some error
+                deferredData.success = false;
+                deferred.resolve(deferredData);
+            });
             return deferred.promise;
         },
         registerFaculty: function (parameters) {
@@ -51,7 +55,8 @@ IIITKWebsite.service('UserService',['$http', '$q','UIUtilityService', function (
             var deferredData = {};
 
             var url = UIUtilityService.getURL('faculty').addFaculty;
-            $http({method: 'POST', url: url, data: parameters}).success(function (data, status, headers, config) {
+            $http({method: 'POST', url: url, data: parameters}).then(function (data) {
+                data = data.data;
                 if (data.success == 'false' || !data.success) {
                     deferredData.success = false;
                 } else {
@@ -60,11 +65,12 @@ IIITKWebsite.service('UserService',['$http', '$q','UIUtilityService', function (
                 }
                 deferredData.message = data.message;
                 deferred.resolve(deferredData);
-            })
-                .error(function (data, status, headers, config) {
-                    deferredData.success = false;
-                    deferred.resolve(deferredData);
-                });
+
+            }, function(result) {
+                //some error
+                deferredData.success = false;
+                deferred.resolve(deferredData);
+            });
             return deferred.promise;
         },
     }

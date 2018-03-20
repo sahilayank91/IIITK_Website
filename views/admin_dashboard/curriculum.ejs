@@ -6,124 +6,216 @@
 
 <body>
 <div ng-controller="CurriculumController">
-
     <% include sidebar.ejs%>
     <main class="mdl-layout__content mdl-color--grey-100">
-        <div ng-if="allbatches" style="width: inherit;">
-            <div class="mdl-grid demo-content">
-                <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                    <h1>Current Batches </h1>
-                    <hr>
-                    <table class="batch-table">
+        <md-card>
+        <md-content layout-padding>
+            <div class="container">
+                <md-toolbar md-scroll-shrink ng-if="true">
+                    <div class="md-toolbar-tools">
+                        <h3>
+                            <span>Add Subject</span>
+                        </h3>
+                    </div>
+                </md-toolbar>
+            <form name="projectForm">
+                <br>
+                <md-input-container class="md-block">
+                    <label>Subject Name</label>
+                    <input md-maxlength="30" required md-no-asterisk name="description" ng-model="subjectname">
+                    <div ng-messages="projectForm.description.$error">
+                        <div ng-message="required">This is required.</div>
+                        <div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
+                    </div>
+                </md-input-container>
 
-                        <tr class="batch-tr">
-                            <th class="batch-th">Batch Type</th>
-                            <th class="batch-th">Year</th>
-                            <th class="batch-th">Branch</th>
-                            <th class="batch-th">Action</th>
-                            <th class="batch-th">Update as Graduated</th>
-                        </tr>
-                        <tr class="batch-tr" ng-repeat="batch in curr_batches.data">
-                            <td class="batch-td">{{batch.type}}</td>
-                            <td class="batch-td">{{batch.year}}</td>
-                            <td class="batch-td">{{batch.branch}}</td>
-                            <td class="batch-td">
-                                <button type="button" class="cancelbtn" ng-click="removeBatchClicked(batch)" data-toggle="modal" data-target="#RemoveModal">REMOVE BATCH</button>
-                                <button type="submit" class="signupbtn" ng-click="addStudentClicked(batch)">ADD STUDENTS</button>
-                            </td>
-                            <td class="batch-td">
-                                <button type="button" class="signupbtnfull" style="background-color:#3366FF" ng-click="updateBatchClicked(batch)" data-toggle="modal" data-target="#UpdateModal">UPDATE</button>
+                <div layout="row">
+                    <md-input-container flex="50">
+                        <label>Semester</label>
+                        <md-select ng-model="semester">
+                            <md-optgroup label="Semester">
+                                <md-option ng-value="item" ng-repeat="item in semesterlist">{{item}}</md-option>
+                            </md-optgroup>
+                        </md-select>
+                    </md-input-container>
 
-                            </td>
-                        </tr>
-                    </table>
-
-                    <button type="button" ng-click="addBatchClicked()" class="signupbtnfull">ADD BATCH</button>
-
+                    <md-input-container flex="50">
+                        <label>Branch</label>
+                        <md-select ng-model="branch">
+                            <md-optgroup label="Branch">
+                                <md-option ng-value="item" ng-repeat="item in branchlist">{{item}}</md-option>
+                            </md-optgroup>
+                        </md-select>
+                    </md-input-container>
                 </div>
+
+                <md-input-container class="md-block">
+                    <label>Credits</label>
+                    <input required type="number" step="1" name="rate" ng-model="credits" min="1"
+                           max="6" />
+
+                    <div ng-messages="projectForm.rate.$error" multiple md-auto-hide="false">
+                        <div ng-message="required">
+                          You have to give some credits to the Subject.
+                        </div>
+
+                        <div ng-message="min">
+                            The credit should be between 1 and 6
+                        </div>
+
+                        <div ng-message="pattern">
+                            The credit should be between 1 and 6
+                        </div>
+
+                        <div ng-message="max">
+                            The credit should be between 1 and 6.
+                        </div>
+                    </div>
+                </md-input-container>
+
+                <div>
+                    <md-button type="submit" ng-click ="addSubjectInCurriculum()">Submit</md-button>
+                </div>
+            </form>
             </div>
+        </md-content>
+        </md-card>
 
-            <div class="mdl-grid demo-content">
-                <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                    <h1>Graduated Batches </h1>
-                    <hr>
-                    <table class="batch-table">
 
-                        <tr class="batch-tr">
-                            <th class="batch-th">Batch Type</th>
-                            <th class="batch-th">Year</th>
-                            <th class="batch-th">Branch</th>
-                            <th class="batch-th">Action</th>
 
-                        </tr>
-                        <tr class="batch-tr" ng-repeat="batch in grad_batches.data">
-                            <td class="batch-td">{{batch.type}}</td>
-                            <td class="batch-td">{{batch.year}}</td>
-                            <td class="batch-td">{{batch.branch}}</td>
-                            <td class="batch-td">
-                                <button type="button" class="cancelbtnfull" ng-click="removeBatchClicked(batch)" data-toggle="modal" data-target="#RemoveModal">REMOVE BATCH</button>
-                            </td>
 
-                        </tr>
-                    </table>
-                </div>
+
+
+
+
+
+
+<!--############################# List of all Subjects #####################-->
+
+
+        <md-divider></md-divider>
+        <md-card>
+<div class="container">
+        <md-toolbar layout="row" class="md-hue-3">
+            <div class="md-toolbar-tools">
+                <span>List of Subjects Undergoing</span>
             </div>
+        </md-toolbar>
+
+        <md-subheader class="md-no-sticky">Select subject to edit its Data</md-subheader>
+
+    <md-list-item class="md-3-line" ng-repeat="item in subject" ng-click="null">
+        <img ng-src="/images/1.jpg" class="md-avatar" alt="{{item.subject}}" />
+        <div class="md-list-item-text" layout="column">
+            <h3>{{ item.subject }}</h3>
+            <h4>{{ item.semester }}</h4>
+            <p>{{ item.credits }}</p>
         </div>
-
-        <!-- ########################################################################################################################################## -->
-        <div ng-if="addbatch" style="width: inherit;">
-            <% include addBatch.ejs%>
+        <div layout ="row">
+        <md-button class="md-warn md-secondary" ng-click="updateCurriculum($index)">Update</md-button>
+        <md-button class="md-warn md-secondary" ng-click="updateCurriculum($index)">Delete</md-button>
         </div>
-        <!-- ##############################################################################  -->
-        <div ng-if="addstudent" style="width: inherit;">
-            <% include addStudent.ejs%>
-        </div>
-    </main>
-    <!-- Modal -->
-    <div class="modal fade" id="UpdateModal" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" style="float:right">&times;</button>
-                    <h4 class="modal-title">Update Batch Details</h4>
-                    <pre><b>Year: </b>{{batch_details.year}}    <b>Type: </b>{{batch_details.type}}    <b>Branch: </b>{{batch_details.branch}}</pre>
-                </div>
-                <div class="modal-body">
-                    <p>Do you really want to make this CURRENT batch as GRADUATED batch...?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="updateBatchToGraduated(batch_details)">Confirm</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="RemoveModal" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" style="float:right">&times;</button>
-                    <h4 class="modal-title">Remove Batch Details</h4>
-                    <pre><b>Year: </b>{{batch_details.year}}    <b>Type: </b>{{batch_details.type}}    <b>Branch: </b>{{batch_details.branch}}</pre>
-                </div>
-                <div class="modal-body">
-                    <p>Do you really want to make DELETE this current batch...?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="removeBatch(batch_details)">Confirm</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
+        <md-divider></md-divider>
+    </md-list-item>
 </div>
+
+        </md-card>
+<!--  #########################################################################-->
+
+
+
+       <md-divider></md-divider>
+
+
+
+        <md-card>
+            <md-content layout-padding>
+                <div class="container">
+                    <md-toolbar md-scroll-shrink ng-if="true">
+                        <div class="md-toolbar-tools">
+                            <h3>
+                                <span>Update Subject</span>
+                            </h3>
+                        </div>
+                    </md-toolbar>
+                    <form name="projectForm">
+                        <br>
+                        <md-input-container class="md-block">
+                            <label>Subject Name</label>
+                            <input md-maxlength="30" required md-no-asterisk name="description" ng-model="subjectname">
+                            <div ng-messages="projectForm.description.$error">
+                                <div ng-message="required">This is required.</div>
+                                <div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
+                            </div>
+                        </md-input-container>
+
+                        <div layout="row">
+                            <md-input-container flex="50">
+                                <label>Semester</label>
+                                <md-select ng-model="semester">
+                                    <md-optgroup label="Semester">
+                                        <md-option ng-value="item" ng-repeat="item in semesterlist">{{item}}</md-option>
+                                    </md-optgroup>
+                                </md-select>
+                            </md-input-container>
+
+                            <md-input-container flex="50">
+                                <label>Branch</label>
+                                <md-select ng-model="branch">
+                                    <md-optgroup label="Branch">
+                                        <md-option ng-value="item" ng-repeat="item in branchlist">{{item}}</md-option>
+                                    </md-optgroup>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+
+                        <md-input-container class="md-block">
+                            <label>Credits</label>
+                            <input required type="number" step="1" name="rate" ng-model="credits" min="1"
+                                   max="6" />
+
+                            <div ng-messages="projectForm.rate.$error" multiple md-auto-hide="false">
+                                <div ng-message="required">
+                                    You have to give some credits to the Subject.
+                                </div>
+
+                                <div ng-message="min">
+                                    The credit should be between 1 and 6
+                                </div>
+
+                                <div ng-message="pattern">
+                                    The credit should be between 1 and 6
+                                </div>
+
+                                <div ng-message="max">
+                                    The credit should be between 1 and 6.
+                                </div>
+                            </div>
+                        </md-input-container>
+
+                        <div>
+                            <md-button type="submit" ng-click ="updateSubject()">Submit</md-button>
+                        </div>
+                    </form>
+                </div>
+            </md-content>
+        </md-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </main>
 </div>
 </body>

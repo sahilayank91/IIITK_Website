@@ -24,6 +24,7 @@ router.get('/getStudentList',function(req,res,next){
 
    batchOperations.getStudentList(query)
        .then(function(data){
+           console.log(data);
           if(data.length > 0){
               console.log("The student list by database: ",data);
               //TODO set the name of the template you want to load
@@ -39,10 +40,13 @@ router.post('/getBatchList',function (req,res) {
     var query = {
         current: req.body.current
     };
+    console.log(req.body.current);
     BatchController.getBatch(query)
         .then(function (data) {
+            console.log(data);
             if(data){
                 RESPONSE.sendOkay(res, {success: true, data: data});
+                return true;
             }
         }).catch(function (error) {
             console.log("Error : ", error);
@@ -50,8 +54,6 @@ router.post('/getBatchList',function (req,res) {
 });
 
 router.post('/addBatch',function(req,res) {
-
-
     var parameters = {
         year: req.body.year,
         type: req.body.type,

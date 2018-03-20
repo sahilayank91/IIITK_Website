@@ -1,36 +1,58 @@
-IIITKWebsite.service('BatchService',['$http', '$q','UIUtilityService', function ($http, $q, UIUtilityService) {
+IIITKWebsite.service('CurriculumService',['$http', '$q','UIUtilityService','Upload', function ($http, $q, UIUtilityService,Upload) {
 
     return {
-
-        addBatchDetails: function (parameters) {
+        addSubject: function (parameters) {
             var deferred = $q.defer();
             var deferredData = {};
-            console.log(parameters);
-            var url = UIUtilityService.getURL('batch').addBatch;
-            $http({method: 'POST', url: url, data: parameters})
-                .then(function (data) {
-                         data = data.data;
-                        if (data.success == 'false' || !data.success) {
-                            deferredData.success = false;
-                        } else {
-                            deferredData.success = true;
-                            deferredData.data = data.data;
-                        }
-                        deferredData.message = data.message;
-                        deferred.resolve(deferredData);
 
-                    }, function(result) {
-                        //some error
-                        deferredData.success = false;
-                        deferred.resolve(deferredData);
-                    });
-                return deferred.promise;
+            var url = UIUtilityService.getURL('curriculum').addSubject;
+            $http({method: 'POST', url: url, data: parameters}).then(function (data) {
+                data = data.data;
+                if (data.success == 'false' || !data.success) {
+                    deferredData.success = false;
+                } else {
+                    deferredData.success = true;
+                    deferredData.data = data.data;
+                }
+                deferredData.message = data.message;
+                deferred.resolve(deferredData);
+
+            }, function(result) {
+                //some error
+                deferredData.success = false;
+                deferred.resolve(deferredData);
+            });
+            return deferred.promise;
         },
-        addStudentDetails: function (parameters) {
+        getSubjectList: function (parameters) {
             var deferred = $q.defer();
             var deferredData = {};
-            console.log(parameters);
-            var url = UIUtilityService.getURL('batch').updateBatch;
+            var url = UIUtilityService.getURL('curriculum').getSubjectList;
+
+            $http({method: 'GET', url: url}).then(function (data) {
+                console.log(data);
+                data = data.data;
+                if (data.success == 'false' || !data.success) {
+                    deferredData.success = false;
+                } else {
+                    deferredData.success = true;
+                    deferredData.data = data.data;
+                }
+                deferredData.message = data.message;
+                deferred.resolve(deferredData);
+
+            }, function(result) {
+                //some error
+                deferredData.success = false;
+                deferred.resolve(deferredData);
+            });
+            return deferred.promise;
+        },
+        deleteSubject: function (parameters) {
+            var deferred = $q.defer();
+            var deferredData = {};
+
+            var url = UIUtilityService.getURL('curriculum').deleteSubject;
             $http({method: 'POST', url: url, data: parameters}).then(function (data) {
                 data = data.data;
                 if (data.success == 'false' || !data.success) {
@@ -50,35 +72,11 @@ IIITKWebsite.service('BatchService',['$http', '$q','UIUtilityService', function 
             return deferred.promise;
         },
 
-        getAllBatches: function (parameters) {
+        updateSubject: function (parameters) {
             var deferred = $q.defer();
             var deferredData = {};
-            var url = UIUtilityService.getURL('batch').getBatchList;
-            $http({method: 'POST', url: url, data:parameters}).then(function (data) {
-                data = data.data;
-                if (data.success == 'false' || !data.success) {
-                    deferredData.success = false;
-                } else {
-                    console.log("dfsdfsadf");
-                    deferredData.success = true;
-                    deferredData.data = data.data;
-                }
-                deferredData.message = data.message;
-                deferred.resolve(deferredData);
 
-            }, function(result) {
-                //some error
-                deferredData.success = false;
-                deferred.resolve(deferredData);
-            });
-            return deferred.promise;
-        },
-
-        updateBatchDetails: function (parameters) {
-            var deferred = $q.defer();
-            var deferredData = {};
-            console.log(parameters);
-            var url = UIUtilityService.getURL('batch').updateBatchType;
+            var url = UIUtilityService.getURL('curriculum').updateSubject;
             $http({method: 'POST', url: url, data: parameters}).then(function (data) {
                 data = data.data;
                 if (data.success == 'false' || !data.success) {
@@ -97,31 +95,8 @@ IIITKWebsite.service('BatchService',['$http', '$q','UIUtilityService', function 
             });
             return deferred.promise;
         },
+        uploadProfilePic:function(file){
 
-        removeBatchDetails: function (parameters) {
-            var deferred = $q.defer();
-            var deferredData = {};
-            console.log(parameters);
-            var url = UIUtilityService.getURL('batch').deleteBatch;
-            $http({method: 'POST', url: url, data: parameters}).then(function (data) {
-                data = data.data;
-                if (data.success == 'false' || !data.success) {
-                    deferredData.success = false;
-                } else {
-                    deferredData.success = true;
-                    deferredData.data = data.data;
-                }
-                deferredData.message = data.message;
-                deferred.resolve(deferredData);
-
-            }, function(result) {
-                //some error
-                deferredData.success = false;
-                deferred.resolve(deferredData);
-            });
-            return deferred.promise;
         }
-
     }
-
 }]);

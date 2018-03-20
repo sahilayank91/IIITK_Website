@@ -5,27 +5,8 @@ IIITKWebsite.service('NewsService',['$http', '$q','UIUtilityService', function (
             var deferred = $q.defer();
             var deferredData = {};
             var url = UIUtilityService.getURL('news').getNews;
-            $http({method: 'POST', url: url}).success(function (data, status, headers, config) {
-                if (data.success == 'false' || !data.success) {
-                    deferredData.success = false;
-                } else {
-                    deferredData.success = true;
-                    deferredData.data = data.data;
-                }
-                deferred.resolve(deferredData);
-            })
-                .error(function (data, status, headers, config) {
-                    deferredData.success = false;
-                    deferred.resolve(deferredData);
-                });
-            return deferred.promise;
-        },
-        addNews: function (parameters) {
-            var deferred = $q.defer();
-            var deferredData = {};
-
-            var url = UIUtilityService.getURL('news').addNews;
-            $http({method: 'POST', url: url, data: parameters}).success(function (data, status, headers, config) {
+            $http({method: 'POST', url: url}).then(function (data) {
+                data = data.data;
                 if (data.success == 'false' || !data.success) {
                     deferredData.success = false;
                 } else {
@@ -34,11 +15,35 @@ IIITKWebsite.service('NewsService',['$http', '$q','UIUtilityService', function (
                 }
                 deferredData.message = data.message;
                 deferred.resolve(deferredData);
-            })
-                .error(function (data, status, headers, config) {
+
+            }, function(result) {
+                //some error
+                deferredData.success = false;
+                deferred.resolve(deferredData);
+            });
+            return deferred.promise;
+        },
+        addNews: function (parameters) {
+            var deferred = $q.defer();
+            var deferredData = {};
+
+            var url = UIUtilityService.getURL('news').addNews;
+            $http({method: 'POST', url: url, data: parameters}).then(function (data) {
+                data = data.data;
+                if (data.success == 'false' || !data.success) {
                     deferredData.success = false;
-                    deferred.resolve(deferredData);
-                });
+                } else {
+                    deferredData.success = true;
+                    deferredData.data = data.data;
+                }
+                deferredData.message = data.message;
+                deferred.resolve(deferredData);
+
+            }, function(result) {
+                //some error
+                deferredData.success = false;
+                deferred.resolve(deferredData);
+            });
             return deferred.promise;
         },
 
@@ -47,7 +52,8 @@ IIITKWebsite.service('NewsService',['$http', '$q','UIUtilityService', function (
             var deferredData = {};
 
             var url = UIUtilityService.getURL('news').updateNews;
-            $http({method: 'POST', url: url, data: parameters}).success(function (data, status, headers, config) {
+            $http({method: 'POST', url: url, data: parameters}).then(function (data) {
+                data = data.data;
                 if (data.success == 'false' || !data.success) {
                     deferredData.success = false;
                 } else {
@@ -56,11 +62,12 @@ IIITKWebsite.service('NewsService',['$http', '$q','UIUtilityService', function (
                 }
                 deferredData.message = data.message;
                 deferred.resolve(deferredData);
-            })
-                .error(function (data, status, headers, config) {
-                    deferredData.success = false;
-                    deferred.resolve(deferredData);
-                });
+
+            }, function(result) {
+                //some error
+                deferredData.success = false;
+                deferred.resolve(deferredData);
+            });
             return deferred.promise;
         },
         deleteNews: function (parameters) {
@@ -68,7 +75,8 @@ IIITKWebsite.service('NewsService',['$http', '$q','UIUtilityService', function (
             var deferredData = {};
 
             var url = UIUtilityService.getURL('news').deleteNews;
-            $http({method: 'POST', url: url, data: parameters}).success(function (data, status, headers, config) {
+            $http({method: 'POST', url: url, data: parameters}).then(function (data) {
+                data = data.data;
                 if (data.success == 'false' || !data.success) {
                     deferredData.success = false;
                 } else {
@@ -77,11 +85,12 @@ IIITKWebsite.service('NewsService',['$http', '$q','UIUtilityService', function (
                 }
                 deferredData.message = data.message;
                 deferred.resolve(deferredData);
-            })
-                .error(function (data, status, headers, config) {
-                    deferredData.success = false;
-                    deferred.resolve(deferredData);
-                });
+
+            }, function(result) {
+                //some error
+                deferredData.success = false;
+                deferred.resolve(deferredData);
+            });
             return deferred.promise;
         },
     }

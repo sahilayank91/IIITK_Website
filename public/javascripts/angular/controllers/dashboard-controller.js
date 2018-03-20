@@ -10,6 +10,7 @@ IIITKWebsite.controller('DashboardController', ['$scope','UserService','UIUtilit
     $scope.gender= "";
     $scope.role ="";
     $scope.phone = "";
+    $scope.showHints = true;
     UIUtilityService.NOTIFICATION.show({
         title: "Success",
         content: "User Registered Successfully",

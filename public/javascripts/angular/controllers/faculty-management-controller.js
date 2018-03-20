@@ -32,7 +32,7 @@ IIITKWebsite.controller('FacultyController', ['$scope','UserService','UIUtilityS
         };
         FacultyService.registerFaculty(parameters)
             .then(function(data){
-                if(data.success){
+                if(data.data.success){
                     UIUtilityService.NOTIFICATION.show({
                         title: "Success",
                         content: "Faculty Registered Successfully",
