@@ -13,7 +13,7 @@
     <% include sidebar.ejs %>
     <main class="mdl-layout__content mdl-color--grey-100">
 
-            <md-card layout-padding>
+            <md-card layout-padding ng-show="addeventpage">
                 <form method="POST" name="projectForm">
                     <div class="container">
                         <md-toolbar layout="row" class="md-hue-2">
@@ -70,7 +70,7 @@
 
                         <br><br>
                         <div layout="row">
-                            <md-button class="md-raised md-warn" flex="50">Cancel</md-button>
+                            <md-button ng-click="goToAllEvents()" class="md-raised md-warn" flex="50">Cancel</md-button>
                             <md-button ng-click="addEvents()" class="md-raised md-primary" flex="50">Add Event</md-button>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
         <md-divider></md-divider>
 
 
-        <md-card>
+        <md-card ng-if="allevents">
             <div class="container">
 
 
@@ -113,113 +113,10 @@
 
                 </md-list-item>
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                <md-button type="button" class="md-raised md-primary" ng-click="addEventClicked()">ADD EVENT</md-button>
 
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </md-card>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     </main>

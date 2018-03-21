@@ -20,8 +20,6 @@ IIITKWebsite.controller('BatchController', ['$scope','BatchService','$location',
     var start_year = 2013;
     var dt = new Date();
     var end_year = dt.getFullYear();
-    console.log("start Year",start_year);
-    console.log("end_year",end_year);
 
     for(var i=start_year;i<=end_year;i++){
         $scope.year_options.push(i.toString());

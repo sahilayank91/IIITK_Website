@@ -4,6 +4,9 @@ IIITKWebsite.controller('EventController', ['$scope','$window','$timeout','UIUti
 
 $scope.type_options = ["sports","cultural","scholarship","academics","admission","recruitment","research","others"];
 
+$scope.allevents = true;
+$scope.addeventpage = false;
+
 $scope.event= {
     title:"",
     description:"",
@@ -13,6 +16,27 @@ $scope.event= {
 };
 
 $scope.eventList = [];
+
+
+$scope.addEventClicked = function () {
+    $scope.allevents = false;
+    $scope.addeventpage = true;
+    $scope.event= {
+        title:"",
+        description:"",
+        date:"",
+        organizer:"",
+        type:""
+    };
+
+    $scope.eventList = [];
+};
+
+$scope.goToAllEvents = function () {
+    $scope.allevents = true;
+    $scope.addeventpage = false;
+    $scope.getEventList();
+};
 
 
 $scope.addEvents = function(){
@@ -29,6 +53,7 @@ $scope.addEvents = function(){
 
     EventService.addEvent(parameters)
         .then(function(data){
+                $scope.goToAllEvents();
                 console.log("Data for the events: ",data);
 
 
