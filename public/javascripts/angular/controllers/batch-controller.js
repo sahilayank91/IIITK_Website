@@ -1,7 +1,7 @@
 IIITKWebsite.controller('BatchController', ['$scope','BatchService','$location', function ($scope,BatchService,$location) {
 
     console.log("Inside Batch Controller");
-    $scope.year_options = ["First","Second","Third","Fourth"];
+    $scope.year_options = [];
     $scope.type_options = ["BTech", "MTech"];
     $scope.branch_options = ['cse','ece'];
 
@@ -16,6 +16,16 @@ IIITKWebsite.controller('BatchController', ['$scope','BatchService','$location',
     $scope.id1 = "";
     $scope.s_name = "";
     $scope.s_id = "";
+
+    var start_year = 2013;
+    var dt = new Date();
+    var end_year = dt.getFullYear();
+    console.log("start Year",start_year);
+    console.log("end_year",end_year);
+
+    for(var i=start_year;i<=end_year;i++){
+        $scope.year_options.push(i.toString());
+    }
 
     // $scope.displayBatches();
     $scope.curr_batches = {};
@@ -67,6 +77,14 @@ IIITKWebsite.controller('BatchController', ['$scope','BatchService','$location',
     };
 
     $scope.addBatchClicked = function(){
+        $scope.year = "";
+        $scope.type = "";
+        $scope.branch = "";
+        $scope.name1 = "";
+        $scope.id1 = "";
+        $scope.s_name = "";
+        $scope.s_id = "";
+        $scope.students = [];
         $scope.allbatches =  false;
         $scope.addbatch = true;
         // window.location = "/createBatch";
@@ -79,6 +97,14 @@ IIITKWebsite.controller('BatchController', ['$scope','BatchService','$location',
     };
 
     $scope.addStudentClicked = function (parameters) {
+        $scope.year = "";
+        $scope.type = "";
+        $scope.branch = "";
+        $scope.name1 = "";
+        $scope.id1 = "";
+        $scope.s_name = "";
+        $scope.s_id = "";
+        $scope.students = [];
         $scope.allbatches = false;
         $scope.addstudent = true;
         $scope.batch_details = {

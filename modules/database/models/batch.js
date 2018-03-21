@@ -5,7 +5,7 @@ var BatchSchema = new mongoose.Schema(
     {
         _id: String,
 
-        year: {type: String, enum:['First','Second','Third','Fourth']},
+        year: {type: String},
 
         type: {type:String, enum:['BTech','MTech']},
 

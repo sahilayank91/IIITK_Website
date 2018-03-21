@@ -75,16 +75,16 @@ html, body {
     -ms-flex-align: center;
     align-items: center;
     color: rgba(255, 255, 255, 0.56);
-    font-weight: 500;
+    font-weight: bold;
 }
 .demo-layout .demo-navigation .mdl-navigation__link:hover {
-    background-color: #00BCD4;
-    color: #37474F;
+    background:linear-gradient(to bottom, #29A8CB,#0273AD);
+    color: #EEEEEE;
     text-decoration: none;
 }
 .demo-navigation .mdl-navigation__link .material-icons {
     font-size: 24px;
-    color: rgba(255, 255, 255, 0.56);
+    color: rgba(255, 255, 255, 0.8);
     margin-right: 32px;
 }
 
