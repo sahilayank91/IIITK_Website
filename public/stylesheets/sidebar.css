@@ -298,3 +298,13 @@ html { height: 100%;}
 a:hover{
     text-decoration: none;
 }
+
+.admin_title{
+    color: #afb1be;
+    /*text-align: center;*/
+    font-size:35px;
+    font-weight: bold;
+    font-style:italic;
+    font-family:"Comic Sans MS";
+    padding-bottom: 20px;
+}
