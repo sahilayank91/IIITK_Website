@@ -8,9 +8,7 @@ var RESPONSE = require(__BASE__ + "modules/controller/handler/ResponseHandler");
 router.get('/getEvent',function(req,res,next){
     var promise;
     promise  = EventController.getEvent();
-
     promise.then(function(data){
-        console.log("Data in get Event: ",data);
         RESPONSE.sendOkay(res, {success:true,data: data});
     }).catch(function(error){
         console.log("Error in get Event: ",error);
@@ -38,23 +36,35 @@ router.post('/addEvent',function(req,res,next){
 });
 router.post('/updateEvent',function(req,res,next){
     var promise;
-    promise  = NewsController.getNews();
+    var parameters= {};
+    parameters.title = req.body.title;
+    parameters.description = req.body.description;
+    parameters.date = req.body.date;
+    parameters.type= req.body.type;
+    parameters.organizer = req.body.organizer;
+    parameters._id = req.body._id;
 
-
-    promise.then(function(data){
-        // res.render('/index',{data:data});
+    EventController.updateEvent(parameters)
+        .then(function(data){
+            console.log("Data: ",data);
+            RESPONSE.sendOkay(res,{success:true,data:data});
+        }).catch(function(Error){
+            console.log(Error);
     });
 });
 
 
 router.post('/deleteEvent',function(req,res,next){
     var promise;
-    promise  = NewsController.getNews();
-
-
+    var id = req.body._id;
+    promise  = EventController.deleteEvent(id);
     promise.then(function(data){
-        // res.render('/index',{data:data});
-    });
+        console.log("Deleted Event: ",data);
+        RESPONSE.sendOkay(res,{success:true,data:data});
+
+    }).catch(function(error){
+        console.log(error);
+    })
 });
 
 

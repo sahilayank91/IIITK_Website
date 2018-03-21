@@ -2,6 +2,23 @@
 <html lang="en" ng-app="IIITKWebsite">
 <head>
     <% include admin_layout.ejs%>
+
+
+    <style>
+        .update-button {
+            /*font-size: 16px;*/
+            /*margin: 20px 0;*/
+            /*padding: 3px 15px 3px 15px;*/
+            /*color: white;*/
+            /*text-transform: none;*/
+            /*font-weight: 400;*/
+            /*min-width:100px;*/
+
+            color:white;
+            background-color: rgba(255, 171, 61, 0.96);
+        }
+
+    </style>
 </head>
 
 <body>
@@ -10,9 +27,14 @@
     <% include sidebar.ejs%>
         <main class="mdl-layout__content mdl-color--grey-100">
             <div ng-if="allbatches" style="width: inherit;">
-                <div class="mdl-grid demo-content">
-                    <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                            <h1>Current Batches </h1>
+               <div class="container">
+                    <md-toolbar md-scroll-shrink ng-if="true">
+                            <div class="md-toolbar-tools">
+                                <h3>
+                                    <span>Current Batches</span>
+                                </h3>
+                            </div>
+                        </md-toolbar>
                             <hr>
                             <table class="batch-table">
 
@@ -28,26 +50,30 @@
                                     <td class="batch-td">{{batch.type}}</td>
                                     <td class="batch-td">{{batch.year}}</td>
                                     <td class="batch-td">{{batch.branch}}</td>
-                                    <td class="batch-td">
-                                        <button type="button" class="cancelbtn" ng-click="removeBatchClicked(batch)" data-toggle="modal" data-target="#RemoveModal">REMOVE BATCH</button>
-                                        <button type="submit" class="signupbtn" ng-click="addStudentClicked(batch)">ADD STUDENTS</button>
+                                    <td class="batch-td" layout="row" flex>
+                                        <md-button  flex="50" class="md-raised md-warn" ng-click="removeBatchClicked(batch)" data-toggle="modal" data-target="#RemoveModal">REMOVE BATCH</md-button>
+                                        <md-button  flex="50" class="md-raised" style="background-color: #4caf50" ng-click="addStudentClicked(batch)">ADD STUDENTS</md-button>
                                     </td>
                                     <td class="batch-td">
-                                        <button type="button" class="signupbtnfull" style="background-color:#3366FF" ng-click="updateBatchClicked(batch)" data-toggle="modal" data-target="#UpdateModal">UPDATE</button>
+                                        <md-button  class="md-raised md-primary" style="background-color: #089ad3" ng-click="updateBatchClicked(batch)" data-toggle="modal" data-target="#UpdateModal">UPDATE</md-button>
 
                                     </td>
                                     <td class="batch-td" data-toggle="modal" data-target="#StudentDetailsModal" ng-click="makeBatchArray(batch)"><span class="glyphicon glyphicon-chevron-right"></span></td>
                                 </tr>
                             </table>
 
-                            <button type="button" ng-click="addBatchClicked()" class="signupbtnfull">ADD BATCH</button>
+                            <md-button type="button" ng-click="addBatchClicked()" class="md-raised md-primary">ADD BATCH</md-button>
 
-                    </div>
-                </div>
 
-                <div class="mdl-grid demo-content">
-                    <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                        <h1>Graduated Batches </h1>
+
+                <div class="container">
+                        <md-toolbar md-scroll-shrink ng-if="true">
+                            <div class="md-toolbar-tools">
+                                <h3>
+                                    <span>Graduated Batches</span>
+                                </h3>
+                            </div>
+                        </md-toolbar>
                         <hr>
                         <table class="batch-table">
 
@@ -64,16 +90,16 @@
                                 <td class="batch-td">{{batch.year}}</td>
                                 <td class="batch-td">{{batch.branch}}</td>
                                 <td class="batch-td">
-                                    <button type="button" class="cancelbtnfull" ng-click="removeBatchClicked(batch)" data-toggle="modal" data-target="#RemoveModal">REMOVE BATCH</button>
+                                    <md-button class="md-raised md-warn" ng-click="removeBatchClicked(batch)" data-toggle="modal" data-target="#RemoveModal">REMOVE BATCH</md-button>
                                 </td>
                                 <td class="batch-td" data-toggle="modal" data-target="#StudentDetailsModal" ng-click="makeBatchArray(batch)"><span class="glyphicon glyphicon-chevron-right"></span></td>
 
                             </tr>
                         </table>
                     </div>
-                </div>
-            </div>
 
+               </div>
+            </div>
             <!-- ########################################################################################################################################## -->
             <div ng-show="addbatch" style="width: inherit;">
                 <% include addBatch.ejs%>
@@ -82,9 +108,8 @@
             <div ng-show="addstudent" style="width: inherit;">
                 <% include addStudent.ejs%>
             </div>
-        </main>
 
-    </div>
+        </main>
 
     <!-- Update Modal -->
     <div class="modal fade" id="UpdateModal" role="dialog">

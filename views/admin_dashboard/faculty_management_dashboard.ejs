@@ -8,59 +8,126 @@
 <div ng-app="IIITKWebsite" ng-controller="FacultyController" name="upload_form">
     <% include sidebar.ejs %>
     <main class="mdl-layout__content mdl-color--grey-100">
-        <div class="mdl-grid demo-content">
-            <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                <form method="POST"
+
+        <md-card>
+        <div class="container">
+               <form method="POST"
                       ref='uploadForm'
                       encType="multipart/form-data"
                 >
         <div class="container">
-            <h1>Add New Faculty</h1>
+            <md-toolbar layout="row" class="md-hue-2">
+                <div class="md-toolbar-tools">
+                    <span>Add new Faculty</span>
+                </div>
+            </md-toolbar>
             <hr>
-            <label><b>First Name</b></label>
-            <input type="text" placeholder="Enter First Name" ng-model="firstname" name="firstname" required>
+            <div layout="row">
+                <md-input-container flex="50">
+                    <label>First Name</label>
+                    <input required name="firstname" ng-model="firstname">
+                    <div ng-messages="projectForm.firstname.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
 
-            <label><b>Last Name</b></label>
-            <input type="text" placeholder="Enter Last Name" ng-model="lastname" name="lastname" required>
+                <md-input-container flex="50">
+                    <label>Last Name</label>
+                    <input required name="lastname" ng-model="lastname">
+                    <div ng-messages="projectForm.lastname.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+            </div>
 
-            <label><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" ng-model = "email" name="email" required>
 
-            <label><b>Post</b></label>
-            <input type="text" placeholder="Enter Post" ng-model = "post" name="post" required>
+            <md-input-container class="md-block">
+                <label>Email</label>
+                <input required type="email" name="email" ng-model="email"
+                       minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
 
-            <label><b>Phone No</b></label>
-            <input type="text" placeholder="Enter Phone No" ng-model="phone" name="phone" required>
+                <div ng-messages="projectForm.email.$error" role="alert">
+                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                        Your email must be between 10 and 100 characters long and look like an e-mail address.
+                    </div>
+                </div>
+            </md-input-container>
 
-            <label><b>Branch</b></label>
-            <input type="text" placeholder="Enter Branch" ng-model="branch" name="branch" required>
 
-            <label><b>Place of Education</b></label>
-            <input type="text" placeholder="Enter Place of Education" ng-model="education" name="education" required>
 
-            <label><b>About</b></label>
-            <input type="text" placeholder="Enter Details about the Person" ng-model="about" name="about" required>
+            <md-input-container class="md-block">
+                <label>Post</label>
+                <input md-maxlength="30" required md-no-asterisk name="description"  ng-model="post">
+                <div ng-messages="projectForm.description.$error">
+                    <div ng-message="required">This is required.</div>
+                </div>
+            </md-input-container>
 
-            <div class="clearfix">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                <button type="submit" ng-click="addFaculty()" class="signupbtn">Sign Up</button>
+
+
+            <md-input-container class="md-block">
+                <label>Phone Number</label>
+                <input name="phone" ng-model="phone" ng-pattern="/^[789]\d{9}$/" />
+
+                <div class="hint" ng-show="showHints">(###)-##########</div>
+
+                <div ng-messages="projectForm.phone.$error" ng-hide="showHints">
+                    <div ng-message="pattern">(###)-########## - Please enter a valid phone number.</div>
+                </div>
+            </md-input-container>
+
+
+            <md-input-container class="md-block">
+                <label>Branch</label>
+                <input md-maxlength="30" required md-no-asterisk name="description"  ng-model="branch">
+                <div ng-messages="projectForm.description.$error">
+                    <div ng-message="required">This is required.</div>
+                </div>
+            </md-input-container>
+
+
+            <md-input-container class="md-block">
+                <label>Place of Education</label>
+                <input md-maxlength="30" required md-no-asterisk name="description"  ng-model="education">
+                <div ng-messages="projectForm.description.$error">
+                    <div ng-message="required">This is required.</div>
+                </div>
+            </md-input-container>
+
+
+
+            <md-input-container class="md-block">
+                <label>About</label>
+                <input md-maxlength="30" required md-no-asterisk name="description"  ng-model="about">
+                <div ng-messages="projectForm.description.$error">
+                    <div ng-message="required">This is required.</div>
+                </div>
+            </md-input-container>
+
+
+            <div layout="row" flex>
+                <md-button onclick="document.getElementById('id01').style.display='none'" class="md-warn md-raised">Cancel</md-button>
+                <md-button ng-click="addFaculty()" class="md-primary md-raised">Sign Up</md-button>
             </div>
         </div>
     </form>
             </div>
-        </div>
+        </md-card>
 
     <!--########################################################################-->
     <!-- FACULTY LIST -->
     <!-- ######################################################################-->
 
+<md-card>
 
+        <div class="container">
 
-        <div class="mdl-grid demo-content">
-            <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
                 <div style="width: inherit;">
-                    <h1>All Faculties</h1>
-                    <h4><b>Current</b></h4>
+                    <md-toolbar layout="row" class="md-hue-2">
+                        <div class="md-toolbar-tools">
+                            <span>All Faculties</span>
+                        </div>
+                    </md-toolbar>
                     <hr>
                     <table class="batch-table">
 
@@ -78,18 +145,18 @@
                             <td class="batch-td">{{data.contact}}</td>
                             <td class="batch-td">{{data.education}}</td>
                             <td class="batch-td">{{data.about}}</td>
-                            <td class="batch-td">
-                                <button type="button" class="cancelbtn" ng-click="deleteFaculty(data.id)">Delete</button>
-                                <button type="button" class="successbtn" ng-click = "showUpdateFacultyDialog(data.index)">Update</button>
+                            <td class="batch-td" layout="row" flex>
+                                <md-button type="button" flex="50" class="md-warn md-raised" ng-click="deleteFaculty(data.id)">Delete</md-button>
+                                <md-button type="button" flex="50" class="md-primary md-raised" ng-click = "showUpdateFacultyDialog(data.index)">Update</md-button>
 
                             </td>
                         </tr>
                     </table>
                 </div>
-
-
+            <md-button type="button" ng-click="addBatchClicked()" class="md-raised md-primary">ADD BATCH</md-button>
             </div>
-        </div>
+
+</md-card>
 
 
 
@@ -97,52 +164,115 @@
         <!--########################################################################-->
         <!-- FACULTY UPDATION -->
         <!-- ######################################################################-->
+        <md-card>
+            <div class="container">
 
-        <div class="mdl-grid demo-content">
-            <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                <form method="POST">
+
+
+                <form method="POST" name="projectForm">
                     <div class="container">
-                        <h1>Update Faculty</h1>
-                        <hr>
-                        <label><b>First Name</b></label>
-                        <input type="text" placeholder="Enter First Name" ng-model="firstname" name="firstname" required>
+                        <md-toolbar layout="row" class="md-hue-2">
+                            <div class="md-toolbar-tools">
+                                <span>Update Faculty</span>
+                            </div>
+                        </md-toolbar>
 
-                        <label><b>Last Name</b></label>
-                        <input type="text" placeholder="Enter Last Name" ng-model="lastname" name="lastname" required>
+                        <br><br>
+                        <div layout="row">
+                            <md-input-container flex="50">
+                                <label>First Name</label>
+                                <input required name="firstname" ng-model="firstname">
+                                <div ng-messages="projectForm.firstname.$error">
+                                    <div ng-message="required">This is required.</div>
+                                </div>
+                            </md-input-container>
 
-                        <label><b>Email</b></label>
-                        <input type="text" placeholder="Enter Email" ng-model = "email" name="email" required>
+                            <md-input-container flex="50">
+                                <label>Last Name</label>
+                                <input required name="lastname" ng-model="lastname">
+                                <div ng-messages="projectForm.lastname.$error">
+                                    <div ng-message="required">This is required.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
 
-                        <label><b>Phone No</b></label>
-                        <input type="text" placeholder="Enter Phone No" ng-model="phone" name="phone" required>
 
-                        <label><b>Branch</b></label>
-                        <input type="text" placeholder="Enter Branch" ng-model="branch" name="branch" required>
+                        <md-input-container class="md-block">
+                            <label>Email</label>
+                            <input required type="email" name="email" ng-model="email"
+                                   minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
 
-                        <label><b>Post</b></label>
-                        <input type="text" placeholder="Enter Post" ng-model = "post" name="post" required>
+                            <div ng-messages="projectForm.email.$error" role="alert">
+                                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                    Your email must be between 10 and 100 characters long and look like an e-mail address.
+                                </div>
+                            </div>
+                        </md-input-container>
 
-                        <label><b>Place of Education</b></label>
-                        <input type="text" placeholder="Enter Place of Education" ng-model="education" name="education" required>
 
-                        <label><b>About</b></label>
-                        <input type="text" placeholder="Enter Details about the Person" ng-model="about" name="about" required>
 
+                        <md-input-container class="md-block">
+                            <label>Post</label>
+                            <input md-maxlength="30" required md-no-asterisk name="description"  ng-model="post">
+                            <div ng-messages="projectForm.description.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-block">
+                            <label>Phone Number</label>
+                            <input name="phone" ng-model="phone" ng-pattern="/^[789]\d{9}$/" />
+
+                            <div class="hint" ng-show="showHints">(###)-##########</div>
+
+                            <div ng-messages="projectForm.phone.$error" ng-hide="showHints">
+                                <div ng-message="pattern">(###)-########## - Please enter a valid phone number.</div>
+                            </div>
+                        </md-input-container>
+
+
+
+                        <md-input-container class="md-block">
+                            <label>Branch</label>
+                            <input md-maxlength="30" required md-no-asterisk name="description"  ng-model="branch">
+                            <div ng-messages="projectForm.description.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+
+
+
+                        <md-input-container class="md-block">
+                            <label>Place of Education</label>
+                            <input md-maxlength="30" required md-no-asterisk name="description"  ng-model="education">
+                            <div ng-messages="projectForm.description.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+
+
+
+                        <md-input-container class="md-block">
+                            <label>About</label>
+                            <input md-maxlength="30" required md-no-asterisk name="description"  ng-model="about">
+                            <div ng-messages="projectForm.description.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
 
                         <label><b>Upload Profile Picture</b></label>
                         <input type="file" style="margin-bottom:15px">
 
-                        <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-
-                        <div class="clearfix">
-                            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                            <button type="submit" ng-click="updateFaculty()" class="signupbtn">Update User</button>
+                        <div layout="row" flex>
+                            <md-button flex="50" class="md-raised md-warn" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</md-button>
+                            <md-button flex="50" class="md-raised md-primary" ng-click="updateFaculty()" class="signupbtn">Update User</md-button>
                         </div>
                     </div>
                 </form>
-            </div>
-        </div>
 
+            </div>
+
+        </md-card>
 
     </main>
 

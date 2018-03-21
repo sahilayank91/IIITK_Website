@@ -186,10 +186,10 @@ router.get('/social_platforms',function (req,res,next) {
 
 
 router.get('/event_dashboard',function (req,res,next) {
-    res.render('admin_dashboard/createEvent',{title: "IIITK Social Platforms"});
+    res.render('admin_dashboard/createEvent',{title: "Events"});
 });
 router.get('/curriculumPortal',function (req,res,next) {
-    res.render('partials/curriculum',{title: "IIITK Social Platforms"});
+    res.render('partials/curriculum',{title: "Curriculum"});
 });
 
 

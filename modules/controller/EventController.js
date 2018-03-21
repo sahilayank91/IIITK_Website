@@ -26,7 +26,7 @@ var addEvent = function(parameters){
 };
 
 var updateEvent = function(parameters){
-    return eventOperations.updateEvent(parameters)
+    return eventOperations.updateEvent({_id:parameters._id},parameters)
         .then(function(data){
             if(data){
                 return data;
@@ -39,7 +39,7 @@ var updateEvent = function(parameters){
 };
 
 var deleteEvent = function(parameters){
-    return eventOperations.deleteEvent(parameters)
+    return eventOperations.deleteEvent({_id:parameters})
         .then(function(data){
             if(data){
                 return data;

@@ -1,26 +1,49 @@
 <!--<div ng-app="IIITKWebsite" ng-controller="BatchController">-->
-    <div class="mdl-grid demo-content">
-        <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+    <div class="container">
             <form method="POST" name="batch" style="width:inherit">
                 <!--<div class="container">-->
-                    <h1>Add new Batch</h1>
-                    <hr>
+                <md-toolbar md-scroll-shrink ng-if="true">
+                    <div class="md-toolbar-tools">
+                        <h3>
+                            <span>Add new Batch</span>
+                        </h3>
+                    </div>
+                </md-toolbar>
+                <hr>
+
+
+
+
                     <label><b>Year</b></label>
-                    <!--<input type="text" placeholder="Year" name="year" ng-model="year">-->
-                    <select type="text" ng-model="year" ng-options="x for x in year_options" class="select_bar"></select>
-                    <br><br>
+                      <md-select ng-model="year">
+                          <md-optgroup label="Year">
+                              <md-option ng-value="item" ng-repeat="item in year_options">{{item}}</md-option>
 
-                    <label><b>Type</b></label>
-                    <!--<input type="text" placeholder="Type" name="type" ng-model="type">-->
-                    <select type="text" ng-model="type" ng-options="item for item in type_options" class="select_bar"></select>
-                    <br><br>
+                              <!--<select type="text" ng-model="year" ng-options="x for x in year_options" class="select_bar"></select>-->
+                          </md-optgroup>
+                      </md-select>
 
-                    <label><b>Branch</b></label>
-                    <!--<input type="text" placeholder="Branch" name="branch" ng-model="branch">-->
-                    <select type="text" ng-model="branch" ng-options="item for item in branch_options" class="select_bar"></select>
-                    <br><br>
 
-                    <div class="row">
+
+
+                <label><b>Type</b></label>
+                <md-select ng-model="type">
+                    <md-optgroup label="Type">
+                        <md-option ng-value="item" ng-repeat="item in type_options">{{item}}</md-option>
+                    </md-optgroup>
+                </md-select>
+
+
+
+
+                <label><b>Branch</b></label>
+                <md-select ng-model="branch">
+                    <md-optgroup label="Branch">
+                        <md-option ng-value="item" ng-repeat="item in branch_options">{{item}}</md-option>
+                    </md-optgroup>
+                </md-select>
+
+                    <div layout="row">
                         <div class="col-md-5">
                             <label><b>Student Name</b></label>
                         </div>
@@ -63,11 +86,12 @@
 
 
                 <!--<div class="clearfix">-->
-                        <button type="submit" class="cancelbtn" ng-click="goToAllBatches()">CANCEL</button>
-                        <button type="submit" class="signupbtn" ng-click="addNewBatch()">ADD</button>
+                <div layout="row" flex>
+                        <md-button flex="50" class="md-warn md-raised" ng-click="goToAllBatches()">CANCEL</md-button>
+                        <md-button flex="50" class="md-raised md-primary" ng-click="addNewBatch()">ADD</md-button>
+                </div>
                     <!--</div>-->
                 <!--</div>-->
             </form>
-        </div>
     </div>
 <!--</div>-->

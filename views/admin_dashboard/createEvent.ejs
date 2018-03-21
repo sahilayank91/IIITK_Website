@@ -76,6 +76,152 @@
                     </div>
                 </form>
             </md-card>
+
+
+
+
+        <md-divider></md-divider>
+
+
+        <md-card>
+            <div class="container">
+
+
+                <md-toolbar layout="row" class="md-hue-2">
+                    <div class="md-toolbar-tools">
+                        <span>List of all the Events</span>
+                    </div>
+                </md-toolbar>
+
+                <div layout="column" flex>
+                <md-list-item class="md-3-line" ng-repeat="item in eventList" ng-click="null" flex="50">
+                    <img ng-src="/images/1.jpg" class="md-avatar" alt="{{item.title}}" />
+                    <div class="md-list-item-text" layout="column">
+                        <br>
+                        <h3>{{ item.title }} </h3>
+                        <h4>Description - {{ item.description }}</h4>
+                        <p>Event Date - {{ item.date | date : 'dd/MM/yyyy' }}</p>
+                        <p>Organizer - {{item.organizer}}</p>
+                        <br>
+                    </div>
+                    <div layout ="column" flex="50">
+                        <md-button class="md-warn md-secondary" ng-click="updateEvents($index)">Update</md-button>
+                        <md-button class="md-warn md-secondary" ng-click="deleteEvents($index)">Delete</md-button>
+                    </div>
+
+                    <md-divider></md-divider>
+
+                </md-list-item>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </md-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </main>
 </div>
 </body>

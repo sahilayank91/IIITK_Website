@@ -6,8 +6,9 @@ IIITKWebsite.service('EventService',['$http', '$q','UIUtilityService', function 
             var deferredData = {};
             var url = UIUtilityService.getURL('event').getEvent;
             url += "?n=5";
+
             $http({method: 'GET', url: url}).then(function (data) {
-                console.log(data);
+                data = data.data;
                 if (data.success == 'false' || !data.success) {
                     deferredData.success = false;
                 } else {
@@ -31,7 +32,6 @@ IIITKWebsite.service('EventService',['$http', '$q','UIUtilityService', function 
 
             var url = UIUtilityService.getURL('event').addEvent;
             $http({method: 'POST', url: url, data: parameters}).then(function (data) {
-                console.log(data);
                 if (data.success == 'false' || !data.success) {
                     deferredData.success = false;
                 } else {
@@ -53,9 +53,9 @@ IIITKWebsite.service('EventService',['$http', '$q','UIUtilityService', function 
             var deferred = $q.defer();
             var deferredData = {};
 
-            var url = UIUtilityService.getURL('news').updateEvent;
+            var url = UIUtilityService.getURL('event').updateEvent;
             $http({method: 'POST', url: url, data: parameters}).then(function (data) {
-                console.log(data);
+                data = data.data;
                 if (data.success == 'false' || !data.success) {
                     deferredData.success = false;
                 } else {
@@ -76,7 +76,7 @@ IIITKWebsite.service('EventService',['$http', '$q','UIUtilityService', function 
             var deferred = $q.defer();
             var deferredData = {};
 
-            var url = UIUtilityService.getURL('news').deleteEvent;
+            var url = UIUtilityService.getURL('event').deleteEvent;
             $http({method: 'POST', url: url, data: parameters}).then(function (data) {
                 console.log(data);
                 if (data.success == 'false' || !data.success) {
