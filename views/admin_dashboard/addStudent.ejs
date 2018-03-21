@@ -1,10 +1,16 @@
 <!--<div ng-app="IIITKWebsite" ng-controller="BatchController">-->
-    <div class="mdl-grid demo-content">
-        <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
+<md-card>
+<div class="container">
             <form method="POST" name="batch" style="width:inherit">
                 <!--<div class="container" >-->
-                    <h1>Add Student </h1>
-                    <pre><b>Year: </b>{{batch_details.year}}    <b>Type: </b>{{batch_details.type}}    <b>Branch: </b>{{batch_details.branch}}</pre>
+                <md-toolbar md-scroll-shrink ng-if="true">
+                    <div class="md-toolbar-tools">
+                        <h3>
+                            <span>All Students</span>
+                        </h3>
+                    </div>
+                </md-toolbar>
+                   <md-subheader> <pre><b>Year: </b>{{batch_details.year}}    <b>Type: </b>{{batch_details.type}}    <b>Branch: </b>{{batch_details.branch}}</pre></md-subheader>
                     <hr>
                     <div class="row">
                         <div class="col-md-5">
@@ -48,11 +54,15 @@
                     </div>
 
                     <!--<div class="clearfix">-->
-                        <button type="submit" class="cancelbtn" ng-click="goToAllBatches()">CANCEL</button>
-                        <button type="submit" class="signupbtn" ng-click="addStudentToBatch(batch_details)">ADD</button>
+                <div layout="row" flex>
+                        <md-button flex="50" class="md-raised md-warn" ng-click="goToAllBatches()">CANCEL</md-button>
+                        <md-button flex="50" class="md-primary md-raised" ng-click="addStudentToBatch(batch_details)">ADD</md-button>
+                </div>
                     <!--</div>-->
                 <!--</div>-->
             </form>
-        </div>
+
     </div>
+</md-card>
+
 <!--</div>-->

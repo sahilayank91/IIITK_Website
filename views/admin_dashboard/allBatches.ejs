@@ -27,7 +27,8 @@
     <% include sidebar.ejs%>
         <main class="mdl-layout__content mdl-color--grey-100">
             <div ng-if="allbatches" style="width: inherit;">
-               <div class="container">
+               <md-card>
+                <div class="container">
                     <md-toolbar md-scroll-shrink ng-if="true">
                             <div class="md-toolbar-tools">
                                 <h3>
@@ -65,7 +66,9 @@
                             <md-button type="button" ng-click="addBatchClicked()" class="md-raised md-primary">ADD BATCH</md-button>
 
 
-
+                </div>
+               </md-card>
+                <md-card>
                 <div class="container">
                         <md-toolbar md-scroll-shrink ng-if="true">
                             <div class="md-toolbar-tools">
@@ -99,7 +102,8 @@
                     </div>
 
                </div>
-            </div>
+            </md-card>
+
             <!-- ########################################################################################################################################## -->
             <div ng-show="addbatch" style="width: inherit;">
                 <% include addBatch.ejs%>

@@ -10,13 +10,20 @@
     <% include sidebar.ejs%>
     <main class="mdl-layout__content mdl-color--grey-100">
         <div style="width: inherit" ng-if="news_section">
-            <div class="mdl-grid demo-content">
-                <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                    <h1>News </h1>
+            <md-card>
+            <div class="container">
+                <md-toolbar md-scroll-shrink ng-if="true">
+                    <div class="md-toolbar-tools">
+                        <h3>
+                            <span>News</span>
+                        </h3>
+                    </div>
+                </md-toolbar>
                     <hr>
-
+                <md-card>
                     <div ng-repeat="news in allnews.data" style="width:inherit">
                         <br>
+
                         <div class="container news_block" style="width:inherit">
                             <h3>{{news.content.title}}</h3>
                             <span>  </span>
@@ -33,12 +40,13 @@
                         </div>
 
                     </div>
+                </md-card>
 
-                    <button type="button" ng-click="addNewsClicked()" class="signupbtnfull" style="margin-top: 10px;">ADD NEWS</button>
+                    <md-button class="md-raised md-primary" style="background-color: #00c853" ng-click="addNewsClicked()" class="signupbtnfull" style="margin-top: 10px;">ADD NEWS</md-button>
 
                 </div>
             </div>
-        </div>
+        </md-card>
 
         <div style="width: inherit;" ng-show="addNews_section">   <!--   ng-if="allbatches" -->
             <div class="mdl-grid demo-content">

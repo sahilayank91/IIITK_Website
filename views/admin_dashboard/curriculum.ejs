@@ -74,7 +74,7 @@
                 </md-input-container>
 
                 <div>
-                    <md-button type="submit" ng-click ="addSubjectInCurriculum()">Submit</md-button>
+                    <md-button class="md-raised md-primary" ng-click ="addSubjectInCurriculum()">Submit</md-button>
                 </div>
             </form>
             </div>
@@ -102,7 +102,7 @@
             </div>
         </md-toolbar>
 
-        <md-subheader ng-if="subject.length > 0" class="md-no-sticky">No Curriculum has been updated yet.</md-subheader>
+        <md-subheader ng-if="!subject.length" class="md-no-sticky">No Curriculum has been updated yet.</md-subheader>
 
     <md-list-item class="md-3-line" ng-repeat="item in subject" ng-click="null">
         <img ng-src="/images/1.jpg" class="md-avatar" alt="{{item.subject}}" />
