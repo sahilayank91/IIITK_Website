@@ -62,7 +62,6 @@ var SERVICE_news = require(__BASE__  + "routes/service/news");
 var SERVICE_batch = require(__BASE__ + "routes/service/batch");
 var SERVICE_faculty = require(__BASE__ + "routes/service/faculty");
 var SERVICE_curriculum = require(__BASE__ + "routes/service/curriculum");
-var SERVICE_event = require(__BASE__ + "routes/service/event");
 
 /****************************************************/
 /****************** Routes Mapping ******************/

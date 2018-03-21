@@ -14,6 +14,27 @@ IIITKWebsite.controller('CurriculumController', ['$scope','CurriculumService','$
     };
     $scope.subjectname= "";
 
+    $scope.getSubjectList = function(){
+        CurriculumService.getSubjectList()
+            .then(function(data){
+                console.log("data:",data);
+                var data = data.data;
+
+                for(var i=0;i<data.length;i++){
+                    var parameter = {};
+                    parameter.credits = data[i].credits;
+                    parameter.subject = data[i].subject;
+                    parameter.semester = data[i].semester;
+                    parameter._id = data[i]._id;
+                    $scope.subject.push(parameter);
+                }
+            }).catch(function(error){
+            console.log("Error in adding subject: ",error);
+        });
+    };
+
+    $scope.getSubjectList();
+
 
     $scope.addSubjectInCurriculum = function() {
         var parameter = {};
@@ -24,6 +45,7 @@ IIITKWebsite.controller('CurriculumController', ['$scope','CurriculumService','$
         parameter.credits = $scope.credits;
         CurriculumService.addSubject(parameter)
             .then(function (data) {
+                $scope.subject =[];
                 $scope.getSubjectList();
                 UIUtilityService.NOTIFICATION.show({
                     title: "Success",
@@ -40,26 +62,6 @@ IIITKWebsite.controller('CurriculumController', ['$scope','CurriculumService','$
 
     };
 
-        $scope.getSubjectList = function(){
-            CurriculumService.getSubjectList()
-                .then(function(data){
-                    console.log("data:",data);
-                    var data = data.data;
-
-                    for(var i=0;i<data.length;i++){
-                        var parameter = {};
-                        parameter.credits = data[i].credits;
-                        parameter.subject = data[i].subject;
-                        parameter.semester = data[i].semester;
-                        parameter._id = data[i]._id;
-                        $scope.subject.push(parameter);
-                    }
-                }).catch(function(error){
-                    console.log("Error in adding subject: ",error);
-            });
-        };
-
-        $scope.getSubjectList();
 
 
 
@@ -92,24 +94,6 @@ IIITKWebsite.controller('CurriculumController', ['$scope','CurriculumService','$
             });
 
         };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }]);

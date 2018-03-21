@@ -56,6 +56,8 @@ router.post('/addSubject',function(req,res,next) {
      });
 
 });
+
+
 router.post('/updateSubject', function (req, res, next) {
       var parameters = {
         id: req.body.id,
@@ -84,7 +86,7 @@ router.post('/deleteSubject', function (req, res, next) {
         .then(function (data) {
             RESPONSE.sendOkay(res, {success: true, redirect: path.join('/' + "curriculum")});
         }).catch(function (error) {
-        console.log(error);
+             console.log(error);
     });
 
 

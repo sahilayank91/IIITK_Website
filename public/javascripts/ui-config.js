@@ -40,6 +40,6 @@ window.CONFIG = {
         addSubject:"service/curriculum/addSubject",
         getSubjectList:"service/curriculum/getSubjectList",
         deleteSubject:"service/curriculum/deleteSubject",
-        updateSubject:"service/curriculum/updateSubject",
+        updateSubject:"service/curriculum/updateSubject"
     }
 };
