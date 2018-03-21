@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ../layout.ejs %>
+    <header>
+        <% include header.ejs %>
+    </header>
+    <title><%= title %></title>
+
+</head>
+
+<body id="top" ng-app="IIITKWebsite">
+<div class="wrapper bgded overlay" style="background-image:url('/images/background.jpg');">
+    <div id="breadcrumb" class="hoc clear">
+        <!-- ################################################################################################ -->
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/latestNews">Latest News</a></li>
+
+        </ul>
+        <!-- ################################################################################################ -->
+    </div>
+</div>
+
+<div class="wrapper row3" ng-controller="NewsController">
+    <main class="hoc container clear">
+        <h1 class="page-title" style="margin-top:-25px; font-size: 40px; margin-bottom:30px;">Latest News</h1>
+        <div class="nospace group services">
+            <div ng-repeat="news in ord_news">
+                <div style="width:inherit">
+                    <article style="min-height: 10px;"><a href="#"><i ng-class="news.type"></i></a>
+                        <h6 class="heading" style="color: #2d2e38;">{{news.content.title}}</h6>
+                        <p>{{news.content.text}}</p>
+                        <!--<footer><a href="/latestNews">Read More &raquo;</a></footer>-->
+                    </article>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<footer>
+    <% include footer.ejs %>
+</footer>
+
+</body>
+</html>

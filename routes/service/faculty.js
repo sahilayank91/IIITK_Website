@@ -36,7 +36,8 @@ router.post('/addFaculty',function(req,res,next) {
         gender: req.body.gender,
         role: req.body.role,
         type: req.body.type,
-        about: req.body.about,
+        post:req.body.post,
+        about: req.body.about
     };
     FacultyController.registerFaculty(parameters)
         .then(function (data) {
@@ -48,26 +49,24 @@ router.post('/addFaculty',function(req,res,next) {
             } else {
                 console.log("Some error occured while getting data from the database");
             }
-        }).then(function (data) {
-
-
-        if (!req.files)
-            return res.status(400).send('No files were uploaded.');
-
-        // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-        let sampleFile = req.files.file;
-
-        // Use the mv() method to place the file somewhere on your server
-        sampleFile.mv('/uploads/filename.jpg', function (err) {
-            if (err)
-                return res.status(500).send(err);
-
-            res.send('File uploaded!');
-
+        // }).then(function (data) {
+        //
+        //
+        // if (!req.files)
+        //     return res.status(400).send('No files were uploaded.');
+        //
+        // // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+        // let sampleFile = req.files.file;
+        //
+        // // Use the mv() method to place the file somewhere on your server
+        // sampleFile.mv('/uploads/filename.jpg', function (err) {
+        //     if (err)
+        //         return res.status(500).send(err);
+        //
+        //     res.send('File uploaded!');
+        //
 
         })
-
-    });
 
 });
     router.post('/updateFaculty', function (req, res, next) {
@@ -79,12 +78,9 @@ router.post('/addFaculty',function(req,res,next) {
             firstname: req.body.firstname,
             lastname: req.body.lastname,
             phone: req.body.phone,
-            // gender: req.body.gender,
-            about: req.body.about,
+            post:req.body.post,
+            about: req.body.about
         };
-
-        console.log("Parameter passed : ", parameters);
-
         FacultyController.updateFaculty(parameters)
             .then(function (Data) {
                 if (Data) {

@@ -11,6 +11,132 @@
 <div ng-app="IIITKWebsite" ng-controller="DashboardController">
 <% include sidebar.ejs %>
     <main class="mdl-layout__content mdl-color--grey-100">
+
+
+
+
+
+        <md-content class="md-padding" layout-xs="column" layout="row">
+        <div flex-xs flex-gt-xs="50" layout="column">
+        <md-card>
+            <img ng-src="/images/admin_images/user_register.jpg" class="md-card-image" alt="Washed Out" height="100px;" width="100px;   ">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Register New Admin</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <p>
+                    Register new Web Admin Here....
+                </p>
+            </md-card-content>
+
+        </md-card>
+        </div>
+
+
+
+            <div flex-xs flex-gt-xs="50" layout="column">
+                <md-card ng-click="RedirectToURL('news')">
+                    <img ng-src="/images/admin_images/user_news.jpg" class="md-card-image" alt="Washed Out" he>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">News</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <p>
+                           Add, Delete and Update the News from Here...
+                        </p>
+                    </md-card-content>
+                </md-card>
+
+            </div>
+
+            <div flex-xs flex-gt-xs="50" layout="column">
+                <md-card ng-click="RedirectToURL('event_dashboard')">
+                    <img ng-src="/images/admin_images/user_events.jpeg" class="md-card-image" alt="Washed Out" he>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Events</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <p>
+                            Add Latest events of the College..
+                        </p>
+                    </md-card-content>
+                </md-card>
+
+            </div>
+        </md-content>
+
+
+
+        <md-content class="md-padding" layout-xs="column" layout="row">
+            <div flex-xs flex-gt-xs="50" layout="column">
+                <md-card ng-click="RedirectToURL('faculty_dashboard')">
+                    <img ng-src="/images/admin_images/user_faculty.jpeg" class="md-card-image" alt="Washed Out" height="100px;" width="100px;   ">
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Faculty</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <p>
+                            Register new Web Admin Here....
+                        </p>
+                        <!--<span><md-button class="md-raised md-primary">Add Another Admin</md-button></span>-->
+                    </md-card-content>
+
+                </md-card>
+            </div>
+
+
+
+            <div flex-xs flex-gt-xs="50" layout="column">
+                <md-card ng-click="RedirectToURL('curriculum')">
+                    <img ng-src="/images/admin_images/user_curriculum.jpeg" class="md-card-image" alt="Washed Out" he>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Curriculum</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <p>
+                            Add, Delete and Update the News from Here...
+                        </p>
+                    </md-card-content>
+                </md-card>
+
+            </div>
+
+            <div flex-xs flex-gt-xs="50" layout="column">
+                <md-card ng-click="RedirectToURL('allBatches')">
+                    <img ng-src="/images/admin_images/user_batch.jpeg" class="md-card-image" alt="Washed Out" he>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Batch</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <p>
+                            Manage Batches, Add Student in the Batch and get control of the CRUD operation directly from here.
+                        </p>
+                    </md-card-content>
+                </md-card>
+
+            </div>
+        </md-content>
+
+
+
+
+
+
+
+        <md-dialog aria-label="Register Web Admin">
+
             <md-card layout-padding>
                     <form method="POST" name="projectForm">
                         <div class="container">
@@ -109,6 +235,7 @@
                         </div>
                     </form>
             </md-card>
+        </md-dialog>
     </main>
 </div>
 </body>

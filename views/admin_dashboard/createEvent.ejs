@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title><%= title %></title>
+
+    <% include admin_layout.ejs %>
+
+</head>
+
+<body>
+<div ng-app="IIITKWebsite" ng-controller="EventController">
+
+    <% include sidebar.ejs %>
+    <main class="mdl-layout__content mdl-color--grey-100">
+
+            <md-card layout-padding>
+                <form method="POST" name="projectForm">
+                    <div class="container">
+                        <md-toolbar layout="row" class="md-hue-2">
+                            <div class="md-toolbar-tools">
+                                <span>Add Event</span>
+                            </div>
+                        </md-toolbar>
+                        <md-subheader class="md-no-sticky">Please fill in this form to create an Event</md-subheader>
+
+                        <md-input-container class="md-block">
+                            <label>Title</label>
+                            <input required ng-model="event.title"
+                                />
+                        </md-input-container>
+
+
+                        <md-input-container class="md-block">
+                            <label>Description</label>
+                            <input  required  name="description" ng-model="event.description">
+
+                        </md-input-container>
+
+
+
+
+
+
+
+                        <div layout="row">
+                            <div flex-gt-xs flex="50">
+                                <h4>Event Date</h4>
+                                <md-datepicker ng-model="event.date" md-placeholder="Enter date"></md-datepicker>
+                            </div>
+
+
+                            <md-input-container flex="50">
+                                <div >
+                                <label>Type of Event</label>
+                                <md-select ng-model="event.type">
+                                    <md-option required ng-repeat="item in type_options" value="{{item}}">{{item}}</md-option>
+                                </md-select>
+                                </div>
+                            </md-input-container>
+                        </div>
+
+                        <md-input-container class="md-block">
+                            <label>Organizer</label>
+                            <input required ng-model="event.organizer"
+                                   />
+                        </md-input-container>
+
+                        <!--<label><b>Upload Profile Picture</b></label>-->
+                        <!--<input type="file" style="margin-bottom:15px">-->
+
+                        <br><br>
+                        <div layout="row">
+                            <md-button class="md-raised md-warn" flex="50">Cancel</md-button>
+                            <md-button ng-click="addEvents()" class="md-raised md-primary" flex="50">Add Event</md-button>
+                        </div>
+                    </div>
+                </form>
+            </md-card>
+    </main>
+</div>
+</body>
+</html>

@@ -6,7 +6,7 @@ var FacultySchema = new mongoose.Schema({
     // use username as profile url. followclass/profile/harsha.
     email: String,
     phone: String,
-    role: {
+    post: {
         type: String
         // enum: [ROLES.ORGANISATION, ROLES.ADMINISTRATOR, ROLES.TEACHER, ROLES.STUDENT, ROLES.PARENT]
     },

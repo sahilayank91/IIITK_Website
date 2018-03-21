@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ../layout.ejs %>
+    <header>
+        <% include header.ejs %>
+    </header>
+    <title><%= title %></title>
+
+</head>
+
+<body id="top">
+<div class="wrapper bgded overlay" style="background-image:url('/images/background.jpg');">
+    <div id="breadcrumb" class="hoc clear">
+        <!-- ################################################################################################ -->
+        <ul>
+            <li><a href="/">Student Affairs</a></li>
+            <li><a href="/clubs">Student Clubs</a></li>
+
+        </ul>
+        <!-- ################################################################################################ -->
+    </div>
+</div>
+
+<div class="wrapper row3">
+    <main class="hoc container clear">
+        <h1 style = "color:#06F;font-size:30px;margin-top:-50px;">Student Clubs</h1>
+        <div class="row">
+            <div class="col-sm-3">
+                <img style="height:200px;" class="img borderedbox inspace-5" src="/images/club1.jpg" alt="">
+                <h2 style="text-align:center;">Technical Club<br>(Alpha)</h2>
+            </div>
+            <div class="col-sm-3">
+                <img style="height:200px;" class="img borderedbox inspace-5" src="/images/club2.jpg" alt="">
+                <h2 style="text-align:center;">Cultural Club<br>(Sanskriti)</h2>
+            </div>
+            <div class="col-sm-3">
+                <img style="height:200px;" class="img borderedbox inspace-5" src="/images/club3.jpg" alt="">
+                <h2 style="text-align:center;">Literary & Dramatics Club</h2>
+            </div>
+            <div class="col-sm-3">
+                <img style="height:200px;" class="img borderedbox inspace-5" src="/images/club4.jpg" alt="">
+                <h2 style="text-align:center;">Fine Arts & Photography Club<br>(The Artsy Lens)</h2>
+            </div>
+        </div>
+    </main>
+</div>
+
+<footer>
+    <% include footer.ejs %>
+</footer>
+
+</body>
+</html>

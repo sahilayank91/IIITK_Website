@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ../layout.ejs %>
+    <header>
+        <% include header.ejs %>
+    </header>
+    <title><%= title %></title>
+
+</head>
+
+<body id="top">
+<div class="wrapper bgded overlay" style="background-image:url('/images/background.jpg');">
+    <div id="breadcrumb" class="hoc clear">
+        <!-- ################################################################################################ -->
+        <ul>
+            <li><a href="/">Facilities & Services</a></li>
+            <li><a href="/administration">Administration</a></li>
+
+        </ul>
+        <!-- ################################################################################################ -->
+    </div>
+</div>
+
+<div class="wrapper row3">
+    <main class="hoc container clear">
+    <h1 style = "color:#06F;font-size:30px;margin-top:-30px;">Board of Governors and General Council</h1>
+    <div class="content">
+            <div class="field-items">
+                <div class="field-item even" property="content:encoded">
+                <h2 style="color:black;">Director</h2>
+                <hr />
+                <div id="cards-container">
+                    <div class="card rteleft" style="width:800px;height:240px;"><img alt="Prof. Udaykumar R Yaragatti" src="/images/director.jpg" style="float:left;height:180px;" />
+                        <div style="width:210px;display:inline-block;vertical-align:top;font-size:16px;"><strong><a style="color:cornflowerblue" href="/director">Prof. Udaykumar R Yaragatti</a> </strong>
+
+                            <p><strong>PhD, Computer Science</strong><br />
+                                director@mnit.ac.in<br />
+                                Phone:+91-141-2529087 <br />
+                            </p>
+                        </div>
+
+                        <div style="width:300px;display:inline-block;vertical-align:top;padding-left:20px;border-left:1px outset"><strong>Director&#39;s Office</strong><br />
+                            1st Floor, Prabha Bhawan, <br>MNIT Campus, JLN Marg, <br>Jaipur-302017 <br/>Email: director@mnit.ac.in <br/>Phone: +91 141 2529087  <br/>Fax: +91 141 2529029 </div>
+                    </div>
+                </div>
+                    <br>
+                    <h2 style="color:black;">Coordinator</h2>
+                <hr />
+                    <div id="cards-container">
+                        <div class="card rteleft" style="width:800px;height:240px;"><img alt="Dr. Rakesh Jain" src="/images/coordinator.jpg" style="float:left;height:180px;width:150px;" />
+                            <div style="width:210px;display:inline-block;vertical-align:top;font-size:16px;"><strong><a style="color:cornflowerblue" href="/director">Dr. Rakesh Jain</a> </strong>
+
+                                <p><strong>PhD, Operations Management</strong><br />
+                                    coordinator@iiitkota.ac.in<br />
+                                    Phone:0141-2715080 <br />
+                                </p>
+                            </div>
+
+                            <div style="width:300px;display:inline-block;vertical-align:top;padding-left:20px;border-left:1px outset"><strong>Coordinator&#39;s Office</strong><br />
+                                2nd Floor, Prabha Bhawan, <br>MNIT Campus, JLN Marg, <br>Jaipur-302017 <br/>Email: coordinator@iiitkota.ac.in <br/>Phone:0141-2715080</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+<footer>
+    <% include footer.ejs %>
+</footer>
+
+</body>
+
+</html>

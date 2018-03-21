@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <% include ../layout.ejs %>
+    <title><%= title %></title>
+
+    <header>
+        <% include header.ejs %>
+    </header>
+</head>
+
+<body id="top">
+<div class="wrapper bgded overlay" style="background-image:url('/images/background.jpg');">
+    <div id="breadcrumb" class="hoc clear">
+        <!-- ################################################################################################ -->
+        <ul>
+            <li><a href="/">Student Affairs</a></li>
+            <li><a href="/">Hostel</a></li>
+            <li><a href="/hostelpolicy">Hostel Policies</a></li>
+
+        </ul>
+        <!-- ################################################################################################ -->
+    </div>
+</div>
+
+<div class="wrapper row3">
+    <main class="hoc container clear">
+        <h1 style = "color:#06F;font-size:30px;margin-top:-50px;">Hostel Policies</h1>
+        <div class="content">
+            <h1 style="color:black;">Hostel Key Conduct Rules</h1>
+            <ul>
+                <li>Damage caused to any room or common areas of the hostel, unless due to natural wear-and-tear, may be charged to individuals causing the damage, or residents collectively.</li>
+                <li>Smoking, use of narcotics, consumption of alcoholic beverages and gambling are strictly prohibited.</li>
+                <li>Maintain good standards of behaviour when engaged in Institute activities including avoiding dangerous or reckless behavior.</li>
+                <li>Activities such as ragging are strictly prohibited.</li>
+                <li>Cooking in the rooms is prohibited.</li>
+            </ul>
+        </div>
+    </main>
+</div>
+
+<footer>
+    <% include footer.ejs %>
+</footer>
+
+</body>
+</html>

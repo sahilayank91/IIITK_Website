@@ -12,6 +12,7 @@ var getEvent = function(parameters){
 };
 
 var addEvent = function(parameters){
+    console.log("parametersP",parameters);
     return eventOperations.createEvent(parameters)
         .then(function(data){
             if(data){

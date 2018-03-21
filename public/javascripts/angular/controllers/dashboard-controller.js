@@ -1,4 +1,4 @@
-IIITKWebsite.controller('DashboardController', ['$scope','UserService','UIUtilityService','$mdSidenav','$log', function ($scope,UserService,UIUtilityService,$mdSidenav,$log) {
+IIITKWebsite.controller('DashboardController', ['$scope','UserService','UIUtilityService','$mdSidenav','$log','$window', function ($scope,UserService,UIUtilityService,$mdSidenav,$log,$window) {
 
     console.log("Inside Dashboard Controller");
     $scope.email = "";
@@ -11,6 +11,9 @@ IIITKWebsite.controller('DashboardController', ['$scope','UserService','UIUtilit
     $scope.role ="";
     $scope.phone = "";
     $scope.showHints = true;
+    
+
+
     UIUtilityService.NOTIFICATION.show({
         title: "Success",
         content: "User Registered Successfully",
@@ -18,7 +21,11 @@ IIITKWebsite.controller('DashboardController', ['$scope','UserService','UIUtilit
     });
 
 
-
+    $scope.RedirectToURL = function(url) {
+        var host = $window.location.host;
+        var landingUrl = '/'+url;
+        $window.location.href = landingUrl;
+    };
     $scope.validateDetails = function(){
         
     };

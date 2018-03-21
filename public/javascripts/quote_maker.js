@@ -19,5 +19,5 @@ function nextQuote(){
     quoteCount = (quoteCount+1 < quoteArray.length)? quoteCount+1 : 0;
     document.getElementById("quote_st").innerHTML = quoteArray[quoteCount];
     document.getElementById("quote_wtr").innerHTML = WriterArray[quoteCount];
-    setTimeout('nextQuote()',2000);
+    setTimeout('nextQuote()',5000);
 }

@@ -1,5 +1,6 @@
 var Event = require(__BASE__ + 'modules/database/models/event');
 var Promise = require('bluebird');
+var customUUID = require(__BASE__ + "modules/utils/CustomUUID");
 
 var getCreateTemplate = function(parameters){
         var template={};
@@ -7,25 +8,32 @@ var getCreateTemplate = function(parameters){
             switch(key){
                 case 'type':
                 case 'posted_by':
-                case 'update_time':
-                case 'content':
+                case 'title':
+                case 'organizer':
+                case 'description':
+                case 'date':
                     template[key] = parameters[key];
             }
         }
-        template.create_time = new Date();
-        return template;
+    template.create_time = new Date();
+
+    if (!template._id) {
+        template._id = customUUID.getRandomAplhaNumeric();
+    }
+
+    return template;
 };
 
 
-var createEvent = function(rule,fields,options){
+var createEvent = function(parameters){
     return new Promise(function(resolve,reject){
-        var template = getCreateTemplate(template);
+        var template = getCreateTemplate(parameters);
         var event = new Event(template);
         event.save(function (err, data) {
             if (!err) {
                 resolve(data);
             } else {
-                reject(new Error('createUser failed'));
+                reject(new Error('createEvent failed'));
             }
         });
     });

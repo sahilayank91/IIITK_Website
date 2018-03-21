@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title><%= title %></title>
+
+    <% include admin_layout.ejs %>
+
+</head>
+
+<body>
+<div ng-app="IIITKWebsite" ng-controller="SocialPlatformController">
+    <% include sidebar.ejs %>
+    <main class="mdl-layout__content mdl-color--grey-100">
+        <md-content class="md-padding" layout-xs="column" layout="row">
+            <div flex-xs flex-gt-xs="50" layout="column">
+                <md-card ng-click="RedirectToURL('https://www.facebook.com/groups/iiitk/')">
+                    <img ng-src="/images/admin_images/facebook.png" class="md-card-image" alt="Washed Out" height="100px;" width="100px;   ">
+                </md-card>
+            </div>
+
+
+
+            <div flex-xs flex-gt-xs="50" layout="column">
+                <md-card ng-click="RedirectToURL('https://in.linkedin.com/in/iiit-kota-b28446120')">
+                    <img ng-src="/images/admin_images/LinkedIn.jpg" class="md-card-image" alt="Washed Out" he>
+                    <
+                </md-card>
+
+            </div>
+
+            <div flex-xs flex-gt-xs="50" layout="column">
+                <md-card ng-click="RedirectToURL('https://twitter.com/iiitkota?lang=en')">
+                    <img ng-src="/images/admin_images/twitter.png" class="md-card-image" alt="Washed Out" he>
+                </md-card>
+
+            </div>
+
+
+        </md-content>
+    </main>
+</div>
+</body>
+</html>

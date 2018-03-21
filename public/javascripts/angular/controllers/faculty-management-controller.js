@@ -2,14 +2,19 @@ IIITKWebsite.controller('FacultyController', ['$scope','UserService','UIUtilityS
     $scope.email = "";
     $scope.branch = "";
     $scope.education = "";
-    $scope.firstname="";
-    $scope.lastname="";
-    $scope.gender= "";
+    $scope.firstname ="";
+    $scope.lastname ="";
+    $scope.gender = "";
     $scope.role ="";
     $scope.phone = "";
     $scope.about = "";
-    $scope.profilePic ="";
-       $scope.validateDetails = function(){
+    $scope.profilePic = "";
+    $scope.post = "";
+
+
+
+
+    $scope.validateDetails = function(){
 
     };
 
@@ -28,6 +33,7 @@ IIITKWebsite.controller('FacultyController', ['$scope','UserService','UIUtilityS
             role:$scope.role,
             type:"Faculty",
             about:$scope.about,
+            post:$scope.post,
             profilePic:$scope.profilePic
         };
         FacultyService.registerFaculty(parameters)
@@ -68,6 +74,7 @@ IIITKWebsite.controller('FacultyController', ['$scope','UserService','UIUtilityS
                     param.education = result.data[i].education;
                     param.phone = result.data[i].phone;
                     param.role = result.data[i].role;
+                    param.post = result.data[i].post;
                     $scope.faculty.push(param);
                 }
 
@@ -119,7 +126,8 @@ $scope.showUpdateFacultyDialog = function(index){
     $scope.gender = $scope.faculty[index].gender;
     $scope.about = $scope.faculty[index].about;
     $scope.id = $scope.faculty[index].id;
-}
+    $scope.post = $scope.faculty[index].post;
+};
 
 $scope.updateFaculty = function(){
     var parameters = {
@@ -133,7 +141,8 @@ $scope.updateFaculty = function(){
         phone:$scope.phone,
         role:$scope.role,
         type:"Faculty",
-        about:$scope.about,
+        post:$scope.post,
+        about:$scope.about
     };
     FacultyService.updateFaculty(parameters)
         .then(function(data){

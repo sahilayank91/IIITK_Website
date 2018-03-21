@@ -3,100 +3,39 @@
     <!-- main body -->
     <!-- ################################################################################################ -->
     <div class="center btmspace-50">
-        <h1 class="font-x2 nospace">Latest News</h1>
-        <p class="nospace">Neque et posuere proin elementum luctus risus sit amet aliquet rutrum <a href="#">cras consectetur</a>.</p>
+        <h1 class="font-x2 nospace" style="color:#444444; font-size: 40px">Latest News</h1>
+        <p class="nospace">To see all latest news and more details, please <a href="/latestNews">click here</a>.</p>
+        <!--<p class="nospace">Neque et posuere proin elementum luctus risus sit amet aliquet rutrum <a href="#">cras consectetur</a>.</p>-->
     </div>
-    <ul class="nospace group services" style="height:355px; overflow: auto;">
-        <li class="one_third first">
-            <article><a href="#"><i class="fa fa-key"></i></a>
-                <h6 class="heading">euismod interdum</h6>
-                <p>mauris aliquet neque a interdum est ex dapibus dui nunc id metus varius vehicula ante nec velit etiam sem arcu varius in lacus sed rhoncus&hellip;</p>
-                <footer><a href="#">Read More &raquo;</a></footer>
-            </article>
-        </li>
-        <li class="one_third">
-            <article><a href="#"><i class="fa fa-language"></i></a>
-                <h6 class="heading">varius convallis</h6>
-                <p>sagittis nunc sed congue nunc non ultrices tincidunt morbi accumsan commodo eros nec posuere donec rhoncus quis nisl non tempor&hellip;</p>
-                <footer><a href="#">Read More &raquo;</a></footer>
-            </article>
-        </li>
-        <li class="one_third">
-            <article><a href="#"><i class="fa fa-laptop"></i></a>
-                <h6 class="heading">iaculis dictum</h6>
-                <p>natoque penatibus et magnis dis parturient montes nascetur ridiculus mus vivamus dictum interdum cum sociis natoque penatibus&hellip;</p>
-                <footer><a href="#">Read More &raquo;</a></footer>
-            </article>
-        </li>
-        <li class="one_third first">
-            <article><a href="#"><i class="fa fa-bar-chart"></i></a>
-                <h6 class="heading">efficitur tempus</h6>
-                <p>parturient montes nascetur ridiculus mus praesent eleifend nulla quis volutpat gravida diam sapien viverra sem ut faucibus quam&hellip;</p>
-                <footer><a href="#">Read More &raquo;</a></footer>
-            </article>
-        </li>
-        <li class="one_third">
-            <article><a href="#"><i class="fa fa-music"></i></a>
-                <h6 class="heading">donec lobortis</h6>
-                <p>aliquam tristique diam a aliquet purus enim placerat dui eget efficitur purus eros at elit aenean tristique dui quam sit amet pharetra arcu&hellip;</p>
-                <footer><a href="#">Read More &raquo;</a></footer>
-            </article>
-        </li>
-        <li class="one_third">
-            <article><a href="#"><i class="fa fa-bolt"></i></a>
-                <h6 class="heading">tellus dignissim</h6>
-                <p>sit amet nam malesuada volutpat elit eget suscipit nulla bibendum at quisque in odio at nulla pretium convallis eu vel dui&hellip;</p>
-                <footer><a href="#">Read More &raquo;</a></footer>
-            </article>
-        </li>
+    <div class="nospace group services" style="min-height:160px; max-height:355px; overflow: auto;" >
+        <div ng-repeat="news in printNews">
+            <div class="one_third first">
+                <article><a href="#"><i ng-class="news.type1"></i></a>
+                    <h6 class="heading" style="color: #2d2e38;">{{news.content1.title}}</h6>
+                    <p>{{news.content1.text}}</p>
+                    <footer><a href="/latestNews">Read More &raquo;</a></footer>
+                </article>
+            </div>
+            <div class="one_third" ng-show="news.second">
+                <article><a href="#"><i ng-class="news.type2"></i></a>
+                    <h6 class="heading" style="color: #2d2e38;">{{news.content2.title}}</h6>
+                    <p>{{news.content2.text}}</p>
+                    <footer><a href="/latestNews">Read More &raquo;</a></footer>
+                </article>
+            </div>
 
-        <li class="one_third first">
-            <article><a href="#"><i class="fa fa-key"></i></a>
-                <h6 class="heading">euismod interdum</h6>
-                <p>mauris aliquet neque a interdum est ex dapibus dui nunc id metus varius vehicula ante nec velit etiam sem arcu varius in lacus sed rhoncus&hellip;</p>
-                <footer><a href="#">Read More &raquo;</a></footer>
-            </article>
-        </li>
-        <li class="one_third">
-            <article><a href="#"><i class="fa fa-language"></i></a>
-                <h6 class="heading">varius convallis</h6>
-                <p>sagittis nunc sed congue nunc non ultrices tincidunt morbi accumsan commodo eros nec posuere donec rhoncus quis nisl non tempor&hellip;</p>
-                <footer><a href="#">Read More &raquo;</a></footer>
-            </article>
-        </li>
-        <li class="one_third">
-            <article><a href="#"><i class="fa fa-laptop"></i></a>
-                <h6 class="heading">iaculis dictum</h6>
-                <p>natoque penatibus et magnis dis parturient montes nascetur ridiculus mus vivamus dictum interdum cum sociis natoque penatibus&hellip;</p>
-                <footer><a href="#">Read More &raquo;</a></footer>
-            </article>
-        </li>
-        <li class="one_third first">
-            <article><a href="#"><i class="fa fa-bar-chart"></i></a>
-                <h6 class="heading">efficitur tempus</h6>
-                <p>parturient montes nascetur ridiculus mus praesent eleifend nulla quis volutpat gravida diam sapien viverra sem ut faucibus quam&hellip;</p>
-                <footer><a href="#">Read More &raquo;</a></footer>
-            </article>
-        </li>
-        <li class="one_third">
-            <article><a href="#"><i class="fa fa-music"></i></a>
-                <h6 class="heading">donec lobortis</h6>
-                <p>aliquam tristique diam a aliquet purus enim placerat dui eget efficitur purus eros at elit aenean tristique dui quam sit amet pharetra arcu&hellip;</p>
-                <footer><a href="#">Read More &raquo;</a></footer>
-            </article>
-        </li>
-        <li class="one_third">
-            <article><a href="#"><i class="fa fa-bolt"></i></a>
-                <h6 class="heading">tellus dignissim</h6>
-                <p>sit amet nam malesuada volutpat elit eget suscipit nulla bibendum at quisque in odio at nulla pretium convallis eu vel dui&hellip;</p>
-                <footer><a href="#">Read More &raquo;</a></footer>
-            </article>
-        </li>
+            <div class="one_third" ng-show="news.third">
+                <article><a href="#"><i ng-class="news.type3"></i></a>
+                    <h6 class="heading" style="color: #2d2e38;">{{news.content3.title}}</h6>
+                    <p>{{news.content3.text}}</p>
+                    <footer><a href="/latestNews">Read More &raquo;</a></footer>
+                </article>
+            </div>
 
-    </ul>
+        </div>
+    </div>
     <!-- ################################################################################################ -->
     <!-- / main body -->
     <div class="clear"></div>
 </main>
 </div>
-</body>

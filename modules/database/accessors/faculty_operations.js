@@ -16,6 +16,7 @@ var getCreateTemplate = function (parameters) {
             case 'username':
             case 'email':
             case 'phone':
+            case 'post':
             case 'password':
             case 'role':
             case 'secondary_email':

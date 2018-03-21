@@ -15,7 +15,6 @@ var getFacultyList = function(){
 
 
 var registerFaculty = function(parameters){
-    console.log(parameters);
     return facultyOperations.createFaculty(parameters)
         .then(function(data){
             if(data){
