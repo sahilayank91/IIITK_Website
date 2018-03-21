@@ -15,7 +15,7 @@
         <!-- ################################################################################################ -->
         <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/latestNews">Photo Gallery</a></li>
+            <li><a href="/gallery">Photo Gallery</a></li>
 
         </ul>
         <!-- ################################################################################################ -->
@@ -24,67 +24,30 @@
 
 <div class="wrapper row3">
     <main class="hoc container clear">
-        <!-- main body -->
-        <!-- ################################################################################################ -->
-        <div class="content">
-            <!-- ################################################################################################ -->
-            <div id="gallery">
-                <figure>
-                    <header class="heading">Gallery Title Goes Here</header>
-                    <ul class="nospace clear">
-                        <li class="one_quarter first"><a href="#"><img src="/images/" alt=""></a></li>
-                        <li class="one_quarter"><a href="#"><img src="../images/" alt=""></a></li>
-                        <li class="one_quarter"><a href="#"><img src="../images/demo/gallery/01.png" alt=""></a></li>
-                        <li class="one_quarter"><a href="#"><img src="../images/demo/gallery/01.png" alt=""></a></li>
-                        <li class="one_quarter first"><a href="#"><img src="../images/demo/gallery/01.png" alt=""></a></li>
-                        <li class="one_quarter"><a href="#"><img src="../images/demo/gallery/01.png" alt=""></a></li>
-                        <li class="one_quarter"><a href="#"><img src="../images/demo/gallery/01.png" alt=""></a></li>
-                        <li class="one_quarter"><a href="#"><img src="../images/demo/gallery/01.png" alt=""></a></li>
-                        <li class="one_quarter first"><a href="#"><img src="../images/demo/gallery/01.png" alt=""></a></li>
-                        <li class="one_quarter"><a href="#"><img src="../images/demo/gallery/01.png" alt=""></a></li>
-                        <li class="one_quarter"><a href="#"><img src="../images/demo/gallery/01.png" alt=""></a></li>
-                        <li class="one_quarter"><a href="#"><img src="../images/demo/gallery/01.png" alt=""></a></li>
-                    </ul>
-                    <figcaption>Gallery Description Goes Here</figcaption>
-                </figure>
-            </div>
-            <!-- ################################################################################################ -->
-            <!-- ################################################################################################ -->
-            <nav class="pagination">
-                <ul>
-                    <li><a href="#">&laquo; Previous</a></li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><strong>&hellip;</strong></li>
-                    <li><a href="#">6</a></li>
-                    <li class="current"><strong>7</strong></li>
-                    <li><a href="#">8</a></li>
-                    <li><a href="#">9</a></li>
-                    <li><strong>&hellip;</strong></li>
-                    <li><a href="#">14</a></li>
-                    <li><a href="#">15</a></li>
-                    <li><a href="#">Next &raquo;</a></li>
-                </ul>
-            </nav>
-            <!-- ################################################################################################ -->
-        </div>
-        <!-- ################################################################################################ -->
-        <!-- / main body -->
-        <div class="clear"></div>
-
-
-        <h1 class="page-title" style="margin-top:-25px; font-size: 40px; margin-bottom:30px;">Latest News</h1>
-        <div class="nospace group services">
-            <div ng-repeat="news in ord_news">
-                <div style="width:inherit">
-                    <article style="min-height: 10px;"><a href="#"><i ng-class="news.type"></i></a>
-                        <h6 class="heading" style="color: #2d2e38;">{{news.content.title}}</h6>
-                        <p>{{news.content.text}}</p>
-                        <!--<footer><a href="/latestNews">Read More &raquo;</a></footer>-->
-                    </article>
-                </div>
-            </div>
-        </div>
+          <h1 style = "color:#06F;font-size:30px;margin-top:-50px;">Photo Gallery</h1>
+          <br>
+          <div class="content">
+              <div id="gallery">
+                  <ul class="nospace clear">
+                       <li class="one_quarter first"><img src="/images/cookery.jpeg" alt=""></li>
+                       <li class="one_quarter"><img src="/images/ece_workshop.jpeg" alt=""></li>
+                       <li class="one_quarter"><img src="/images/sport2.jpg" alt=""></li>
+                       <li class="one_quarter"><img src="/images/yogaday.jpg" alt=""></li>
+                       <li class="one_quarter first"><img src="/images/event2.jpg" alt=""></li>
+                       <li class="one_quarter"><img src="/images/event4.jpg" alt=""></li>
+                       <li class="one_quarter"><img src="/images/event5.jpg" alt=""></li>
+                       <li class="one_quarter"><img src="/images/event6.jpg" alt=""></li>
+                       <li class="one_quarter first"><img src="/images/yoga_day.jpeg" alt=""></li>
+                       <li class="one_quarter"><img src="/images/Hong_kong6.jpeg" alt=""></li>
+                       <li class="one_quarter"><img src="/images/iiitk_workshop.jpg" alt=""></li>
+                       <li class="one_quarter"><img src="/images/iiit_sports_meet.jpg" alt=""></li>
+                       <li class="one_quarter first"><img src="/images/sport1.jpg" alt=""></li>
+                       <li class="one_quarter"><img src="/images/event1.jpg" alt=""></li>
+                       <li class="one_quarter"><img src="/images/event3.jpg" alt=""></li>
+                       <li class="one_quarter"><img src="/images/event7.jpeg" alt=""></li>
+                  </ul>
+              </div>
+          </div>
     </main>
 </div>
 
