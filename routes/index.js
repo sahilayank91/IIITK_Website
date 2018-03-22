@@ -191,6 +191,10 @@ router.get('/event_dashboard',function (req,res,next) {
 router.get('/curriculumPortal',function (req,res,next) {
     res.render('partials/curriculum',{title: "Curriculum"});
 });
+router.get('/logout',function (req,res,next) {
+    res.render('index',{title: "Indian Institute of Information Technology Kota"});
+});
+
 
 
 module.exports = router;
