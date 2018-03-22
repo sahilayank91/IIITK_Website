@@ -41,7 +41,7 @@ IIITKWebsite.controller('FacultyController', ['$scope','UserService','UIUtilityS
         $scope.getFacultyList();
     };
 
-    $scope.updateFacultyClicked = function () {
+    $scope.updateFacultyClicked = function (id) {
         $scope.allfaculties = false;
         $scope.addnewfaculty = false;
         $scope.updatefacultypage = true;
@@ -55,7 +55,6 @@ IIITKWebsite.controller('FacultyController', ['$scope','UserService','UIUtilityS
 
 
     $scope.addFaculty = function(){
-        $scope.validateDetails();
 
         var parameters = {
             email:$scope.email,
@@ -71,16 +70,19 @@ IIITKWebsite.controller('FacultyController', ['$scope','UserService','UIUtilityS
             post:$scope.post,
             profilePic:$scope.profilePic
         };
+        console.log(parameters);
         FacultyService.registerFaculty(parameters)
             .then(function(data){
-                if(data.data.success){
-                    $scope.goToAllFaculty();
+                //console.log(data);
+
                     UIUtilityService.NOTIFICATION.show({
                         title: "Success",
                         content: "Faculty Registered Successfully",
                         type: "success"
                     });
-                }
+                    $scope.goToAllFaculty();
+
+
 
             }).catch(function(error){
             console.log("Error: ",error);
@@ -163,6 +165,8 @@ $scope.showUpdateFacultyDialog = function(index){
     $scope.about = $scope.faculty[index].about;
     $scope.id = $scope.faculty[index].id;
     $scope.post = $scope.faculty[index].post;
+
+    $scope.updateFacultyClicked(index);
 };
 
 $scope.updateFaculty = function(){

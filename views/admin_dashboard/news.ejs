@@ -49,30 +49,54 @@
         </md-card>
 
         <div style="width: inherit;" ng-show="addNews_section">   <!--   ng-if="allbatches" -->
-            <div class="mdl-grid demo-content">
+            <div class="container">
 
-                <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
-                    <form method="POST" name="batch" style="width:inherit">
+                    <form method="POST" name="projectForm" style="width:inherit">
                         <!--<div class="container">-->
-                        <h1>Add News</h1>
+                        <md-toolbar md-scroll-shrink ng-if="true">
+                            <div class="md-toolbar-tools">
+                                <h3>
+                                    <span>Add News</span>
+                                </h3>
+                            </div>
+                        </md-toolbar>
                         <hr>
-                        <label><b>News Topic</b></label>
-                        <input type="text" placeholder="News Heading"  ng-model="title">
+                        <md-input-container class="md-block">
+                            <label>News Topic</label>
+                            <input required name="title" ng-model="title">
+                            <div ng-messages="projectForm.title.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
 
-                        <label><b>News Content</b></label>
-                        <input type="text" placeholder="News Content" ng-model="text">
 
-                        <label><b>Type of News</b></label>
-                        <select type="text" ng-model="type" ng-options="item for item in type_options" class="select_bar"></select>
-                        <br><br>
+                        <md-input-container class="md-block">
+                            <label>News Content</label>
+                            <input required name="text" ng-model="text">
+                            <div ng-messages="projectForm.text.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
 
-                        <button type="submit" class="cancelbtn" ng-click="goToNewsSection()">CANCEL</button>
-                        <button type="submit" class="signupbtn" ng-click="addNews()">ADD</button>
+
+                        <label>Type of news</label>
+                        <md-select ng-model="type">
+                            <md-optgroup label="Type">
+                                <md-option ng-value="item" ng-repeat="item in type_options">{{item}}</md-option>
+                            </md-optgroup>
+                        </md-select>
+
+
+
+                        <div layout="row" flex>
+                        <md-button flex="50" class="md-warn md-raised" ng-click="goToNewsSection()">CANCEL</md-button>
+                        <md-button flex="50" class="md-primary md-raised" ng-click="addNews()">ADD</md-button>
+                        </div>
                         <!--</div>-->
                     </form>
 
                 </div>
-            </div>
+
         </div>
 
     </main>

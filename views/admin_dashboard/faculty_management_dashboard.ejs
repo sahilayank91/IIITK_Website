@@ -79,7 +79,7 @@
 
             <md-input-container class="md-block">
                 <label>Branch</label>
-                <input md-maxlength="30" required md-no-asterisk name="description"  ng-model="branch">
+                <input md-maxlength="50" required md-no-asterisk name="description"  ng-model="branch">
                 <div ng-messages="projectForm.description.$error">
                     <div ng-message="required">This is required.</div>
                 </div>
@@ -88,7 +88,7 @@
 
             <md-input-container class="md-block">
                 <label>Place of Education</label>
-                <input md-maxlength="30" required md-no-asterisk name="description"  ng-model="education">
+                <input md-maxlength="100" required md-no-asterisk name="description"  ng-model="education">
                 <div ng-messages="projectForm.description.$error">
                     <div ng-message="required">This is required.</div>
                 </div>
@@ -98,7 +98,7 @@
 
             <md-input-container class="md-block">
                 <label>About</label>
-                <input md-maxlength="30" required md-no-asterisk name="description"  ng-model="about">
+                <input md-maxlength="100" required md-no-asterisk name="description"  ng-model="about">
                 <div ng-messages="projectForm.description.$error">
                     <div ng-message="required">This is required.</div>
                 </div>
@@ -147,15 +147,15 @@
                             <td class="batch-td">{{data.about}}</td>
                             <td class="batch-td" layout="row" flex>
                                 <md-button type="button" flex="50" class="md-warn md-raised" ng-click="deleteFaculty(data.id)">Delete</md-button>
-                                <md-button type="button" flex="50" class="md-primary md-raised" ng-click = "showUpdateFacultyDialog(data.index)" >Update</md-button>
+                                <md-button type="button" flex="50" class="md-primary md-raised" ng-click = "showUpdateFacultyDialog($index)" >Update</md-button>
 
                             </td>
                         </tr>
                     </table>
                 </div>
-            <md-button type="button" ng-click="addFacultyClicked()" class="md-raised md-primary">ADD FACULTY</md-button>
+            <md-button ng-click="addFacultyClicked()" class="md-raised md-primary">ADD FACULTY</md-button>
 
-            <md-button type="button" ng-click="updateFacultyClicked()" class="md-raised md-primary" style="background-color: #089ad3" >UPDATE FACULTY</md-button>
+            <md-button  ng-click="updateFacultyClicked($index)" class="md-raised md-primary" style="background-color: #089ad3" >UPDATE FACULTY</md-button>
 
         </div>
 
@@ -247,7 +247,7 @@
 
                         <md-input-container class="md-block">
                             <label>Place of Education</label>
-                            <input md-maxlength="30" required md-no-asterisk name="description"  ng-model="education">
+                            <input required md-no-asterisk name="description"  ng-model="education">
                             <div ng-messages="projectForm.description.$error">
                                 <div ng-message="required">This is required.</div>
                             </div>
@@ -263,8 +263,8 @@
                             </div>
                         </md-input-container>
 
-                        <label><b>Upload Profile Picture</b></label>
-                        <input type="file" style="margin-bottom:15px">
+                        <!--<label><b>Upload Profile Picture</b></label>-->
+                        <!--<input type="file" style="margin-bottom:15px">-->
 
                         <div layout="row" flex>
                             <md-button flex="50" class="md-raised md-warn" onclick="document.getElementById('id01').style.display='none'" ng-click="goToAllFaculty()">Cancel</md-button>

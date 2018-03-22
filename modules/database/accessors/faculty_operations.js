@@ -19,11 +19,14 @@ var getCreateTemplate = function (parameters) {
             case 'post':
             case 'password':
             case 'role':
+            case 'branch':
             case 'secondary_email':
             case 'secondary_phone':
             case 'firstname':
             case 'lastname':
             case 'keys':
+            case 'education':
+            case 'about':
             case 'gender':
                 template[key] = parameters[key];
                 break;
