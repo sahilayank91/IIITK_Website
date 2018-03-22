@@ -16,7 +16,7 @@
 
         <md-content class="md-padding" layout-xs="column" layout="row">
         <div flex-xs flex-gt-xs="50" layout="column">
-        <md-card>
+        <md-card data-toggle="modal" data-target="#RegisterModal">
             <img ng-src="/images/admin_images/user_register.jpg" class="md-card-image" alt="Washed Out" height="100px;" width="100px;   ">
             <md-card-title>
                 <md-card-title-text>
@@ -127,105 +127,113 @@
             </div>
         </md-content>
 
-            <md-card layout-padding>
-                    <form method="POST" name="projectForm">
-                        <div class="container">
-                            <md-toolbar layout="row" class="md-hue-2">
-                                <div class="md-toolbar-tools">
-                                    <span>Sign Up</span>
-                                </div>
-                            </md-toolbar>
-                            <md-subheader class="md-no-sticky">Please fill in this form to create an account</md-subheader>
 
-                            <md-input-container class="md-block">
-                                <label>Email</label>
-                                <input required type="email" name="email" ng-model="email"
-                                       minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+    </main>
+</div>
 
-                                <div ng-messages="projectForm.email.$error" role="alert">
-                                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                                        Your email must be between 10 and 100 characters long and look like an e-mail address.
-                                    </div>
-                                </div>
-                            </md-input-container>
+<div id="RegisterModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" style="width: auto;">
 
+        <md-card layout-padding >
+            <form method="POST" name="projectForm">
+                <div class="container">
+                    <md-toolbar layout="row" class="md-hue-2">
+                        <div class="md-toolbar-tools">
+                            <span>Sign Up</span>
+                        </div>
+                    </md-toolbar>
+                    <md-subheader class="md-no-sticky">Please fill in this form to create an account</md-subheader>
 
-                            <md-input-container class="md-block">
-                                <label>Password</label>
-                                <input md-maxlength="30" required md-no-asterisk name="description" ng-model="password">
-                                <div ng-messages="projectForm.description.$error">
-                                    <div ng-message="required">This is required.</div>
-                                    <div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
-                                </div>
-                            </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Email</label>
+                        <input required type="email" name="email" ng-model="email"
+                               minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
 
-
-
-                            <md-input-container class="md-block">
-                                <label>Repeat Password</label>
-                                <input md-maxlength="30" required md-no-asterisk name="description"  ng-model="password_repeat">
-                                <div ng-messages="projectForm.description.$error">
-                                    <div ng-message="required">This is required.</div>
-                                    <div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
-                                </div>
-                            </md-input-container>
-
-
-
-                            <div layout="row">
-                                <md-input-container flex="50">
-                                    <label>First Name</label>
-                                    <input required name="firstname" ng-model="firstname">
-                                    <div ng-messages="projectForm.firstname.$error">
-                                        <div ng-message="required">This is required.</div>
-                                    </div>
-                                </md-input-container>
-
-                                <md-input-container flex="50">
-                                    <label>Last Name</label>
-                                    <input required name="lastname" ng-model="lastname">
-                                    <div ng-messages="projectForm.lastname.$error">
-                                        <div ng-message="required">This is required.</div>
-                                    </div>
-                                </md-input-container>
-                            </div>
-
-
-                            <div layout="row">
-                                <md-input-container flex="50">
-                                    <label>Username</label>
-                                    <input required name="username" ng-pattern="/^[a-zA-Z0-9_-]{4,}$/" ng-model="username">
-                                    <div ng-messages="projectForm.username.$error">
-                                        <div ng-message="required">This is required.</div>
-                                    </div>
-                                </md-input-container>
-
-                                <md-input-container flex="50">
-                                    <label>Phone Number</label>
-                                    <input name="phone" ng-model="phone" ng-pattern="/^[789]\d{9}$/" />
-
-                                    <div class="hint" ng-show="showHints">(###)-##########</div>
-
-                                    <div ng-messages="projectForm.phone.$error" ng-hide="showHints">
-                                        <div ng-message="pattern">(###)-########## - Please enter a valid phone number.</div>
-                                    </div>
-                                </md-input-container>
-
-                            </div>
-
-                            <!--<label><b>Upload Profile Picture</b></label>-->
-                            <!--<input type="file" style="margin-bottom:15px">-->
-
-                            <md-subheader>By creating an account you agree to our Terms and Policy</md-subheader>
-
-                            <div layout="row">
-                                <md-button onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" class="md-raised md-warn" flex="50">Cancel</md-button>
-                                <md-button type="submit" ng-click="registerUser()" class="signupbtn" class="md-raised md-primary" flex="50">Sign Up</md-button>
+                        <div ng-messages="projectForm.email.$error" role="alert">
+                            <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                Your email must be between 10 and 100 characters long and look like an e-mail address.
                             </div>
                         </div>
-                    </form>
-            </md-card>
-    </main>
+                    </md-input-container>
+
+
+                    <md-input-container class="md-block">
+                        <label>Password</label>
+                        <input md-maxlength="30" required md-no-asterisk name="description" ng-model="password">
+                        <div ng-messages="projectForm.description.$error">
+                            <div ng-message="required">This is required.</div>
+                            <div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
+                        </div>
+                    </md-input-container>
+
+
+
+                    <md-input-container class="md-block">
+                        <label>Repeat Password</label>
+                        <input md-maxlength="30" required md-no-asterisk name="description"  ng-model="password_repeat">
+                        <div ng-messages="projectForm.description.$error">
+                            <div ng-message="required">This is required.</div>
+                            <div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
+                        </div>
+                    </md-input-container>
+
+
+
+                    <div layout="row">
+                        <md-input-container flex="50">
+                            <label>First Name</label>
+                            <input required name="firstname" ng-model="firstname">
+                            <div ng-messages="projectForm.firstname.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container flex="50">
+                            <label>Last Name</label>
+                            <input required name="lastname" ng-model="lastname">
+                            <div ng-messages="projectForm.lastname.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+
+
+                    <div layout="row">
+                        <md-input-container flex="50">
+                            <label>Username</label>
+                            <input required name="username" ng-pattern="/^[a-zA-Z0-9_-]{4,}$/" ng-model="username">
+                            <div ng-messages="projectForm.username.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container flex="50">
+                            <label>Phone Number</label>
+                            <input name="phone" ng-model="phone" ng-pattern="/^[789]\d{9}$/" />
+
+                            <div class="hint" ng-show="showHints">(###)-##########</div>
+
+                            <div ng-messages="projectForm.phone.$error" ng-hide="showHints">
+                                <div ng-message="pattern">(###)-########## - Please enter a valid phone number.</div>
+                            </div>
+                        </md-input-container>
+
+                    </div>
+
+                    <!--<label><b>Upload Profile Picture</b></label>-->
+                    <!--<input type="file" style="margin-bottom:15px">-->
+
+                    <md-subheader>By creating an account you agree to our Terms and Policy</md-subheader>
+
+                    <div layout="row">
+                        <md-button onclick="document.getElementById('id01').style.display='none'" class="cancelbtn" class="md-raised md-warn" flex="50" style="background: #f47142;" data-dismiss="modal">Cancel</md-button>
+                        <md-button type="submit" ng-click="registerUser()" class="signupbtn" class="md-raised md-primary" flex="50" style="background: #2c1fba">Sign Up</md-button>
+                    </div>
+                </div>
+            </form>
+        </md-card>
+
+    </div>
 </div>
 </body>
 </html>

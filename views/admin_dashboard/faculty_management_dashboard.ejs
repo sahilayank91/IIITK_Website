@@ -9,7 +9,7 @@
     <% include sidebar.ejs %>
     <main class="mdl-layout__content mdl-color--grey-100">
 
-        <md-card>
+        <md-card ng-show="addnewfaculty">
         <div class="container">
                <form method="POST"
                       ref='uploadForm'
@@ -106,8 +106,8 @@
 
 
             <div layout="row" flex>
-                <md-button onclick="document.getElementById('id01').style.display='none'" class="md-warn md-raised">Cancel</md-button>
-                <md-button ng-click="addFaculty()" class="md-primary md-raised">Sign Up</md-button>
+                <md-button onclick="document.getElementById('id01').style.display='none'" class="md-warn md-raised" ng-click="goToAllFaculty()">Cancel</md-button>
+                <md-button ng-click="addFaculty()" class="md-primary md-raised">ADD</md-button>
             </div>
         </div>
     </form>
@@ -118,7 +118,7 @@
     <!-- FACULTY LIST -->
     <!-- ######################################################################-->
 
-<md-card>
+<md-card ng-if="allfaculties">
 
         <div class="container">
 
@@ -147,14 +147,17 @@
                             <td class="batch-td">{{data.about}}</td>
                             <td class="batch-td" layout="row" flex>
                                 <md-button type="button" flex="50" class="md-warn md-raised" ng-click="deleteFaculty(data.id)">Delete</md-button>
-                                <md-button type="button" flex="50" class="md-primary md-raised" ng-click = "showUpdateFacultyDialog(data.index)">Update</md-button>
+                                <md-button type="button" flex="50" class="md-primary md-raised" ng-click = "showUpdateFacultyDialog(data.index)" >Update</md-button>
 
                             </td>
                         </tr>
                     </table>
                 </div>
-            <md-button type="button" ng-click="addBatchClicked()" class="md-raised md-primary">ADD BATCH</md-button>
-            </div>
+            <md-button type="button" ng-click="addFacultyClicked()" class="md-raised md-primary">ADD FACULTY</md-button>
+
+            <md-button type="button" ng-click="updateFacultyClicked()" class="md-raised md-primary" style="background-color: #089ad3" >UPDATE FACULTY</md-button>
+
+        </div>
 
 </md-card>
 
@@ -164,7 +167,7 @@
         <!--########################################################################-->
         <!-- FACULTY UPDATION -->
         <!-- ######################################################################-->
-        <md-card>
+        <md-card ng-show="updatefacultypage">
             <div class="container">
 
 
@@ -264,7 +267,7 @@
                         <input type="file" style="margin-bottom:15px">
 
                         <div layout="row" flex>
-                            <md-button flex="50" class="md-raised md-warn" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</md-button>
+                            <md-button flex="50" class="md-raised md-warn" onclick="document.getElementById('id01').style.display='none'" ng-click="goToAllFaculty()">Cancel</md-button>
                             <md-button flex="50" class="md-raised md-primary" ng-click="updateFaculty()" class="signupbtn">Update User</md-button>
                         </div>
                     </div>

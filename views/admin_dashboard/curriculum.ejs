@@ -8,7 +8,7 @@
 <div ng-controller="CurriculumController">
     <% include sidebar.ejs%>
     <main class="mdl-layout__content mdl-color--grey-100">
-        <md-card>
+        <md-card ng-show="addsubject">
         <md-content layout-padding>
             <div class="container">
                 <md-toolbar md-scroll-shrink ng-if="true">
@@ -73,8 +73,9 @@
                     </div>
                 </md-input-container>
 
-                <div>
-                    <md-button class="md-raised md-primary" ng-click ="addSubjectInCurriculum()">Submit</md-button>
+                <div layout="row" flex>
+                    <md-button class="md-warn md-raised"flex="50" class="md-warn md-raised" ng-click="goToAllSubjects()">CANCEL</md-button>
+                    <md-button class="md-raised md-primary" ng-click ="addSubjectInCurriculum()">ADD</md-button>
                 </div>
             </form>
             </div>
@@ -94,7 +95,7 @@
 
 
         <md-divider></md-divider>
-        <md-card>
+        <md-card ng-show="allsubjects">
 <div class="container">
         <md-toolbar layout="row" class="md-hue-3">
             <div class="md-toolbar-tools">
@@ -112,15 +113,17 @@
             <p>{{ item.credits }}</p>
         </div>
         <div layout ="row">
-        <md-button class="md-warn md-secondary" ng-click="updateCurriculum($index)">Update</md-button>
-        <md-button class="md-warn md-secondary" ng-click="updateCurriculum($index)">Delete</md-button>
+        <md-button class="md-warn md-secondary" ng-click="updateSubjectClicked($index)">Update</md-button>
+        <md-button class="md-warn md-secondary">Delete</md-button>
         </div>
         <md-divider></md-divider>
     </md-list-item>
+    <md-button class="md-raised md-primary" ng-click ="addSubjectClicked()">ADD</md-button>
+
 </div>
 
         </md-card>
-<!--  #########################################################################-->
+<!--  ################################# UPDATE SUBJECT ########################################-->
 
 
 
@@ -128,7 +131,7 @@
 
 
 
-        <md-card>
+        <md-card ng-show="updatesubject">
             <md-content layout-padding>
                 <div class="container">
                     <md-toolbar md-scroll-shrink ng-if="true">
@@ -194,8 +197,8 @@
                         </md-input-container>
 
                         <div layout="row" flex>
-                            <md-button flex="50"  class="md-raised md-warn">Cancel</md-button>
-                            <md-button flex="50" class="md-raised md-primary" ng-click ="updateSubject()">Submit</md-button>
+                            <md-button flex="50"  class="md-raised md-warn" ng-click="goToAllSubjects()">Cancel</md-button>
+                            <md-button flex="50" class="md-raised md-primary" ng-click ="updateCurriculum()">Update</md-button>
                         </div>
                     </form>
                 </div>

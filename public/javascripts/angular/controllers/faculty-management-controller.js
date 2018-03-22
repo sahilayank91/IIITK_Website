@@ -11,6 +11,41 @@ IIITKWebsite.controller('FacultyController', ['$scope','UserService','UIUtilityS
     $scope.profilePic = "";
     $scope.post = "";
 
+    $scope.allfaculties = true;
+    $scope.addnewfaculty = false;
+    $scope.updatefacultypage = false;
+
+    $scope.addFacultyClicked = function () {
+        $scope.allfaculties = false;
+        $scope.addnewfaculty = true;
+        $scope.updatefacultypage = false;
+        $scope.email = "";
+        $scope.branch = "";
+        $scope.education = "";
+        $scope.firstname ="";
+        $scope.lastname ="";
+        $scope.gender = "";
+        $scope.role ="";
+        $scope.phone = "";
+        $scope.about = "";
+        $scope.profilePic = "";
+        $scope.post = "";
+    };
+
+    $scope.goToAllFaculty = function () {
+        $scope.allfaculties = true;
+        $scope.addnewfaculty = false;
+        $scope.updatefacultypage = false;
+
+        $scope.faculty=[];
+        $scope.getFacultyList();
+    };
+
+    $scope.updateFacultyClicked = function () {
+        $scope.allfaculties = false;
+        $scope.addnewfaculty = false;
+        $scope.updatefacultypage = true;
+    };
 
 
 
@@ -39,6 +74,7 @@ IIITKWebsite.controller('FacultyController', ['$scope','UserService','UIUtilityS
         FacultyService.registerFaculty(parameters)
             .then(function(data){
                 if(data.data.success){
+                    $scope.goToAllFaculty();
                     UIUtilityService.NOTIFICATION.show({
                         title: "Success",
                         content: "Faculty Registered Successfully",
@@ -49,7 +85,7 @@ IIITKWebsite.controller('FacultyController', ['$scope','UserService','UIUtilityS
             }).catch(function(error){
             console.log("Error: ",error);
         })
-    }
+    };
 
 
     $scope.faculty=[];
@@ -111,7 +147,7 @@ $scope.deleteFaculty = function(faculty_id){
         });
     })
 
-}
+};
 
 $scope.showUpdateFacultyDialog = function(index){
     $scope.index  = index;
@@ -147,6 +183,7 @@ $scope.updateFaculty = function(){
     FacultyService.updateFaculty(parameters)
         .then(function(data){
             if(data){
+                $scope.goToAllFaculty();
                 console.log(data);
 
             }else{

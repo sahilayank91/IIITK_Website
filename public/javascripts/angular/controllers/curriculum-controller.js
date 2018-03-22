@@ -1,9 +1,45 @@
 IIITKWebsite.controller('CurriculumController', ['$scope','CurriculumService','$location','UIUtilityService', function ($scope,CurriculumService,$location,UIUtilityService) {
 
     $scope.subject =[];
-    $scope.semesterlist = ['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth', 'Seventh', 'Eigth'];
+    $scope.semesterlist = ['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth', 'Seventh', 'Eighth'];
     $scope.branchlist = ["Computer Science and Engineering","Electronics and Communication Engineering"];
 
+
+    $scope.allsubjects = true;
+    $scope.updatesubject = false;
+    $scope.addsubject = false;
+
+    $scope.addSubjectClicked = function () {
+        $scope.allsubjects = false;
+        $scope.updatesubject = false;
+        $scope.addsubject = true;
+
+        $scope.subjectname = "";
+        $scope.semester = "";
+        $scope.branch = "";
+        $scope.credits = 1;
+    };
+
+    $scope.updateSubjectClicked = function(id){
+        $scope.allsubjects = false;
+        $scope.updatesubject = true;
+        $scope.addsubject = false;
+        // $scope.updateCurriculum(id);
+        $scope.subjectname = "";
+        $scope.semester = "";
+        $scope.branch = "";
+        $scope.credits;
+        $scope._id = id;
+
+    };
+
+    $scope.goToAllSubjects = function () {
+        $scope.allsubjects = true;
+        $scope.updatesubject = false;
+        $scope.addsubject = false;
+        $scope.subject =[];
+        $scope.getSubjectList();
+    };
 
     $scope.validateParameters = function(){
             if($scope.branch =="Computer Science and Engineering"){
@@ -46,7 +82,7 @@ IIITKWebsite.controller('CurriculumController', ['$scope','CurriculumService','$
         CurriculumService.addSubject(parameter)
             .then(function (data) {
                 $scope.subject =[];
-                $scope.getSubjectList();
+                $scope.goToAllSubjects();
                 UIUtilityService.NOTIFICATION.show({
                     title: "Success",
                     content: "Subject added Successfully.",
@@ -66,34 +102,32 @@ IIITKWebsite.controller('CurriculumController', ['$scope','CurriculumService','$
 
 
 
-        $scope.updateCurriculum = function(id){
+    $scope.updateCurriculum = function(){
 
-
-            console.log("id: ",id);
-            var parameter = {};
-            $scope.validateParameters();
-            parameter.subject = $scope.subjectname;
-            parameter.semester = $scope.semester;
-            parameter.branch = $scope.branch;
-            parameter.credits = $scope.credits;
-            parameter._id = id;
-            CurriculumService.updateSubject(parameter)
-                .then(function (data) {
-                    $scope.getSubjectList();
-                    UIUtilityService.NOTIFICATION.show({
-                        title: "Success",
-                        content: "Subject added Successfully.",
-                        type: "success"
-                    });
-                }).catch(function (err) {
+        var parameter = {};
+        $scope.validateParameters();
+        parameter.subject = $scope.subjectname;
+        parameter.semester = $scope.semester;
+        parameter.branch = $scope.branch;
+        parameter.credits = $scope.credits;
+        parameter._id = $scope._id;
+        CurriculumService.updateSubject(parameter)
+            .then(function (data) {
+                $scope.goToAllSubjects();
                 UIUtilityService.NOTIFICATION.show({
-                    title: "Error",
-                    content: "Failed to Add Subject",
-                    type: "error"
+                    title: "Success",
+                    content: "Subject added Successfully.",
+                    type: "success"
                 });
+            }).catch(function (err) {
+            UIUtilityService.NOTIFICATION.show({
+                title: "Error",
+                content: "Failed to Add Subject",
+                type: "error"
             });
+        });
 
-        };
+    };
 
 
 }]);
