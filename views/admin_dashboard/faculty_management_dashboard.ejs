@@ -155,7 +155,7 @@
                 </div>
             <md-button ng-click="addFacultyClicked()" class="md-raised md-primary">ADD FACULTY</md-button>
 
-            <md-button  ng-click="updateFacultyClicked($index)" class="md-raised md-primary" style="background-color: #089ad3" >UPDATE FACULTY</md-button>
+            <!--<md-button  ng-click=" updateFacultyClicked($index)" class="md-raised md-primary" style="background-color: #089ad3" >UPDATE FACULTY</md-button>-->
 
         </div>
 
@@ -257,7 +257,7 @@
 
                         <md-input-container class="md-block">
                             <label>About</label>
-                            <input md-maxlength="30" required md-no-asterisk name="description"  ng-model="about">
+                            <input md-maxlength="100" required md-no-asterisk name="description"  ng-model="about">
                             <div ng-messages="projectForm.description.$error">
                                 <div ng-message="required">This is required.</div>
                             </div>

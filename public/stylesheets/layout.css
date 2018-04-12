@@ -380,8 +380,9 @@ table a, #comments a{background-color:inherit;}
 	#header{}
 
 	#mainav{}
-	#mainav ul{display:none;}
+	#mainav ul{display:block;}
 	#mainav form{display:block;}
+	#social_icons ul{display: none;}
 
 	#breadcrumb{}
 

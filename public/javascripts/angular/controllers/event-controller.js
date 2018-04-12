@@ -91,8 +91,96 @@ $scope.getEventList = function(){
     })
 };
 
+$scope.getTopEventList = function () {
+    EventService.getEvent()
+        .then(function(data){
+            console.log("data:" ,data);
+            if(data.data.length> 0) {
+                var totalEventList = [];
+                for (var i = 0; i < data.data.length; i++) {
+                    var parameters = {};
+                    parameters.title = data.data[i].title;
+                    parameters.description = data.data[i].description;
+                    parameters.date = data.data[i].date;
+                    parameters.organizer = data.data[i].organizer;
+                    parameters._id = data.data[i]._id;
+                    parameters.type = data.data[i].type;
+
+                    totalEventList.push(parameters);
+                }
+                console.log("eventlist: ",$scope.eventList);
+
+                var revEventList = $scope.eventList.reverse();
+
+                var i =0,len=revEventList.length;
+                var second = false;
+                var third = false;
+                $scope.getSubString(revEventList[i].description);
+                var tmp_content = {
+                    title:revEventList[i].title,
+                    date:revEventList[i].date,
+                    description:$scope.final_string
+                };
+                var tmp_content1 = {
+                    title:"",
+                    date:"",
+                    description:""
+                };
+                if(i+1 < len){
+                    $scope.getSubString(revEventList[i+1].description);
+                    tmp_content1 = {
+                        title:revEventList[i+1].title,
+                        date:revEventList[i+1].date,
+                        description:$scope.final_string
+                    };
+                    second = true;
+                }
+                var tmp_content2 = {
+                    title:"",
+                    date:"",
+                    description:""
+                };
+                if(i+2 < len){
+                    $scope.getSubString(revEventList[i+2].description);
+                    tmp_content2 = {
+                        title:revEventList[i+2].title,
+                        date:revEventList[i+2].date,
+                        description:$scope.final_string
+                    };
+                    third = true;
+                }
+                $scope.topEventList = {
+                    second:second,
+                    third:third,
+                    event1:tmp_content,
+                    event2:tmp_content1,
+                    event3:tmp_content2
+                }
+
+            }else{
+
+
+            }
+        }).catch(function(error){
+        console.log("Error in fetching Events: ",error);
+    })
+};
+
+$scope.getSubString = function (str) {
+    $scope.final_string;
+    var len = str.length;
+    var max = 130;
+    if(len <=max){
+        $scope.final_string = str;
+    }
+    else{
+        $scope.final_string = str.substr(0, max) + '...';
+    }
+};
+
 /*Calling get Event to get all the event details posted*/
 $scope.getEventList();
+$scope.getTopEventList();
 
 $scope.updateEvents = function(id){
     var parameters = {};
