@@ -68,7 +68,7 @@ router.post('/addBatch',function(req,res) {
             if (data) {
                 console.log("Data:", data);
                 RESPONSE.sendOkay(res, {success: true});   //, redirect: path.join("/" + 'allBatches')
-                // RESPONSE.sendOkay(res, parameters);
+
                 return true;
             } else {
                 console.log("Some error occured while getting data from the database");

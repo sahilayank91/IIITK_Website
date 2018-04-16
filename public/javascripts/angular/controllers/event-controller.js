@@ -82,6 +82,8 @@ $scope.getEventList = function(){
                     $scope.eventList.push(parameters);
                 }
                 console.log("eventlist: ",$scope.eventList);
+                $scope.getTopEventList();
+
             }else{
 
 
@@ -180,7 +182,6 @@ $scope.getSubString = function (str) {
 
 /*Calling get Event to get all the event details posted*/
 $scope.getEventList();
-$scope.getTopEventList();
 
 $scope.updateEvents = function(id){
     var parameters = {};

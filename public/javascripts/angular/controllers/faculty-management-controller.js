@@ -32,6 +32,16 @@ IIITKWebsite.controller('FacultyController', ['$scope','UserService','UIUtilityS
         $scope.post = "";
     };
 
+    $scope.user = {
+      email:'',
+      role:'',
+      _id:'',
+      firstname:'',
+      lastname:'',
+      phone:''
+
+    };
+
     $scope.goToAllFaculty = function () {
         $scope.allfaculties = true;
         $scope.addnewfaculty = false;
@@ -46,6 +56,24 @@ IIITKWebsite.controller('FacultyController', ['$scope','UserService','UIUtilityS
         $scope.addnewfaculty = false;
         $scope.updatefacultypage = true;
     };
+
+    $scope.getLoggedInUser = function(){
+
+        UserService.getLoggedInUser()
+            .then(function(data){
+                console.log(data);
+                $scope._id = data._id;
+                $scope.firstname = data.firstname;
+                $scope.lastname = data.lastname;
+                $scope.phone = data.phone;
+                $scope.gender = data.gender;
+            })
+
+
+    };
+    $scope.getLoggedInUser();
+
+
 
 
 
@@ -202,25 +230,20 @@ $scope.updateFaculty = function(){
         })
 };
 
-    $scope.selectFiles = function (files, $invalidFiles, type) {
-
-        if (!files || files.length === 0) return;
-
-
-        $scope.uploadProfilePic(files, type);
-    };
-
-
-
-    $scope.uploadProfilePic = function (file, type) {
-        console.log("Inside upload files");
 
 
 
 
 
+    /*$scope.selectFiles = function (files, $invalidFiles, type) {
 
-    };
+            if (!files || files.length === 0) return;
+
+
+            $scope.uploadProfilePic(files, type);
+        };
+    */
+
 
 
 

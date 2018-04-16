@@ -1,6 +1,5 @@
 IIITKWebsite.controller('DashboardController', ['$scope','UserService','UIUtilityService','$mdSidenav','$log','$window', function ($scope,UserService,UIUtilityService,$mdSidenav,$log,$window) {
-
-    console.log("Inside Dashboard Controller");
+    console.log("Inside dashboard controller" );
     $scope.email = "";
     $scope.password ="";
     $scope.password_repeat = "";
@@ -11,21 +10,13 @@ IIITKWebsite.controller('DashboardController', ['$scope','UserService','UIUtilit
     $scope.role ="";
     $scope.phone = "";
     $scope.showHints = true;
-    
-
-
-    UIUtilityService.NOTIFICATION.show({
-        title: "Success",
-        content: "User Registered Successfully",
-        type: "success"
-    });
-
-
+    $scope.role_options = ['Administrator','Faculty','Student'];
     $scope.RedirectToURL = function(url) {
         var host = $window.location.host;
         var landingUrl = '/'+url;
         $window.location.href = landingUrl;
     };
+
     $scope.validateDetails = function(){
         
     };
@@ -62,7 +53,8 @@ IIITKWebsite.controller('DashboardController', ['$scope','UserService','UIUtilit
             }).catch(function(error){
                 console.log("Error: ",error);
         })
-    }
+    };
+
 
 
 

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
+var RESPONSE = require(__BASE__ + "modules/controller/handler/ResponseHandler");
 
 
 /* GET home page. */
@@ -29,7 +30,12 @@ router.get('/senate', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-    res.render('login', { title: 'Admin Login' });
+    if(req.session.key){
+        res.render('admin_dashboard/admin',{title: "Admin"});
+    }else{
+        res.render('login', {title: 'Admin Login'});
+    }
+
 });
 
 router.get('/btech_students', function(req, res, next) {
@@ -81,7 +87,12 @@ router.get('/computerlab', function(req, res, next) {
 });
 
 router.get('/admin',function(req,res,next){
-    res.render('admin_dashboard/admin',{title: "Admin"});
+    if(req.session.key){
+        res.render('admin_dashboard/admin',{title: "Admin"});
+    }else{
+        res.render('/login', { title: 'Admin Login' });
+    }
+
 });
 
 router.get('/department', function(req, res, next) {
@@ -178,12 +189,9 @@ router.get('/gallery',function (req,res,next) {
    res.render('partials/gallery',{title: "IIITK Photo Gallery"});
 });
 
-
 router.get('/social_platforms',function (req,res,next) {
     res.render('admin_dashboard/social_platforms',{title: "IIITK Social Platforms"});
 });
-
-
 
 router.get('/event_dashboard',function (req,res,next) {
     res.render('admin_dashboard/createEvent',{title: "Events"});
@@ -195,6 +203,9 @@ router.get('/logout',function (req,res,next) {
     res.render('index',{title: "Indian Institute of Information Technology Kota"});
 });
 
+router.get('/studentForum',function (req,res,next) {
+    res.render('partials/studentForum',{title: "Student Forum"});
+});
 
 
 module.exports = router;

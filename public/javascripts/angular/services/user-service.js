@@ -73,6 +73,29 @@ IIITKWebsite.service('UserService',['$http', '$q','UIUtilityService', function (
             });
             return deferred.promise;
         },
+        getLoggedInUser:function(parameters){
+            var deferred = $q.defer();
+            var deferredData = {};
+            var url = UIUtilityService.getURL('authenticate').getLoggedInUser;
+
+            $http({method: 'GET', url: url}).then(function (data) {
+                data = data.data;
+                if (data.success == 'false' || !data.success) {
+                    deferredData.success = false;
+                } else {
+                    deferredData.success = true;
+                    deferredData.data = data.data[0];
+                }
+                deferredData.message = data.message;
+                deferred.resolve(deferredData);
+
+            }, function(result) {
+                //some error
+                deferredData.success = false;
+                deferred.resolve(deferredData);
+            });
+            return deferred.promise;
+        }
     }
 
 

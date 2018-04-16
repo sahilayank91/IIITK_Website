@@ -8,7 +8,8 @@ window.CONFIG = {
         register: "service/authenticate/register",
         forgotPassword: "service/authenticate/forgotPassword",
         resetPassword: "service/authenticate/resetPassword",
-        authenticate: "service/authenticate/auth"
+        authenticate: "service/authenticate/auth",
+        getLoggedInUser:"service/authenticate/getLoggedInUser"
     },
     batchURL:{
         addBatch: "service/batch/addBatch",

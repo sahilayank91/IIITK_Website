@@ -10,13 +10,13 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var index = require('./routes/index');
 var users = require('./routes/service/authenticate');
-var TokenHandler = require(__BASE__ + "modules/controller/handler/TokenHandler");
 var LOGGER = require(__BASE__ + "modules/utils/Logger");
+var session = require('express-session');
+var redisStore = require('connect-redis')(session);
+var redis   = require("redis");
 
-
+var client  = redis.createClient();
 var app = express();
-
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'jade');
@@ -51,6 +51,23 @@ mongoose.connect('mongodb://' + dbUrl, function(err) {
 
 mongoose.set('debug', true);
 
+
+/****************************************************/
+/***************** Redis Connection *****************/
+/****************************************************/
+//var client = TokenHandler.client;
+
+app.use(session({
+    secret: 'ssshhhhh',
+    // create new redis store.
+    store: new redisStore({ host: 'localhost', port: 3000, client: client,ttl :  260}),
+    saveUninitialized: false,
+    resave: false
+}));
+
+
+
+
 /****************************************************/
 /******************* Routes Setup *******************/
 /****************************************************/
@@ -75,15 +92,6 @@ app.use('/service/batch',SERVICE_batch);
 app.use('/service/faculty',SERVICE_faculty);
 app.use('/service/curriculum',SERVICE_curriculum);
 app.use('/service/event',SERVICE_event);
-
-
-/****************************************************/
-/***************** Redis Connection *****************/
-/****************************************************/
-var client = TokenHandler.client;
-
-
-
 
 
 

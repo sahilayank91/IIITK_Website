@@ -13,6 +13,19 @@ var getUsers = function(parameters){
         });
 
 };
+var getLoggedInUser = function(parameters){
+    return userOperations.getUsers({email: parameters.useremail})
+        .then(function(data){
+            if(data){
+                return data;
+            }else{
+                throw new Error('No User exists with given useremail');
+            }
+        }).catch(function(error){
+            console.log("Error in get Users: ",error);
+        });
+
+};
 
 var registerUser = function(parameters){
     console.log(parameters);
@@ -23,7 +36,7 @@ var registerUser = function(parameters){
             }else{
                 throw new Error('Cant create user with the given credentials');
             }
-        }).catch(function(err){
+        }).catch(function(error){
             console.log("Error in createUser",error);
         })
 };
@@ -43,6 +56,7 @@ var registerFaculty = function(parameters){
 };
 module.exports = {
   getUsers:getUsers,
+    getLoggedInUser:getLoggedInUser,
     registerFaculty:registerFaculty,
-  registerUser:registerUser,
+  registerUser:registerUser
 };

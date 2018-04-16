@@ -3,7 +3,7 @@ var UserSchema = new mongoose.Schema({
     _id: String,
     // use username as profile url. followclass/profile/harsha.
     username: {type: String, index: true, unique: true},
-    email: String,
+    email: {type:String,unique:true},
     phone: String,
     password: {type: String, required: true},
     role: {
@@ -25,7 +25,7 @@ var UserSchema = new mongoose.Schema({
     activated: {type: Boolean, default: false},
     created_at: {type: Date, default: new Date()},
     address: String,
-    gender: String,
+    gender: String, 
     about: String,
     job_title: String, // can write hindi Teacher or something like that -- too many to put in enum
 }, {

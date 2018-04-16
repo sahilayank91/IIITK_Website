@@ -7,30 +7,34 @@ var RESPONSE = require(__BASE__ + "modules/controller/handler/ResponseHandler");
 var DataValidator = require(__BASE__ + "modules/utils/DataValidator");
 var client = require(__BASE__ + "modules/controller/handler/TokenHandler").REDIS_CLIENT;
 var UserController = require(__BASE__ + "modules/controller/UserController");
-
+var TokenHandler = require(__BASE__ + "modules/controller/handler/TokenHandler");
 
 /* GET users listing. */
 router.post('/login', function(req, res) {
-    // Set our internal DB variable
-    // Get our form values. These rely on the "name" attributes
 
     var userPass = req.body.userpass;
     var userEmail = req.body.useremail;
-
     if ((!DataValidator.isValidEmail(userEmail)) && !DataValidator.isValidPhone(phone) && !DataValidator.isValidUsername(username) && !DataValidator.isValidPassword(password)){
 
         console.log("User input is not correct");
 
     }else {
         var parameters = {
-            userpass: userPass,
+            userpass: userPass  ,
             useremail: userEmail
         };
 
         UserController.getUsers(parameters)
             .then(function (data) {
-                if (data) {
-                    RESPONSE.sendOkay(res, {success: true, redirect: path.join("/" + 'admin')});
+                if (data.length >0) {
+
+                    /*Setting up session parameters*/
+                    req.session.key = TokenHandler.generateAuthToken(data[0]._id,data[0].role);
+                    req.session.email=data[0].email;
+                    req.session.role = data[0].role;
+
+
+                    RESPONSE.sendOkay(res, {success: true, redirect: path.join("/" + 'admin'), data:data});
                 } else {
                     console.log("Some error occured while getting data from the database");
                 }
@@ -54,14 +58,6 @@ router.post('/register',function(req,res) {
         gender: req.body.gender,
         role: req.body.role
     };
-
-    console.log(parameters);
-
-    // if ((!DataValidator.isValidEmail(parameters.email) && !DataValidator.isValidPhone(parameters.phone))
-    //     || !DataValidator.isValidName(parameters.firstname, parameters.lastname, role) || !DataValidator.isValidTextWithNumbers(password)
-    // ){
-    //
-    // }else{
     UserController.registerUser(parameters)
         .then(function (data) {
             if (data) {
@@ -88,7 +84,7 @@ router.post('/updateUser',function(req,res){
        phone: req.body.phone,
        gender: req.body.gender,
        role: req.body.role
-   }
+   };
 
    promise = userOperations.updateUser(parameters);
    promise.then(function(data){
@@ -102,6 +98,47 @@ router.post('/updateUser',function(req,res){
 
 
 });
+router.get('/getLoggedInUser',function(req,res){
+    if (!req.session.key) {
+        return;
+    }
+    var parameters = {
+        useremail: req.session.email
+    };
+    UserController.getLoggedInUser(parameters)
+        .then(function (data) {
+            if (data.length > 0) {
+
+                /*Setting up session parameters*/
+                req.session.key = TokenHandler.generateAuthToken(data[0]._id, data[0].role);
+                req.session.email = data[0].email;
+                req.session.role = data[0].role;
+
+
+                RESPONSE.sendOkay(res, {success: true, data: data});
+            } else {
+                console.log("Some error occured while getting data from the database");
+            }
+        }).catch(function (err) {
+        console.log(err);
+    });
+
+
+});
+
+router.get('/logout',function(req,res){
+
+
+
+    req.session.destroy(function(err){
+        if(err){
+            console.log(err);
+        } else {
+            res.redirect('/');
+        }
+    });
+});
+
 
 
 module.exports = router;
